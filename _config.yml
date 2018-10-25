@@ -92,7 +92,7 @@ deploy:
     repo: https://github.com/tarol/tarol.github.io
     branch: master
     extend_dirs: /
-    ignore_hidden: true
+    ignore_hidden: false
     ignore_pattern:
         public: .
 
