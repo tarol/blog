@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - '6.10.0'
+
+script: npm run g
+
+branches:
+  only:
+    - src
