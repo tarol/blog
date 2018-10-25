@@ -9,7 +9,8 @@
     "g": "hexo generate",
     "post": "hexo new demo",
     "start": "hexo server",
-    "deploy": "hexo clean && hexo deploy"
+    "deploy": "hexo clean && hexo deploy",
+    "sync": "git reset --hard && git clean -fd"
   },
   "dependencies": {
     "hexo": "^3.2.0",
