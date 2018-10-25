@@ -1,6 +1,6 @@
 ---
 title: TC39 标准追踪：babel 中的 decorators
-date: 2018-10-25 11:10:42
+date: 2018-10-25 20:10:42
 tags:
   - 翻译
   - ES
@@ -56,7 +56,7 @@ class MyClass {
 }
 ```
 
-    译者按：以上的例子我按个人的理解做了调整。而且据我测试，第一个例子中的第二个 decorator 的写法在旧提案中是错误的。因为 [bar] 会作为 decorators body 的 token 而非 class method 的 name。那么 class method 就不存在 name，会报 unexpected token 的语法错误。
+> 译者按：以上的例子我按个人的理解做了调整。而且据我测试，第一个例子中的第二个 decorator 的写法在旧提案中是错误的。因为 [bar] 会作为 decorators body 的 token 而非 class method 的 name。那么 class method 就不存在 name，会报 unexpected token 的语法错误。
 
 ### 对象 decorators
 
@@ -83,7 +83,7 @@ const myObj = {
 
 &emsp;&emsp;类 decorators 同样接收一个对象，通过这个对象可以访问到所有的类成员 decorators 的入参，这个特性确保了在创建类之前还可以对类成员做进一步的修改。
 
-    译者按：这部分才是最重大的修改，也是不兼容的核心原因。如果要一一列出比较,应该独立成一篇 blog，所以此处不做赘述。
+> 译者按：这部分才是最重大的修改，也是不兼容的核心原因。如果要一一列出比较,应该独立成一篇 blog，所以此处不做赘述。
 
 ### 升级方式
 
