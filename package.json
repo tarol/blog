@@ -9,8 +9,7 @@
     "g": "hexo generate",
     "post": "hexo new demo",
     "start": "hexo server",
-    "clean": "rimraf .deploy_git && rimraf public",
-    "deploy": "hexo deploy"
+    "deploy": "hexo clean && hexo deploy"
   },
   "dependencies": {
     "hexo": "^3.2.0",
