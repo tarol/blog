@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN,zh-cn,zh-HK,zh-hk,zh-TW,zh-tw,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用@babel/plugin-proposal-decorators进行体验。 历史的进程&amp;emsp;&amp;emsp;decorators 的第一个方案是由Yehuda Katz在三年前提出的。TypeScript 也在1.5 版本（2015）与 ES6 特性一起发布了 decorators。一些主">
+<meta name="keywords" content="翻译,ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TC39 标准追踪：babel 中的 decorators">
+<meta property="og:url" content="https://tarol.github.io/2018/10/25/TC39 标准追踪：babel 中的 decorators/index.html">
+<meta property="og:site_name" content="tarol 的碎碎念">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用@babel/plugin-proposal-decorators进行体验。 历史的进程&amp;emsp;&amp;emsp;decorators 的第一个方案是由Yehuda Katz在三年前提出的。TypeScript 也在1.5 版本（2015）与 ES6 特性一起发布了 decorators。一些主">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-25T12:46:25.617Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TC39 标准追踪：babel 中的 decorators">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用@babel/plugin-proposal-decorators进行体验。 历史的进程&amp;emsp;&amp;emsp;decorators 的第一个方案是由Yehuda Katz在三年前提出的。TypeScript 也在1.5 版本（2015）与 ES6 特性一起发布了 decorators。一些主">
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://tarol.github.io/2018/10/25/TC39 标准追踪：babel 中的 decorators/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>TC39 标准追踪：babel 中的 decorators | tarol 的碎碎念</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">tarol 的碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">3</span></a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2018/10/25/TC39 标准追踪：babel 中的 decorators/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">TC39 标准追踪：babel 中的 decorators
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-25 20:10:42" itemprop="dateCreated datePublished" datetime="2018-10-25T20:10:42+08:00">2018-10-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/25/TC39 标准追踪：babel 中的 decorators/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/10/25/TC39 标准追踪：babel 中的 decorators/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用<a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener">@babel/plugin-proposal-decorators</a>进行体验。</p>
+<h2 id="历史的进程"><a href="#历史的进程" class="headerlink" title="历史的进程"></a>历史的进程</h2><p>&emsp;&emsp;decorators 的<a href="https://github.com/wycats/javascript-decorators" target="_blank" rel="noopener">第一个方案</a>是由<a href="https://github.com/wycats" target="_blank" rel="noopener">Yehuda Katz</a>在三年前提出的。TypeScript 也在<a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15" target="_blank" rel="noopener">1.5 版本（2015）</a>与 ES6 特性一起发布了 decorators。一些主流的前端框架，比如 angular 和 MobX，也开始用 decorators 加强开发体验：这让 decorators 更加流行，却让社区误以为 decorators 是一个稳定的特性。</p>
+<p>&emsp;&emsp;Babel 在<a href="https://github.com/babel/babel/blob/master/.github/CHANGELOG-v5.md#500" target="_blank" rel="noopener">5.0 版本</a>实现了 decorators。但是在 Babel 6 移除了它，因为它并不稳定。为此 <a href="https://github.com/loganfsmyth" target="_blank" rel="noopener">Logan Smyth</a> 创建了非官方插件 <a href="https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy" target="_blank" rel="noopener">babel-plugin-transform-decorators-legacy</a>，这个插件的实现和 Babel 5 保持一致。直到 <a href="https://github.com/babel/babel/tree/v7.0.0-alpha.1/packages/babel-plugin-transform-decorators" target="_blank" rel="noopener">Babel 7 alpha</a> 发布，这个插件才重新回到 Babel 的官方库中。该插件仍然使用旧提案的语义，因为新的语义还不够明确。</p>
+<p>&emsp;&emsp;从那时候开始，<a href="https://github.com/littledan" target="_blank" rel="noopener">Daniel Ehrenberg</a> 和 <a href="https://github.com/bterlson" target="_blank" rel="noopener">Brian Terlson</a> 开始协助 <a href="https://github.com/wycats" target="_blank" rel="noopener">Yehuda Katz</a> 整理新的 decorators 提案，他们几乎重写了这份提案。但即便如此，仍然无法保证面面俱到，迄今为止的实现方式还是不够兼容。</p>
+<p>&emsp;&emsp;Babel 7.0.0 为 <code>@babel/plugin-proposal-decorators</code> 引入了一个配置项：<code>legacy</code>，但是当时它只存在 <code>true</code> 这一个合法的值。这个突破性的变化用于日后新旧版本的平滑过渡。</p>
+<p>&emsp;&emsp;Babel 7.1.0 提供了对新提案的支持，而且 <code>@babel/plugin-proposal-decorators</code> 默认启用新的实现。</p>
+<p>&emsp;&emsp;新提案同时支持对私有成员和私有方法进行装饰，但这些特性在 Babel 中尚未实现，或许很快就会实现了。</p>
+<h2 id="新提案有哪些变化？"><a href="#新提案有哪些变化？" class="headerlink" title="新提案有哪些变化？"></a>新提案有哪些变化？</h2><p>&emsp;&emsp;虽然新提案看上去和旧提案很像，但几个关键的差别导致了两者的不兼容。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>&emsp;&emsp;旧提案支持任意的左值表达式作为 decorators 的 body（即@后面的内容）。举个例子，这是合法的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  @getDecorators().methods[name]</span><br><span class="line">  foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @decorator</span><br><span class="line">  [bar]() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这个语法有个问题：[…] 符号同时作为 decorators body 中的属性访问符（即 <code>methods[name]</code> 中的 <code>[name]</code> ）和类方法的计算属性名（即 <code>[bar]() {}</code> 中的 <code>[bar]</code> ）。为了防止语义模糊，新提案中只允许 <code>.</code> 作为属性访问符。如果你想实现诸如<code>@getDecorators().methods[name]</code>的功能，需要借助圆括号：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  @(getDecorators().methods[name])</span><br><span class="line">  foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @decorator</span><br><span class="line">  [bar]() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>译者按：以上的例子我按个人的理解做了调整。而且据我测试，第一个例子中的第二个 decorator 的写法在旧提案中是错误的。因为 [bar] 会作为 decorators body 的 token 而非 class method 的 name。那么 class method 就不存在 name，会报 unexpected token 的语法错误。</p>
+</blockquote>
+<h3 id="对象-decorators"><a href="#对象-decorators" class="headerlink" title="对象 decorators"></a>对象 decorators</h3><p>&emsp;&emsp;旧提案除了支持类 decorators、类成员 decorators，还支持对象 decorators：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObj = &#123;</span><br><span class="line">  @dec1</span><br><span class="line">  foo: <span class="number">3</span>,</span><br><span class="line">  @dec2</span><br><span class="line">  bar() &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;鉴于当前的对象 decorators 语义存在不兼容性，该特性从提案从被移除了。如果你在代码中使用了此特性，请保持关注，因为在后续的 <a href="https://github.com/tc39/proposal-decorators/issues/119" target="_blank" rel="noopener">提案</a> 中可能被再次引入。</p>
+<h3 id="decorators-参数"><a href="#decorators-参数" class="headerlink" title="decorators 参数"></a>decorators 参数</h3><p>&emsp;&emsp;第三个关键的改动是 decorators 的参数列表</p>
+<p>&emsp;&emsp;在旧提案中，类成员 decorators 接收三个参数，target（类的原型）、key（成员名）、property descriptor（属性描述符）—— 类似于 <code>Object.defineProperty</code> 的参数列表。而类 decorators 仅接收 <code>constructor</code> 这一个参数。</p>
+<p>&emsp;&emsp;新提案在这点上要强大的多：成员 decorators 接收一个对象，这个对象包含以下属性，你可以对其进行任意的修改：<code>descriptor</code>(原 descriptor)、<code>key</code>(成员名)、<code>placement</code>(属性的位置，<code>static</code>、<code>prototype</code>、<code>own</code>)、<code>kind</code>(属性的类型，<code>field</code>、<code>method</code>)。</p>
+<p>&emsp;&emsp;类 decorators 同样接收一个对象，通过这个对象可以访问到所有的类成员 decorators 的入参，这个特性确保了在创建类之前还可以对类成员做进一步的修改。</p>
+<blockquote>
+<p>译者按：这部分才是最重大的修改，也是不兼容的核心原因。如果要一一列出比较,应该独立成一篇 blog，所以此处不做赘述。</p>
+</blockquote>
+<h3 id="升级方式"><a href="#升级方式" class="headerlink" title="升级方式"></a>升级方式</h3><p>&emsp;&emsp;由于不兼容，如果项目中采用了新提案，就不能使用旧的 decorators：因为现存的库（MobX， Angular 等）都没有引入新特性，这会导致迁移过程非常慢。鉴于这个问题，我们发布了一个工具包，你可以在你的代码中使用它包装原有的 decorators 作为变通的方案。先运行这个工具包，然后你就可以在 Babel 的 config 中配置新提案了。</p>
+<p>&emsp;&emsp;你可以这样更新你的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install wrap-legacy-decorators -D</span><br><span class="line">npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-export --write</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果你的代码运行在 node 环境，或者你使用 webpack 或者 rollup 打包你的代码，你可以引入外部依赖而不是在每个文件中都注入工具包提供的包装函数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install decorators-compat</span><br><span class="line">npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-export --external-helpers --write</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;更多的信息，你可以参考这个<a href="https://github.com/nicolo-ribaudo/legacy-decorators-migration-utility" target="_blank" rel="noopener">文档</a>。</p>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><p>&emsp;&emsp;新提案并非是面面俱到的：decorators 是个非常大的特性，要完整的定义它非常的复杂。</p>
+<h3 id="Exported-Classes-的-decorators-应该放在哪里？"><a href="#Exported-Classes-的-decorators-应该放在哪里？" class="headerlink" title="Exported Classes 的 decorators 应该放在哪里？"></a>Exported Classes 的 decorators 应该放在哪里？</h3><blockquote>
+<p><a href="https://github.com/tc39/proposal-decorators/issues/69" target="_blank" rel="noopener">tc39/proposal-decorators#69</a></p>
+</blockquote>
+<p>&emsp;&emsp;decorators 提案在这个问题上反复摇摆：decorators 应该放在关键字 <code>export</code> 的前面还是后面？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> @decorator <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line">@decorator</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里潜在的一个问题是：<code>export</code> 关键字是类的一部分还是一个“包装器”。第一个例子中，因为 decorators 必须放在声明的开头，所以它应该放在 decorators 后面；第二个例子中，因为 decorators 是声明的一部分，所以它应该放在 decorators 前面。</p>
+<h3 id="对于私有成员，decorators-应该采用怎样的安全策略？"><a href="#对于私有成员，decorators-应该采用怎样的安全策略？" class="headerlink" title="对于私有成员，decorators 应该采用怎样的安全策略？"></a>对于私有成员，decorators 应该采用怎样的安全策略？</h3><p>&emsp;&emsp;decorators 引发了一个重要的安全问题：如果私有成员可以被装饰，那么成员名会泄露。这里需要考虑不同的安全等级：</p>
+<ol>
+<li>decorators 不能泄露私有成员名，不然恶意代码可以从 decorators 中窃取此信息</li>
+<li>私有成员的 decorators 是可信的，类 decorators 是不可信的？</li>
+<li><a href="https://github.com/tc39/proposal-private-fields/issues/33" target="_blank" rel="noopener">硬隐私</a> 意味着私有成员只能在类内部访问：那么 decorators 应该访问私有成员名吗？还是只能装饰公有成员？</li>
+</ol>
+<p>&emsp;&emsp;这些问题在解决前需要进一步讨论，这也是 Babel 的意义所在。</p>
+<h2 id="Babel-充当的角色"><a href="#Babel-充当的角色" class="headerlink" title="Babel 充当的角色"></a>Babel 充当的角色</h2><p>&emsp;&emsp;随着 Babel 7 的发布，我们开始利用我们在 JS 生态中的地位，通过让开发人员对于不同版本的提案进行体验和给予反馈以帮助提案作者进行决策。</p>
+<p>&emsp;&emsp;出于这个原因，更新 <code>@babel/plugin-proposal-decorators</code> 之后，我们引入了新的选项：<code>decoratorsBeforeExport</code>。通过这个选项，你可以尝试切换 <code>export @decorator class C {}</code> 和 <code>@decorator export default class</code> 这两种不同的语法。</p>
+<p>&emsp;&emsp;我们还将引入另一个选项来自定义隐私策略。这些选项是必填项，直到 TC39 做出最终的决定，而这个决定将成为默认项。</p>
+<p>&emsp;&emsp;如果你是直接使用我们的解析器（<code>@babel/parser</code>，以前的 <code>babylon</code>），你也可以在版本 <code>7.0.0</code> 中使用 <code>decoratorsBeforeExport</code> 这个选项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ast = babylon.parse(code, &#123;</span><br><span class="line">  plugins: [[<span class="string">"decorators"</span>, &#123; <span class="attr">decoratorsBeforeExport</span>: <span class="literal">true</span> &#125;]]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @babel/plugin-proposal-decorators -D</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"plugins"</span>: [</span><br><span class="line">    <span class="string">"@babel/plugin-proposal-decorators"</span>,</span><br><span class="line">    &#123; <span class="attr">"decoratorsBeforeExport"</span>: <span class="literal">true</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;查看 <a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener">@babel/plugin-proposal-decorators</a> 了解更多的选项。</p>
+<h2 id="你的角色"><a href="#你的角色" class="headerlink" title="你的角色"></a>你的角色</h2><p>&emsp;&emsp;作为一个 JS 开发人员，你可以和我们一起勾勒这个语言的未来。你可以尝试 decorators 提供的各种各样的语义，并给予提案作者一定的反馈。我们需要知道它用于真实项目的情况！你也可以通过阅读 <a href="https://github.com/tc39/proposal-decorators" target="_blank" rel="noopener">提案仓库</a> 中的讨论和会议纪要了解为何这样设计。</p>
+<p>&emsp;&emsp;如果你现在就想体验 decorators，你可以在我们的 <a href="https://babeljs.io/repl/build/master" target="_blank" rel="noopener">线上解释器</a> 通过设置不同的 presets 选项体验它。</p>
+<h2 id="翻译自："><a href="#翻译自：" class="headerlink" title="翻译自："></a>翻译自：</h2><blockquote>
+<p><a href="https://babeljs.io/blog/2018/09/17/decorators" target="_blank" rel="noopener">TC39 Standards Track Decorators in Babel</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/ES/" rel="tag"># ES</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" rel="next" title="从web图片裁剪出发：了解H5中的canvas">
+                <i class="fa fa-chevron-left"></i> 从web图片裁剪出发：了解H5中的canvas
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="C tarol" />
+            
+              <p class="site-author-name" itemprop="name">C tarol</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/tarol" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="/atom.xml" target="_blank" title="RSS" rel="external nofollow"><i class="fa fa-fw fa-rss"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ctarol@163.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#历史的进程"><span class="nav-number">1.</span> <span class="nav-text">历史的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新提案有哪些变化？"><span class="nav-number">2.</span> <span class="nav-text">新提案有哪些变化？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象-decorators"><span class="nav-number">2.2.</span> <span class="nav-text">对象 decorators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decorators-参数"><span class="nav-number">2.3.</span> <span class="nav-text">decorators 参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级方式"><span class="nav-number">2.4.</span> <span class="nav-text">升级方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#已知问题"><span class="nav-number">3.</span> <span class="nav-text">已知问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exported-Classes-的-decorators-应该放在哪里？"><span class="nav-number">3.1.</span> <span class="nav-text">Exported Classes 的 decorators 应该放在哪里？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于私有成员，decorators-应该采用怎样的安全策略？"><span class="nav-number">3.2.</span> <span class="nav-text">对于私有成员，decorators 应该采用怎样的安全策略？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Babel-充当的角色"><span class="nav-number">4.</span> <span class="nav-text">Babel 充当的角色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式"><span class="nav-number">4.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你的角色"><span class="nav-number">5.</span> <span class="nav-text">你的角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#翻译自："><span class="nav-number">6.</span> <span class="nav-text">翻译自：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C tarol</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">18k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">33 分钟</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'GJoAzg0aeyMVJcHG20u4CeUR-gzGzoHsz',
+        appKey: '1qogMVj5TGazkDMx1Bh8iq8D',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+</body>
+</html>
