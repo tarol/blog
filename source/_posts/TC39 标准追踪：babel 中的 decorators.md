@@ -10,7 +10,7 @@ categories:
   - ES
 ---
 
-&emsp;&emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用[@babel/plugin-proposal-decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) 进行体验。
+&emsp;&emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用 [@babel/plugin-proposal-decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) 进行体验。
 
 ## 历史的进程
 
