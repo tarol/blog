@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>tarol 的碎碎念</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://tarol.github.io/"/>
+  <updated>2018-10-25T11:33:03.111Z</updated>
+  <id>https://tarol.github.io/</id>
+  
+  <author>
+    <name>C tarol</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TC39 标准追踪：babel 中的 decorators</title>
+    <link href="https://tarol.github.io/2018/10/25/TC39%20%E6%A0%87%E5%87%86%E8%BF%BD%E8%B8%AA%EF%BC%9Ababel%20%E4%B8%AD%E7%9A%84%20decorators/"/>
+    <id>https://tarol.github.io/2018/10/25/TC39 标准追踪：babel 中的 decorators/</id>
+    <published>2018-10-25T03:10:42.000Z</published>
+    <updated>2018-10-25T11:33:03.111Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-proposal-decorators&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从web图片裁剪出发：了解H5中的canvas</title>
+    <link href="https://tarol.github.io/2016/04/21/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84canvas/"/>
+    <id>https://tarol.github.io/2016/04/21/从web图片裁剪出发：了解H5中的canvas/</id>
+    <published>2016-04-21T09:42:00.000Z</published>
+    <updated>2018-10-16T07:09:41.774Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;todo&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="H5" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="H5" scheme="https://tarol.github.io/tags/H5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从web图片裁剪出发：了解H5中的Blob</title>
+    <link href="https://tarol.github.io/2016/04/15/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84Blob/"/>
+    <id>https://tarol.github.io/2016/04/15/从web图片裁剪出发：了解H5中的Blob/</id>
+    <published>2016-04-15T08:11:00.000Z</published>
+    <updated>2018-10-15T10:07:05.917Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;刚开始做前端的时候，有个功能卡住我了，就是裁剪并上传头像。当时两个方案摆在我面前，一个是 flash，我不会。另一个是通过 iframe 上传图片，然后再上传坐标由后端裁剪，而我最终的选择是后者。有人会疑惑，为什么不用 H5 的 Canvas 和
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="H5" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="H5" scheme="https://tarol.github.io/tags/H5/"/>
+    
+  </entry>
+  
+</feed>
