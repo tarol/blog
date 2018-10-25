@@ -175,5 +175,6 @@ npm install @babel/plugin-proposal-decorators -D
 
 &emsp;&emsp;如果你现在就想体验 decorators，你可以在我们的 [线上解释器](https://babeljs.io/repl/build/master) 通过设置不同的 presets 选项体验它。
 
-## 翻译自：
+## 翻译自
+
 > [TC39 Standards Track Decorators in Babel](https://babeljs.io/blog/2018/09/17/decorators)
