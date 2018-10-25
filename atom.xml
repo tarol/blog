@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tarol.github.io/"/>
-  <updated>2018-10-25T13:56:52.535Z</updated>
+  <updated>2018-10-25T15:31:08.253Z</updated>
   <id>https://tarol.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://tarol.github.io/2018/10/25/TC39%20%E6%A0%87%E5%87%86%E8%BF%BD%E8%B8%AA%EF%BC%9Ababel%20%E4%B8%AD%E7%9A%84%20decorators/"/>
     <id>https://tarol.github.io/2018/10/25/TC39 标准追踪：babel 中的 decorators/</id>
     <published>2018-10-25T12:10:42.000Z</published>
-    <updated>2018-10-25T13:56:52.535Z</updated>
+    <updated>2018-10-25T15:31:08.253Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-proposal-decorators&quot;
+          &lt;p&gt;&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用 &lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-proposal-decorators&quot;
         
       
     
