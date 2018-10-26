@@ -1,6 +1,6 @@
 ---
 title: TC39 标准追踪：babel 中的 decorators
-date: 2018-10-25 20:10:42
+date: 2018-9-22 20:10:42
 tags:
   - 翻译
   - ES
