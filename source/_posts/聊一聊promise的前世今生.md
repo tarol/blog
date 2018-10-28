@@ -16,7 +16,7 @@ categories:
 
 &emsp;&emsp;大家应该都知道怎么创建一个 promise
 
-```javascript
+```js
 var promise = new Promise(resolve => {
   setTimeout(() => resolve("tarol"), 3000);
 });
@@ -24,14 +24,14 @@ var promise = new Promise(resolve => {
 
 &emsp;&emsp;如果从业时间长一点，会知道以前的 promise 不是这么创建的。比如如果你用过 jquery，jquery 在 1.5 引入 deferred 的概念，里面是这样创建 promise 的
 
-```javascript
+```js
 var defer = $.Deferred();
 var promise = defer.promise();
 ```
 
 &emsp;&emsp;如果你用过 angular，里面有个 promise service 叫$q，它又是这么创建 promise 的
 
-```javascript
+```js
 var defer = $q.defer();
 var promise = defer.promise;
 ```
@@ -87,7 +87,7 @@ var promise = defer.promise;
 
 1. onFulfilled 和 onRejected 都是可选的，如果省略了或者类型不是函数，前面流过来的 value 或者 reason 直接流到下一个 callback，我们举两个极端的例子
 
-```javascript
+```js
 Promise.resolve("resolve")
   .then()
   .then(value => console.log(value)); // resolve
@@ -98,7 +98,7 @@ Promise.reject("reject")
 
 &emsp;&emsp;&emsp;这个特性决定了我们现在可以这样写异常处理
 
-```javascript
+```js
 Promise.reject("reason")
   .then(v => v)
   .then(v => v)
@@ -108,7 +108,7 @@ Promise.reject("reason")
 
 &emsp;&emsp;&emsp;但是如果你在 then 链条中，插入一个空的 onRejected，reason 就流不到 catch 了。因为 onRejected 返回了 undefined，下一个 promise 处于 fulfilled 态
 
-```javascript
+```js
 Promise.reject("reason")
   .then(v => v)
   .then(v => v)
@@ -118,7 +118,7 @@ Promise.reject("reason")
 
 2. onFulfilled 或 onRejected 只能调用一次，且只能以函数的形式被调用，对应的是不能以属性方法的方式被调用，比如
 
-```javascript
+```js
 var name = "tarol";
 var person = {
   name: "okal",
@@ -132,13 +132,13 @@ Promise.resolve("value").then(person.say); //tarol
 
 &emsp;&emsp;&emsp;如果你想第二行还是打印出'okal'，请使用 bind
 
-```javascript
+```js
 Promise.resolve("value").then(person.say.bind(person)); //okal
 ```
 
 3. onFulfilled 或者 onRejected 中抛出异常，则 promise2 状态置为 rejected
 
-```javascript
+```js
 var promise2 = promise1.then(onFulfilled, onRejected);
 ```
 
@@ -151,7 +151,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
 
         1. 访问 x.then 时，如果抛出异常，则 promise2 置为 rejected，reason 为抛出的异常
 
-        ```javascript
+        ```js
         var obj = {
           get then() {
             throw "err";
@@ -164,7 +164,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
 
         2. 如果 then 不是函数，则同 3
 
-        ```javascript
+        ```js
         Promise.resolve("value")
           .then(v => {
             return {
@@ -181,7 +181,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
         2. 如果调用了 reject(r)，那么 promise2 置为 rejected，reason 为 r
         3. 调用 resolve 或 reject 后，后面的代码依然会运行
 
-        ```javascript
+        ```js
         Promise.resolve("value")
           .then(v => {
             return {
@@ -196,7 +196,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
 
         4. 如果既调用了 resolve、又调用了 reject，仅第一个调用有效
 
-        ```javascript
+        ```js
         Promise.resolve("value")
           .then(v => {
             return {
@@ -211,7 +211,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
 
         5. 如果抛出了异常，而抛出的时机在 resolve 或 reject 前，promise2 置为 rejected，reason 为异常本身。如果抛出的时机在 resolve 或 reject 之后，则忽略这个异常。以下 case 在 chrome 66 上运行失败，promise 处于 pending 状态不切换，但是在 nodejs v8.11.1 上运行成功
 
-        ```javascript
+        ```js
         Promise.resolve("value")
           .then(v => {
             return {
@@ -224,7 +224,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
           .then(v => console.log(v), r => console.log(r)); //  resolve
         ```
 
-        ```javascript
+        ```js
         Promise.resolve("value")
           .then(v => {
             return {
@@ -247,7 +247,7 @@ var promise2 = promise1.then(onFulfilled, onRejected);
 
 &emsp;&emsp;那么为什么 es6 放弃了大行其道的 deferred，最终敲定了 Promise 构造器的创建方式呢？我们写两个 demo 感受下不同
 
-```javascript
+```js
 var Q = require("q");
 
 var deferred = Q.defer();
@@ -257,7 +257,7 @@ deferred.promise.then(v => console.log(v));
 setTimeout(() => deferred.resolve("tarol"), 3000);
 ```
 
-```javascript
+```js
 var p = new Promise(resolve => {
   setTimeout(() => resolve("tarol"), 3000);
 });
@@ -275,7 +275,7 @@ p.then(v => console.log(v));
 
 &emsp;&emsp;我一度很反感这种创建方式，认为这是一种束缚，直到我看到了 bluebird（Promise/A+的实现库）讨论组中某个[帖子](https://groups.google.com/forum/#!topic/bluebird-js/mUiX2-vXW2s)的解释。大概说一下，回帖人的意思是，promise 首先应该是一个异步流程控制的解决方案，流程控制包括了正常的数据流和异常流程处理。而 deferred 的方式存在一个致命的缺陷，就是 promise 链的第一个 promise（deferred.promise）的触发阶段抛出的异常是不交由 promise 自动处理的。我写几个 demo 解释下这句话
 
-```javascript
+```js
 var Q = require("q");
 
 var deferred = Q.defer();
@@ -290,7 +290,7 @@ setTimeout(() => deferred.resolve("tarol"));
 
 &emsp;&emsp;以上是一个正常的异常流程处理，在值链中抛出了异常，自动触发下一个 promise 的 onRejected。但是如果在 deferred.promise 触发阶段的业务流程中抛出了异常呢？
 
-```javascript
+```js
 var Q = require("q");
 
 var deferred = Q.defer();
@@ -304,7 +304,7 @@ setTimeout(() => {
 
 &emsp;&emsp;这个异常将抛出到最外层，而不是由 promise 进行流程控制，如果想让 promise 处理抛出的异常，必须这么写
 
-```javascript
+```js
 var Q = require("q");
 
 var deferred = Q.defer();
@@ -322,7 +322,7 @@ setTimeout(() => {
 
 &emsp;&emsp;deferred 的问题就在这里了，在 deferred.promise 触发阶段抛出的异常，不会自动交由 promise 链进行控制。而 es6 的方式就简单了
 
-```javascript
+```js
 var p = new Promise(() => {
   throw "err";
 });
@@ -356,7 +356,7 @@ p.catch(r => console.log(r)); // err
 
 &emsp;&emsp;延时类的 promise 经过前面的解释基本都了解用法和场景，那对数据进行流程控制的 promise 呢？在上面 Promises/A 部分说明了 get 和 call 两个 API 的用法和场景，Promises/B 的 get 对应的就是 Promises/A 的 get，call 对应的是 post。put/set 是 Promises/B 新增的，和前二者一样，在操作数据时进行流程控制。比如在严格模式下，如果对象 a 的属性 b 的 writable 是 false。这时对 a.b 赋值，是会抛出异常的，如果异常未被捕获，那么会影响后续代码的运行。
 
-```javascript
+```js
 "use strict";
 var a = {};
 
@@ -372,7 +372,7 @@ console.log("end"); // 不运行
 
 &emsp;&emsp;这时候如果使用 Q 的 put 进行流程控制，就可以把赋值这部分独立开来，不影响后续代码的运行。
 
-```javascript
+```js
 "use strict";
 var Q = require("q");
 
@@ -393,7 +393,7 @@ console.log("end"); // end
 
 &emsp;&emsp;这部分的应用场景是否有价值呢？答案就是见仁见智了，好在 Q 还提供了 makePromise 这个底层 API，自定义 promise 可以实现比增删改查这些 verbs 更强大的功能。比如当我做数据校验的时候可以这样写
 
-```javascript
+```js
 var Q = require("q");
 
 var p = Q.makePromise({
@@ -426,7 +426,7 @@ p.dispatch("isNumber", ["1"])
 
 &emsp;&emsp;首先，怎么区分 fulfilledHandler 和 errorHandler 呢？KISS 借鉴了 nodejs 的回调函数方式，第一个参数是 err，第二个参数是 data。所以 fulfilledHandler 和 errorHandler 在一个监听器里这样进行区分：
 
-```javascript
+```js
 function(err, data) {
   if (err) {...}    // errorHandler
   else {...}    // fulfilledHandler
@@ -435,7 +435,7 @@ function(err, data) {
 
 &emsp;&emsp;那怎么区分多次调用的 progressHandler 呢？使用 when 注册的监听器只能调用一次，使用 whenever 注册的监听器可以调用多次。我们写个 demo 区分 Q 和 KISS 的 API 的不同：
 
-```javascript
+```js
 var Q = require("q");
 var defer = Q.defer();
 defer.promise.then(
@@ -449,7 +449,7 @@ defer.notify(50); // progress 50
 defer.resolve("ok"); // fulfill ok
 ```
 
-```javascript
+```js
 var future = require("future");
 
 var p = new future();

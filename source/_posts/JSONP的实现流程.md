@@ -40,7 +40,7 @@ categories:
 
 &emsp;&emsp;但 Node 的页面发出 AJAX 请求，则像上面那样报错了，因为 AJAX 有同源策略保护。怎么绕过这个保护呢？平时我们页面引入的 CSS、JS 可能是从其他的服务器比如静态服务器、CDN 获取内容，都在不同的域，可知页面内的标签引入 JS 是没有同源策略一说的，而且也是进行 request 和处理 response，于是我们把这个 AJAX 请求改为如下代码：
 
-```javascript
+```js
 var script = document.createElement("script");
 script.src = "http://localhost:8081/test/true.jsp";
 document.body.insertBefore(script, document.body.lastChild);
@@ -63,7 +63,7 @@ console.log({"status": true});
 
 &emsp;&emsp;目的是达到了，但问题是，这个 AJAX 的 servlet 不仅返回了数据，还返回了行为，难道我要把处理 DOM 的 js 写在这里面吗？页面重构了又跑到这里来修改？问题太美不敢想，所以请求成功的方法必须写在页面的 js 里面，比如这样
 
-```javascript
+```js
 function callback(data) {
   console.log(data);
 }
@@ -81,7 +81,7 @@ callback({"status": true});
 
 &emsp;&emsp;可以看到，这个方案比之前好多了，servlet 和请求页面的耦合度低了很多，但没完全解决，比如 callback 这个回调函数的名字，如果把这个名字放在请求的 parameter 中，比如这样
 
-```javascript
+```js
 function callback(data) {
   console.log(data);
 }
@@ -120,7 +120,7 @@ document.body.insertBefore(script, document.body.lastChild);
 
 &emsp;&emsp;解决方法：可以使用 jQuery 的方法，jQuery 会清除掉留下的 script 标签。
 
-```javascript
+```js
 $.ajax({
   url: "http://localhost:8081/test/true.jsp",
   dataType: "jsonp",
@@ -133,7 +133,7 @@ $.ajax({
 
 &emsp;&emsp;也可以自己实现一个，我抛个砖，在 js 加载完成后删除节点。
 
-```javascript
+```js
 function callback(data) {
   console.log(data);
 }

@@ -33,7 +33,7 @@ categories:
 
 然后我们在 JS 中获取这个元素
 
-```javascript
+```js
 var input = document.querySelector("input[type=file]");
 ```
 
@@ -78,7 +78,7 @@ var input = document.querySelector("input[type=file]");
 
 可见这仅仅是一条引用。**第二个问题来了，如果我们要对图片进行处理，那么只拿到引用是不行的，肯定要在浏览器有一份数据的备份，那么怎么获取这个备份呢？**答案就是 FileReader，FileReader 的对象主要有 readAsArrayBuffer、readAsBinaryString、readAsDataURL、readAsText 等方法，它们的入参都是 Blob 对象或是 File 对象，结果对应最终获取的数据类型。这几个方法是异步的，读取过程中会抛出对应的事件，其中读取完毕的事件为 load，所以数据的处理要放在 onload 下。我先给一个简单的 example：
 
-```javascript
+```js
 input.addEventListener("change", function() {
   var file = this.files[0],
     fr = new FileReader(),
@@ -107,7 +107,7 @@ ArrayBuffer 简单介绍了，那什么是 BinaryString 呢？是二进制数据
 
 除了固定的字符串部分，它主要包含两个重要信息即中括号括起的部分，mimeType 和 base64 编码后的 binaryString，从它里面我们可以这样取到这两个信息。
 
-```javascript
+```js
 var binaryString = atob(dataUrl.split(",")[1]),
   mimeType = dataUrl.split(",")[0].match(/:(.\*?);/)[1];
 ```

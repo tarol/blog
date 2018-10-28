@@ -84,7 +84,7 @@ categories:
 
 &emsp;&emsp;我们一步一步来，首先确定开始点和结束点。
 
-```javascript
+```js
 var sPoint = {},
   ePoint = {};
 canvas.addEventListener("mousedown", function(e) {
@@ -98,7 +98,7 @@ canvas.addEventListener("mousedown", function(e) {
 
 &emsp;&emsp;然后我们确定绘制阴影的的方法，并且在鼠标按下去移动的时候不停的绘制。
 
-```javascript
+```js
 function drawCover() {
   ctx.save();
   ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
@@ -126,7 +126,7 @@ canvas.addEventListener("mousemove", function(e) {
 
 &emsp;&emsp;最后我们添加松开鼠标的事件监听，松开左键为拖动结束，松开右键为复原
 
-```javascript
+```js
 canvas.addEventListener("mouseup", function(e) {
   if (e.button === 0) {
     sPoint.drag = false;
@@ -145,7 +145,7 @@ function restore() {
 
 &emsp;&emsp;由于右键会出现恶心的浏览器自带菜单栏，影响体验，我们屏蔽它。
 
-````javascript
+````js
 document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -163,7 +163,7 @@ document.addEventListener('contextmenu', function(e) {
 </form>
 ```
 
-```javascript
+```js
 var clip = document.querySelector("#clip");
 clip.addEventListener("click", function(e) {
   e.preventDefault(); //阻止默认事件，不然会触发form的submit
@@ -202,7 +202,7 @@ clip.addEventListener("click", function(e) {
 </form>
 ```
 
-```javascript
+```js
 var grey = document.querySelector("#grey");
 grey.addEventListener("click", function(e) {
   e.preventDefault();

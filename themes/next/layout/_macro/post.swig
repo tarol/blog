@@ -340,7 +340,7 @@
           {% endif %}
         {% endif %}
       {% else %}
-        {{ post.categories | get('data') | pluck('name') | includes('翻译') }}
+        <!--{{ post.categories | get('data') | pluck('name') | includes('翻译') }}-->
         {{ post.content }}
       {% endif  %}
     </div>

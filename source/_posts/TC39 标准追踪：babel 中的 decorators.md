@@ -34,7 +34,7 @@ categories:
 
 &emsp;&emsp;旧提案支持任意的左值表达式作为 decorators 的 body（即@后面的内容）。举个例子，这是合法的代码：
 
-```javascript
+```js
 class MyClass {
   @getDecorators().methods[name]
   foo() {}
@@ -46,7 +46,7 @@ class MyClass {
 
 &emsp;&emsp;这个语法有个问题：[...] 符号同时作为 decorators body 中的属性访问符（即 `methods[name]` 中的 `[name]` ）和类方法的计算属性名（即 `[bar]() {}` 中的 `[bar]` ）。为了防止语义模糊，新提案中只允许 `.` 作为属性访问符。如果你想实现诸如`@getDecorators().methods[name]`的功能，需要借助圆括号：
 
-```javascript
+```js
 class MyClass {
   @(getDecorators().methods[name])
   foo() {}
@@ -62,7 +62,7 @@ class MyClass {
 
 &emsp;&emsp;旧提案除了支持类 decorators、类成员 decorators，还支持对象 decorators：
 
-```javascript
+```js
 const myObj = {
   @dec1
   foo: 3,
@@ -115,7 +115,7 @@ npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-expor
 
 &emsp;&emsp;decorators 提案在这个问题上反复摇摆：decorators 应该放在关键字 `export` 的前面还是后面？
 
-```javascript
+```js
 export @decorator class MyClass {}
 
 // or
@@ -146,7 +146,7 @@ export class MyClass {}
 
 &emsp;&emsp;如果你是直接使用我们的解析器（`@babel/parser`，以前的 `babylon`），你也可以在版本 `7.0.0` 中使用 `decoratorsBeforeExport` 这个选项。
 
-```javascript
+```js
 const ast = babylon.parse(code, {
   plugins: [["decorators", { decoratorsBeforeExport: true }]]
 });
