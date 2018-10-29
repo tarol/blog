@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tarol.github.io/"/>
-  <updated>2018-10-25T15:33:13.595Z</updated>
+  <updated>2018-10-29T13:47:59.559Z</updated>
   <id>https://tarol.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>TC39 标准追踪：babel 中的 decorators</title>
-    <link href="https://tarol.github.io/2018/10/25/TC39%20%E6%A0%87%E5%87%86%E8%BF%BD%E8%B8%AA%EF%BC%9Ababel%20%E4%B8%AD%E7%9A%84%20decorators/"/>
-    <id>https://tarol.github.io/2018/10/25/TC39 标准追踪：babel 中的 decorators/</id>
-    <published>2018-10-25T12:10:42.000Z</published>
-    <updated>2018-10-25T15:33:13.595Z</updated>
+    <title>私有成员语法 FAQ</title>
+    <link href="https://tarol.github.io/2018/10/28/%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E8%AF%AD%E6%B3%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/"/>
+    <id>https://tarol.github.io/2018/10/28/私有成员语法常见问题解答/</id>
+    <published>2018-10-28T12:58:12.000Z</published>
+    <updated>2018-10-29T13:47:59.559Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,41 @@
       
         
         
-          &lt;p&gt;&amp;emsp;&amp;emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用 &lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-proposal-decorators&quot;
+          &lt;h2 id=&quot;翻译自&quot;&gt;&lt;a href=&quot;#翻译自&quot; class=&quot;headerlink&quot; title=&quot;翻译自&quot;&gt;&lt;/a&gt;翻译自&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TC39 标准追踪：babel 中的 decorators</title>
+    <link href="https://tarol.github.io/2018/09/22/TC39%20%E6%A0%87%E5%87%86%E8%BF%BD%E8%B8%AA%EF%BC%9Ababel%20%E4%B8%AD%E7%9A%84%20decorators/"/>
+    <id>https://tarol.github.io/2018/09/22/TC39 标准追踪：babel 中的 decorators/</id>
+    <published>2018-09-22T12:10:42.000Z</published>
+    <updated>2018-10-29T13:30:11.844Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;翻译自&quot;&gt;&lt;a href=&quot;#翻译自&quot; class=&quot;headerlink&quot; title=&quot;翻译自&quot;&gt;&lt;/a&gt;翻译自&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a
         
       
     
@@ -53,7 +87,7 @@
     <link href="https://tarol.github.io/2018/05/22/%E8%81%8A%E4%B8%80%E8%81%8Apromise%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/"/>
     <id>https://tarol.github.io/2018/05/22/聊一聊promise的前世今生/</id>
     <published>2018-05-22T13:56:55.000Z</published>
-    <updated>2018-10-25T14:46:51.128Z</updated>
+    <updated>2018-10-28T10:02:12.363Z</updated>
     
     <summary type="html">
     
@@ -86,7 +120,7 @@
     <link href="https://tarol.github.io/2016/04/21/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84canvas/"/>
     <id>https://tarol.github.io/2016/04/21/从web图片裁剪出发：了解H5中的canvas/</id>
     <published>2016-04-21T09:42:00.000Z</published>
-    <updated>2018-10-25T13:50:47.666Z</updated>
+    <updated>2018-10-28T10:02:12.327Z</updated>
     
     <summary type="html">
     
@@ -119,7 +153,7 @@
     <link href="https://tarol.github.io/2016/04/15/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84Blob/"/>
     <id>https://tarol.github.io/2016/04/15/从web图片裁剪出发：了解H5中的Blob/</id>
     <published>2016-04-15T08:11:00.000Z</published>
-    <updated>2018-10-25T13:50:47.664Z</updated>
+    <updated>2018-10-28T10:02:12.328Z</updated>
     
     <summary type="html">
     
@@ -151,7 +185,7 @@
     <link href="https://tarol.github.io/2015/01/04/JSONP%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B/"/>
     <id>https://tarol.github.io/2015/01/04/JSONP的实现流程/</id>
     <published>2015-01-04T11:26:36.000Z</published>
-    <updated>2018-10-25T13:50:47.659Z</updated>
+    <updated>2018-10-28T10:02:12.336Z</updated>
     
     <summary type="html">
     
