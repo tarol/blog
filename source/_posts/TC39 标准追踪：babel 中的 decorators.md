@@ -10,6 +10,10 @@ categories:
   - ES
 ---
 
+## 翻译自
+
+> [TC39 Standards Track Decorators in Babel](https://babeljs.io/blog/2018/09/17/decorators)
+
 &emsp;&emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用 [@babel/plugin-proposal-decorators](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) 进行体验。
 
 ## 历史的进程
@@ -174,7 +178,3 @@ npm install @babel/plugin-proposal-decorators -D
 &emsp;&emsp;作为一个 JS 开发人员，你可以和我们一起勾勒这个语言的未来。你可以尝试 decorators 提供的各种各样的语义，并给予提案作者一定的反馈。我们需要知道它用于真实项目的情况！你也可以通过阅读 [提案仓库](https://github.com/tc39/proposal-decorators) 中的讨论和会议纪要了解为何这样设计。
 
 &emsp;&emsp;如果你现在就想体验 decorators，你可以在我们的 [线上解释器](https://babeljs.io/repl/build/master) 通过设置不同的 presets 选项体验它。
-
-## 翻译自
-
-> [TC39 Standards Track Decorators in Babel](https://babeljs.io/blog/2018/09/17/decorators)
