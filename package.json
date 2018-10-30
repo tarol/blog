@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.7.1"
+    "version": "3.8.0"
   },
   "scripts": {
     "g": "hexo generate",
-    "post": "hexo new demo",
+    "post": "hexo new",
     "start": "hexo server",
     "deploy": "hexo clean && hexo deploy",
     "sync": "git reset --hard && git clean -fd"
