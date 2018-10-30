@@ -15,10 +15,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN,zh-cn,zh-HK,zh-hk,zh-TW,zh-tw,en,default">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -56,9 +56,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
@@ -108,29 +108,29 @@
 
 
 
-  <meta name="description" content="翻译自 tc39/proposal-class-fields   译者按：社区一直以来有一个声音，就是反对使用 # 声明私有成员。但是很多质疑的声音过于浅薄，纯属人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（不然没有接触 spec 的童鞋可能连问题都看不懂），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑">
+  <meta name="description" content="翻译自 tc39/proposal-class-fields   译者按：社区一直以来有一个声音，就是反对使用 # 声明私有成员。但是很多质疑的声音过于浅薄、人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（有些问题的描述不够清晰），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑才是有力量的。   译者按：首">
 <meta name="keywords" content="翻译,ES">
 <meta property="og:type" content="article">
 <meta property="og:title" content="私有成员语法 FAQ">
 <meta property="og:url" content="https://tarol.github.io/2018/10/28/私有成员语法FAQ/index.html">
 <meta property="og:site_name" content="tarol 的碎碎念">
-<meta property="og:description" content="翻译自 tc39/proposal-class-fields   译者按：社区一直以来有一个声音，就是反对使用 # 声明私有成员。但是很多质疑的声音过于浅薄，纯属人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（不然没有接触 spec 的童鞋可能连问题都看不懂），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑">
+<meta property="og:description" content="翻译自 tc39/proposal-class-fields   译者按：社区一直以来有一个声音，就是反对使用 # 声明私有成员。但是很多质疑的声音过于浅薄、人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（有些问题的描述不够清晰），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑才是有力量的。   译者按：首">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-29T14:37:08.638Z">
+<meta property="og:updated_time" content="2018-10-30T14:38:55.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="私有成员语法 FAQ">
-<meta name="twitter:description" content="翻译自 tc39/proposal-class-fields   译者按：社区一直以来有一个声音，就是反对使用 # 声明私有成员。但是很多质疑的声音过于浅薄，纯属人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（不然没有接触 spec 的童鞋可能连问题都看不懂），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑">
+<meta name="twitter:description" content="翻译自 tc39/proposal-class-fields   译者按：社区一直以来有一个声音，就是反对使用 # 声明私有成员。但是很多质疑的声音过于浅薄、人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（有些问题的描述不够清晰），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑才是有力量的。   译者按：首">
 
 
   
 
 
-  <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
 
 
 
 
-  <link rel="canonical" href="https://tarol.github.io/2018/10/28/私有成员语法FAQ/"/>
+  <link rel="canonical" href="https://tarol.github.io/2018/10/28/私有成员语法FAQ/">
 
 
 
@@ -180,7 +180,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -190,7 +190,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -226,7 +226,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
   </li>
         
         
@@ -234,7 +234,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">6</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
   </li>
 
       
@@ -244,7 +244,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
@@ -264,9 +264,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -311,20 +309,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2018/10/28/私有成员语法FAQ/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="C tarol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="tarol 的碎碎念">
     </span>
 
@@ -365,7 +363,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -376,21 +374,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
 
                 
                 
@@ -467,7 +465,7 @@
 <p><a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md" target="_blank" rel="noopener">tc39/proposal-class-fields</a></p>
 </blockquote>
 <blockquote>
-<p>译者按：社区一直以来有一个声音，就是反对使用 <code>#</code> 声明私有成员。但是很多质疑的声音过于浅薄，纯属人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（不然没有接触 spec 的童鞋可能连问题都看不懂），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑才是有力量的。</p>
+<p>译者按：社区一直以来有一个声音，就是反对使用 <code>#</code> 声明私有成员。但是很多质疑的声音过于浅薄、人云亦云。其实 TC39 早就对此类呼声做过回应，并且归纳了一篇 FAQ。翻译这篇文章的同时，我会进行一定的扩展（有些问题的描述不够清晰），目的是让大家取得一定的共识。我认为，只有你知其然，且知其所以然，你的质疑才是有力量的。</p>
 </blockquote>
 <blockquote>
 <p>译者按：首先要明确的一点是，委员会对于私有成员很多设计上的抉择是基于 ES 不存在类型检查，为此做了很多权衡和让步。这篇文章在很多地方也会提及这个不同的基本面。</p>
@@ -503,7 +501,7 @@
 <blockquote>
 <p>译者按：所谓的“封装性”（encapsulation / hard private）是很重要的概念，<a href="#encapsulation">最底下</a>会有说明。最简单的解释是，外部不能以任意方式获取私有成员的任何信息。假设，公共成员和私有成员冲突，而 <code>x</code> 是 <code>obj</code> 的私有成员，这时候外部存在 <code>obj.x</code>。如果公私冲突，这里将会报错，外部就嗅探到了 <code>obj</code> 存在 <code>x</code> 这个私有成员。这就违背了“封装性”。</p>
 </blockquote>
-<h3 id="延伸问题-2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？"><a href="#延伸问题-2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？" class="headerlink" title="延伸问题 2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？"></a><span id="runtime">延伸问题 2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？</span></h3><p>属性访问的语义已经很复杂了，我们不想仅仅为了这个特性让每次属性访问都更慢。</p>
+<h3 id="延伸问题-2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？"><a href="#延伸问题-2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？" class="headerlink" title="延伸问题 2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？"></a><a name="runtime">延伸问题 2：为什么不使用运行时检测，来决定访问的是私有成员还是公共成员？</a></h3><p>属性访问的语义已经很复杂了，我们不想仅仅为了这个特性让每次属性访问都更慢。</p>
 <blockquote>
 <p>译者按：属性访问的复杂性可以从 <a href="https://github.com/sindresorhus/to-fast-properties" target="_blank" rel="noopener">toFastProperties</a> 和 <a href="https://codeday.me/bug/20170429/11591.html" target="_blank" rel="noopener">toFastProperties 如何使对象的属性更快</a> 管窥一二</p>
 </blockquote>
@@ -552,7 +550,7 @@
 <h2 id="为什么不能是-this-x，把-去掉？"><a href="#为什么不能是-this-x，把-去掉？" class="headerlink" title="为什么不能是 this#x，把 . 去掉？"></a>为什么不能是 <code>this#x</code>，把 <code>.</code> 去掉？</h2><p>这是可行的，但是如果我们再简化为 <code>#x</code> 就会出<a href="https://github.com/tc39/proposal-private-fields/issues/39#issuecomment-237121552" target="_blank" rel="noopener">问题</a>。</p>
 <blockquote>
 <p>译者按：这个说法很简单，我直接列在下面</p>
-<p><span id="ASI">栗子</span>：</p>
+<p>栗子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">X</span> </span>&#123;</span><br><span class="line">&gt;   #y</span><br><span class="line">&gt;   z() &#123;</span><br><span class="line">&gt;     w()</span><br><span class="line">&gt;     #y() // 会被解析为w()#y</span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>泛言之，因为 <code>this.#</code> 的语义更为清晰，委员会基本都支持这种写法。</p>
@@ -571,7 +569,7 @@
 <blockquote>
 <p>例子当中，对属性的创建如果不抛错，是否就会创建一个公共字段？<br>如果创建了公共字段，调用 <code>a.say()</code> 打印的是公共字段还是私有字段？是不是打印哪个都感觉不对？<br>可能你会说，那就抛错好了？那这样就是运行时检测，这个问题在<a href="#runtime">上面</a>有过描述。</p>
 </blockquote>
-<h2 id="为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？"><a href="#为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？" class="headerlink" title="为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？"></a><span id="share">为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？</span></h2><p>因为这个功能非常有用，举个栗子：判断 <code>Point</code> 是否相等的 <code>equals</code> 方法。</p>
+<h2 id="为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？"><a href="#为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？" class="headerlink" title="为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？"></a><a name="share">为什么这个提案要允许不同实例间访问私有成员？其他语言也是这样的吗？</a></h2><p>因为这个功能非常有用，举个栗子：判断 <code>Point</code> 是否相等的 <code>equals</code> 方法。</p>
 <p>实际上，其他语言由于同样的原因也是这样设计的；举个栗子，以下是合法的 Java 代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Point p)</span> </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.x == p.x &amp;&amp; <span class="keyword">this</span>.y == p.y; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Unicode-这么多符号，为什么恰恰是-？"><a href="#Unicode-这么多符号，为什么恰恰是-？" class="headerlink" title="Unicode 这么多符号，为什么恰恰是 # ？"></a>Unicode 这么多符号，为什么恰恰是 <code>#</code> ？</h2><p>没人说 <code>#</code> 是最漂亮最直观的符号，我们用的是排除法：</p>
@@ -590,7 +588,7 @@
 <p>译者按：委员会还是举了省略分号时的例子，可是上面也说了，就算是 <code>#</code>，也同样存在问题。</p>
 </blockquote>
 <h2 id="为什么这个提案不允许外部通过一些机制用于反射-访问私有成员（比如说测试的时候）？其他语言也是这样的吗？"><a href="#为什么这个提案不允许外部通过一些机制用于反射-访问私有成员（比如说测试的时候）？其他语言也是这样的吗？" class="headerlink" title="为什么这个提案不允许外部通过一些机制用于反射/访问私有成员（比如说测试的时候）？其他语言也是这样的吗？"></a>为什么这个提案不允许外部通过一些机制用于反射/访问私有成员（比如说测试的时候）？其他语言也是这样的吗？</h2><p>这样做会违反“封装性”。其他语言允许并不是一个充分的理由，尤其是在某些语言（例如 C++）中，是通过直接修改内存实现的，而且这也不是一个必需的功能。</p>
-<h2 id="你所谓的“封装性”和“硬隐私”是什么意思？"><a href="#你所谓的“封装性”和“硬隐私”是什么意思？" class="headerlink" title="你所谓的“封装性”和“硬隐私”是什么意思？"></a><span id="encapsulation">你所谓的“封装性”和“硬隐私”是什么意思？</span></h2><p>意味着私有成员是完全内部的：没有任何类外部的 JS 代码可以探测和影响到它们的存在，它们的成员名，它们的值，除非类自己选择暴露他们。（包括子类和父类之间也是完全封装的）。</p>
+<h2 id="你所谓的“封装性”和“硬隐私”是什么意思？"><a href="#你所谓的“封装性”和“硬隐私”是什么意思？" class="headerlink" title="你所谓的“封装性”和“硬隐私”是什么意思？"></a><a name="encapsulation">你所谓的“封装性”和“硬隐私”是什么意思？</a></h2><p>意味着私有成员是完全内部的：没有任何类外部的 JS 代码可以探测和影响到它们的存在，它们的成员名，它们的值，除非类自己选择暴露他们。（包括子类和父类之间也是完全封装的）。</p>
 <p>意味着反射方法们，比如说 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols" target="_blank" rel="noopener">getOwnPropertySymbols</a> 也不能暴露私有成员。</p>
 <p>意味着如果一个类有一个私有成员 <code>x</code>，在类外部实例化类对象 <code>obj</code>，这时候通过 <code>obj.x</code> 访问的应该是公共成员 <code>x</code>，而不是访问私有成员或者抛出错误。注意这里的现象和 Java 并不一致，因为 Java 可以在编译时进行类型检查并且禁止通过成员名动态访问内容，除非是反射接口。</p>
 <h2 id="为什么这个提案会将封装性作为目的？"><a href="#为什么这个提案会将封装性作为目的？" class="headerlink" title="为什么这个提案会将封装性作为目的？"></a>为什么这个提案会将封装性作为目的？</h2><ol>
@@ -603,14 +601,14 @@
 </ol>
 <p>当前提案正在努力推进硬隐私，使 <a href="https://github.com/tc39/proposal-private-fields/blob/master/DECORATORS.md" target="_blank" rel="noopener">decorators</a> 或者其他机制提供给类一个可选的逃生通道。我们计划在此阶段收集反馈，以确定这是否是正确的语义。</p>
 <p>查看这个 <a href="https://github.com/tc39/proposal-private-fields/issues/33" target="_blank" rel="noopener">issue</a> 了解更多。</p>
-<h3 id="使用-WeakMap-如何模拟封装？"><a href="#使用-WeakMap-如何模拟封装？" class="headerlink" title="使用 WeakMap 如何模拟封装？"></a><span id="model">使用 <code>WeakMap</code> 如何模拟封装？</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> privates = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">  <span class="keyword">let</span> ids = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      privates.set(<span class="keyword">this</span>, &#123; <span class="attr">id</span>: ids++ &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    equals(otherPerson) &#123;</span><br><span class="line">      <span class="keyword">return</span> privates.get(<span class="keyword">this</span>).id === privates.get(otherPerson).id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">let</span> alice = <span class="keyword">new</span> Person(<span class="string">"Alice"</span>);</span><br><span class="line"><span class="keyword">let</span> bob = <span class="keyword">new</span> Person(<span class="string">"Bob"</span>);</span><br><span class="line">alice.equals(bob); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用-WeakMap-如何模拟封装？"><a href="#使用-WeakMap-如何模拟封装？" class="headerlink" title="使用 WeakMap 如何模拟封装？"></a><a name="model">使用 <code>WeakMap</code> 如何模拟封装？</a></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> privates = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">  <span class="keyword">let</span> ids = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      privates.set(<span class="keyword">this</span>, &#123; <span class="attr">id</span>: ids++ &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    equals(otherPerson) &#123;</span><br><span class="line">      <span class="keyword">return</span> privates.get(<span class="keyword">this</span>).id === privates.get(otherPerson).id;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">let</span> alice = <span class="keyword">new</span> Person(<span class="string">"Alice"</span>);</span><br><span class="line"><span class="keyword">let</span> bob = <span class="keyword">new</span> Person(<span class="string">"Bob"</span>);</span><br><span class="line">alice.equals(bob); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <p>然而这里还是存在一个潜在的问题。假设我们在构造时添加一个回调函数：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> privates = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">  <span class="keyword">let</span> ids = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, makeGreeting) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      privates.set(<span class="keyword">this</span>, &#123; <span class="attr">id</span>: ids++, makeGreeting &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    equals(otherPerson) &#123;</span><br><span class="line">      <span class="keyword">return</span> privates.get(<span class="keyword">this</span>).id === privates.get(otherPerson).id;</span><br><span class="line">    &#125;</span><br><span class="line">    greet(otherPerson) &#123;</span><br><span class="line">      <span class="keyword">return</span> privates.get(<span class="keyword">this</span>).makeGreeting(otherPerson.name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">let</span> alice = <span class="keyword">new</span> Person(<span class="string">"Alice"</span>, name =&gt; <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>);</span><br><span class="line"><span class="keyword">let</span> bob = <span class="keyword">new</span> Person(<span class="string">"Bob"</span>, name =&gt; <span class="string">`Hi, <span class="subst">$&#123;name&#125;</span>.`</span>);</span><br><span class="line">alice.equals(bob); <span class="comment">// false</span></span><br><span class="line">alice.greet(bob); <span class="comment">// === 'Hello, Bob!'</span></span><br></pre></td></tr></table></figure>
 <p>乍看好像没有问题，但是：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mallory = <span class="keyword">new</span> Person(<span class="string">"Mallory"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.id = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`o/ <span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line">&#125;);</span><br><span class="line">mallory.greet(bob); <span class="comment">// === 'o/ Bob'</span></span><br><span class="line">mallory.equals(alice); <span class="comment">// true. 错了！</span></span><br></pre></td></tr></table></figure>
-<h3 id="你怎么使用-Symbols-提供隐藏但不封装的属性？"><a href="#你怎么使用-Symbols-提供隐藏但不封装的属性？" class="headerlink" title="你怎么使用 Symbols 提供隐藏但不封装的属性？"></a><span id="Symbols">你怎么使用 <code>Symbols</code> 提供隐藏但不封装的属性？</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> _id = <span class="built_in">Symbol</span>(<span class="string">"id"</span>);</span><br><span class="line">  <span class="keyword">let</span> ids = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">this</span>[_id] = ids++;</span><br><span class="line">    &#125;</span><br><span class="line">    equals(otherPerson) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>[_id] === otherPerson[_id];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">let</span> alice = <span class="keyword">new</span> Person(<span class="string">"Alice"</span>);</span><br><span class="line"><span class="keyword">let</span> bob = <span class="keyword">new</span> Person(<span class="string">"Bob"</span>);</span><br><span class="line">alice.equals(bob); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">alice[<span class="built_in">Object</span>.getOwnPropertySymbols(alice)[<span class="number">0</span>]]; <span class="comment">// == 0，alice 的 id.</span></span><br></pre></td></tr></table></figure>
+<h3 id="你怎么使用-Symbols-提供隐藏但不封装的属性？"><a href="#你怎么使用-Symbols-提供隐藏但不封装的属性？" class="headerlink" title="你怎么使用 Symbols 提供隐藏但不封装的属性？"></a><a name="Symbols">你怎么使用 <code>Symbols</code> 提供隐藏但不封装的属性？</a></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> _id = <span class="built_in">Symbol</span>(<span class="string">"id"</span>);</span><br><span class="line">  <span class="keyword">let</span> ids = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">this</span>[_id] = ids++;</span><br><span class="line">    &#125;</span><br><span class="line">    equals(otherPerson) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>[_id] === otherPerson[_id];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="keyword">let</span> alice = <span class="keyword">new</span> Person(<span class="string">"Alice"</span>);</span><br><span class="line"><span class="keyword">let</span> bob = <span class="keyword">new</span> Person(<span class="string">"Bob"</span>);</span><br><span class="line">alice.equals(bob); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">alice[<span class="built_in">Object</span>.getOwnPropertySymbols(alice)[<span class="number">0</span>]]; <span class="comment">// == 0，alice 的 id.</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>译者按：FAQ 到此结束，可能有的地方会比较晦涩，多看几遍写几个 demo 基本就懂了。我觉得技术存在 <code>看山是山 -&gt; 看山不是山 -&gt; 看山还是山</code> 这样一个渐进的过程，翻译这篇 FAQ 也并非为 <code>#</code> 辩护，只是现在很多质疑还停留在 <code>看山是山</code> 这样一个阶段。我希望可以做点什么，让更多的人 <code>看山不是山</code>，最后达到 <code>看山还是山</code> 的境界：问题还是存在问题，不过是站在更全面和系统的角度去思考问题。</p>
+<p>译者按：FAQ 到此结束，可能有的地方会比较晦涩，多看几遍写几个 demo 基本就懂了。我觉得技术存在 <code>看山是山 -&gt; 看山不是山 -&gt; 看山还是山</code> 这样一个渐进的过程，翻译这篇 FAQ 也并非为 <code>#</code> 辩护，只是现在很多质疑还停留在 <code>看山是山</code> 这样一个阶段。我希望这篇 FAQ 可以让你 <code>看山不是山</code>，最后达到 <code>看山还是山</code> 的境界：问题还是存在问题，不过是站在更全面和系统的角度去思考问题。</p>
 </blockquote>
 
       
@@ -715,11 +713,9 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="C tarol" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="C tarol">
             
               <p class="site-author-name" itemprop="name">C tarol</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -732,7 +728,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -759,7 +755,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -780,7 +778,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -865,7 +865,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">47k</span>
+    <span title="站点总字数">54k</span>
   
 
   
@@ -874,7 +874,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:26</span>
+    <span title="站点阅读时长">1:38</span>
   
 </div>
 

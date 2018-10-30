@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tarol.github.io/"/>
-  <updated>2018-10-29T14:37:08.638Z</updated>
+  <updated>2018-10-30T14:38:55.129Z</updated>
   <id>https://tarol.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://tarol.github.io/2018/10/28/%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E8%AF%AD%E6%B3%95FAQ/"/>
     <id>https://tarol.github.io/2018/10/28/私有成员语法FAQ/</id>
     <published>2018-10-28T12:58:12.000Z</published>
-    <updated>2018-10-29T14:37:08.638Z</updated>
+    <updated>2018-10-30T14:38:55.129Z</updated>
     
     <summary type="html">
     
@@ -112,6 +112,36 @@
       <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
     
       <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式</title>
+    <link href="https://tarol.github.io/2017/09/15/%E6%89%80%E8%B0%93%E7%BC%96%E7%A0%81--%E6%B3%9B%E8%B0%88ASCII%E3%80%81Unicode%E3%80%81UTF8%E3%80%81UTF16%E3%80%81UCS-2%E7%AD%89%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/"/>
+    <id>https://tarol.github.io/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/</id>
+    <published>2017-09-15T10:18:38.000Z</published>
+    <updated>2018-10-30T14:53:15.420Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近在看 nodejs 的源码，看到 stream 的实现里面满地都是 encoding，不由想起以前看过的一篇文章——在前面的随笔里面有提到过——阮一峰老师的&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="计算机" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="计算机" scheme="https://tarol.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
   </entry>
   
