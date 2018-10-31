@@ -108,13 +108,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tarol 的碎碎念">
-<meta property="og:url" content="https://tarol.github.io/categories/技术/计算机/index.html">
+  <meta name="description" content="首先 js 是一种面对对象的语言，虽然大多数时候是以面对过程的形式展现出来。先来看一段代码： 12345678910function Base() &amp;#123;  this.name = &quot;tarol&quot;;&amp;#125;function Sub() &amp;#123;  this.age = 18;&amp;#125;var b = new Base();Sub.prototype = b;var s = new">
+<meta name="keywords" content="文章,ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 javascript 原型链的个人理解">
+<meta property="og:url" content="https://tarol.github.io/2015/02/09/关于javascript原型链的个人理解/index.html">
 <meta property="og:site_name" content="tarol 的碎碎念">
+<meta property="og:description" content="首先 js 是一种面对对象的语言，虽然大多数时候是以面对过程的形式展现出来。先来看一段代码： 12345678910function Base() &amp;#123;  this.name = &quot;tarol&quot;;&amp;#125;function Sub() &amp;#123;  this.age = 18;&amp;#125;var b = new Base();Sub.prototype = b;var s = new">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-31T14:43:01.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tarol 的碎碎念">
+<meta name="twitter:title" content="关于 javascript 原型链的个人理解">
+<meta name="twitter:description" content="首先 js 是一种面对对象的语言，虽然大多数时候是以面对过程的形式展现出来。先来看一段代码： 12345678910function Base() &amp;#123;  this.name = &quot;tarol&quot;;&amp;#125;function Sub() &amp;#123;  this.age = 18;&amp;#125;var b = new Base();Sub.prototype = b;var s = new">
 
 
 
@@ -123,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://tarol.github.io/categories/技术/计算机/">
+  <link rel="canonical" href="https://tarol.github.io/2015/02/09/关于javascript原型链的个人理解/">
 
 
 
@@ -133,7 +138,7 @@
   };
 </script>
 
-  <title>分类: 计算机 | tarol 的碎碎念</title>
+  <title>关于 javascript 原型链的个人理解 | tarol 的碎碎念</title>
   
 
 
@@ -180,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -287,74 +292,278 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>计算机<small>分类</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/02/09/关于javascript原型链的个人理解/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/" itemprop="url">
-              
-                <span itemprop="name">所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">关于 javascript 原型链的个人理解
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-09-15T18:18:38+08:00" content="2017-09-15">
-          09-15
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-02-09 16:31:13" itemprop="dateCreated datePublished" datetime="2015-02-09T16:31:13+08:00">2015-02-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/02/09/关于javascript原型链的个人理解/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/02/09/关于javascript原型链的个人理解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!--false-->
+        <p>首先 js 是一种面对对象的语言，虽然大多数时候是以面对过程的形式展现出来。先来看一段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"tarol"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Base();</span><br><span class="line">Sub.prototype = b;</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Sub();</span><br><span class="line"><span class="built_in">console</span>.log(s.name); <span class="comment">//'tarol'</span></span><br></pre></td></tr></table></figure>
+<p>结果相信都知道，但是实现的原理却不明，于是逐行解析：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sub.prototype = b;</span><br></pre></td></tr></table></figure>
+<p>prototype 是函数对象（函数也是对象）的特有属性，普通对象是不存在这个属性的，该属性默认为{}。这个属性的作用就是，将这个属性赋予给、使用此函数作为构造函数进行实例化的对象、作为该对象[[Propertype]]的内部属性。所谓内部属性就是通过 js 不能访问的属性，庆幸的是现代浏览器开放了这个属性的访问，一般属性名为 <code>__proto__</code>。所以：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Sub();</span><br></pre></td></tr></table></figure>
+<p>这一段（也可以说每个 new 操作）可以展开：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = &#123;&#125;;</span><br><span class="line">s.__proto__ = Sub.prototype;</span><br><span class="line">Sub.call(s);</span><br></pre></td></tr></table></figure>
+<p>可见，对象实例化后，与构造函数的耦合在于前者的 <code>__proto__</code> 属性和后者的 prototype 属性为同一个对象的引用。</p>
+<p>然后 <code>__proto__</code> 这个内部属性是用来做什么的呢，是用来实现 js 中的“继承”的。这个“继承”之所以打引号是用来区别 c++ 和 java 中的类式继承的思想，这种方式称之为原型继承。</p>
+<p>原型继承的原理是：每个对象都保有一个指向其他对象的引用（也就是 <code>__proto__</code> 即原型），这条引用最终指向 null（null 也是对象），当访问这个对象的任一属性时，如果在本对象中没有找到，则向其 <code>__proto__</code> 指向的对象中寻找，直到原型链的尽头 null。需要注意的是：原型链中的所有元素都是实例化的对象。</p>
+<p>现在回到上面的代码，当访问对象 s 的属性 name 时，在 <code>s</code> 中没有找到，于是跑到 <code>s</code> 的 <code>__proto__</code> 指向的 Base 的实例对象中寻找，找到了 name 为’tarol’。</p>
+<p>但如果访问 s 的属性 gender 时，在 s 和 <code>s.__proto__</code> 中都没有找到，于是继续向 <code>s.__proto__.__proto__</code> 中寻找。由 <code>s.__proto__ === new Base</code>，可知 <code>s.__proto__.__proto__ === Base.prototype</code>（即<code>(new Constructor()).__proto__ === Constructor.prototype</code>）。上面说到，prototype 默认是{}，于是继续在 <code>Base.prototype.__proto__</code> 中找，即 <code>(new Object()).__proto__ === Object.prototype</code>。如果没有添加一些自定义的属性，<code>Object.prototype</code> 同样是{}，这样看来，似乎要陷入无限的循环当中，但其实到这里原型链就走向了尽头，因为浏览器会定义 <code>Object.prototype.__proto__ = null</code>。用下面的流程梳理下，–&gt;代表原型链上的传递，===代表对象不同引用间的替换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.gender --&gt; s.__proto__.gender === Sub.prototype.gender === b.gender --&gt; b.__proto__.gender === Base.prototype.gender === (new Object()).gender --&gt; (new Object()).__proto__.gender === Object.prototype.gender --&gt; Object.prototype.__proto__ === null</span><br></pre></td></tr></table></figure>
+<p><code>Object.prototype.__proto__</code>也是所有对象原型链的尽头，包括 Function（函数的构造函数本身也是对象）、Date（普通对象）、Math（单体内置对象），因为 Function.prototype 是默认的{}，即进入上面流程中 (new Object()).gender 这一阶段。</p>
+<p>最后举个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Class</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Class();</span><br><span class="line">Class.prototype = <span class="keyword">new</span> Class();</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Class();</span><br><span class="line"><span class="built_in">console</span>.log(b.__proto__.__proto__ === a.__proto__);</span><br></pre></td></tr></table></figure>
+<p>其中最让人困惑的估计是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.prototype = <span class="keyword">new</span> Class();</span><br></pre></td></tr></table></figure>
+<p>如果用类式继承来理解，会误以为这句代码会陷入死循环调用当中，但注意上面红字标明那句话：原型链中的所有元素都是实例化的对象。也就是，这里只是将一个对象插入 Class 对象的原型链最前端（除对象本身外），至于这个对象是 new Class 还是 new Glass（见第一段红字，这句代码修改了构造函数的引用，使 __proto__ 和 prototype 之间的耦合解除了，可以说这个对象和构造函数“分家”了），都不影响调用的过程。所以，这句代码的目的是修改了 Class 构造函数，让其实例化的对象的原型链长度+1。</p>
+<p>写的有些凌乱，如果过段时间我看不懂了再回来改一改。</p>
+<p>参考：</p>
+<ul>
+<li><p><a href="http://www.cnblogs.com/winter-cn/archive/2009/05/16/1458390.html" target="_blank" rel="noopener">《理解 JavaScript 面向对象的思路》</a> By 温神</p>
+</li>
+<li><p>《关于__proto__和 prototype 的一些理解》By TonyCoolZhu</p>
+</li>
+<li><p>《JavaScript 高级程序设计》By Nicholas C.Zakas</p>
+</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文章/" rel="tag"># 文章</a>
+          
+            <a href="/tags/ES/" rel="tag"># ES</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/04/JSONP的实现流程/" rel="next" title="JSONP的实现流程">
+                <i class="fa fa-chevron-left"></i> JSONP的实现流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/30/玩一把JS的链式调用/" rel="prev" title="玩一把JS的链式调用">
+                玩一把JS的链式调用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -641,6 +850,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1038,7 +1251,7 @@
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 

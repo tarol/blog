@@ -43,9 +43,9 @@
       <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
-    
       <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
@@ -76,9 +76,9 @@
       <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
-    
       <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
@@ -207,6 +207,71 @@
       <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
     
       <category term="H5" scheme="https://tarol.github.io/tags/H5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>玩一把JS的链式调用</title>
+    <link href="https://tarol.github.io/2016/03/30/%E7%8E%A9%E4%B8%80%E6%8A%8AJS%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8/"/>
+    <id>https://tarol.github.io/2016/03/30/玩一把JS的链式调用/</id>
+    <published>2016-03-30T08:00:31.000Z</published>
+    <updated>2018-10-31T14:06:50.286Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;链式调用我们平常用到很多，比如 jQuery 中的 &lt;code&gt;$(ele).show().find(child).hide()&lt;/code&gt;，再比如 angularjs 中的
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JS" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/JS/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="JS" scheme="https://tarol.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 javascript 原型链的个人理解</title>
+    <link href="https://tarol.github.io/2015/02/09/%E5%85%B3%E4%BA%8Ejavascript%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/"/>
+    <id>https://tarol.github.io/2015/02/09/关于javascript原型链的个人理解/</id>
+    <published>2015-02-09T08:31:13.000Z</published>
+    <updated>2018-10-31T14:43:01.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;首先 js 是一种面对对象的语言，虽然大多数时候是以面对过程的形式展现出来。先来看一段代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
     
   </entry>
   
