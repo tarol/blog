@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tarol.github.io/"/>
-  <updated>2018-10-30T14:38:55.129Z</updated>
+  <updated>2018-11-01T13:30:32.089Z</updated>
   <id>https://tarol.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>管道（|&gt;）提案怎么了？</title>
+    <link href="https://tarol.github.io/2018/11/01/%E7%AE%A1%E9%81%93%E6%8F%90%E6%A1%88%E6%80%8E%E4%B9%88%E4%BA%86%EF%BC%9F/"/>
+    <id>https://tarol.github.io/2018/11/01/管道提案怎么了？/</id>
+    <published>2018-11-01T12:56:02.000Z</published>
+    <updated>2018-11-01T13:30:32.089Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在发布的 &lt;a href=&quot;https://github.com/babel/babel/releases/tag/v7.0.0-beta.52&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;babel@7.0.0-beta52&lt;/a&gt; 中，我们为
+        
+      
+    
+    </summary>
+    
+      <category term="翻译" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>私有成员语法 FAQ</title>
@@ -239,6 +271,97 @@
       <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
     
       <category term="JS" scheme="https://tarol.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript中你所不知道的Object（二）-- Function 篇</title>
+    <link href="https://tarol.github.io/2015/07/25/JavaScript%E4%B8%AD%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Object%EF%BC%88%E4%BA%8C%EF%BC%89-Function%20%E7%AF%87/"/>
+    <id>https://tarol.github.io/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/</id>
+    <published>2015-07-25T09:12:33.000Z</published>
+    <updated>2018-11-01T14:40:07.167Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上一篇（JavaScript 中你所不知道的 Object（一））说到，Object 对象有大量的内部属性，而其中多数和外部属性的操作有关。最后留了个悬念，就是 Boolean、Date、Number、String、Function
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript中你所不知道的Object（一）</title>
+    <link href="https://tarol.github.io/2015/07/23/JavaScript%E4%B8%AD%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Object%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/</id>
+    <published>2015-07-23T08:27:02.000Z</published>
+    <updated>2018-11-01T14:40:04.368Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当我们习惯用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从 Object 和 Function 说说JS的原型链</title>
+    <link href="https://tarol.github.io/2015/07/21/%E4%BB%8EObject%E5%92%8CFunction%E8%AF%B4%E8%AF%B4JS%E7%9A%84%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://tarol.github.io/2015/07/21/从Object和Function说说JS的原型链/</id>
+    <published>2015-07-21T08:45:03.000Z</published>
+    <updated>2018-11-01T13:30:32.087Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ECMAScript 规定了两个特殊的内置对象：Object 和 Function。他们的特殊性在于，他们本身既是对象又是函数，而他们同时也是对象和函数的构造器。这种自己生自己的逻辑显然违反人性，如果还停留在类的继承的思想上，那么更加无法理解。&lt;/p&gt;
+&lt;p&gt;然而
+        
+      
+    
+    </summary>
+    
     
   </entry>
   

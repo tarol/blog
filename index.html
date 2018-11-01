@@ -228,7 +228,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span></a>
   </li>
 
       
@@ -292,6 +292,230 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2018/11/01/管道提案怎么了？/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/01/管道提案怎么了？/" itemprop="url">
+                  管道（|>）提案怎么了？
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-01 20:56:02" itemprop="dateCreated datePublished" datetime="2018-11-01T20:56:02+08:00">2018-11-01</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/01/管道提案怎么了？/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/01/管道提案怎么了？/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在发布的 <a href="https://github.com/babel/babel/releases/tag/v7.0.0-beta.52" target="_blank" rel="noopener">babel@7.0.0-beta52</a> 中，我们为 <code>@babel/plugin-proposal-pipeline-operator</code> 引入了一个必填的配置项，这是管道操作的一个重大的改动。为了不给大家带来困惑，我们一起来了解一下管道提案以及我们为什么引入该配置项。</p>
+<h2 id="当前的情况"><a href="#当前的情况" class="headerlink" title="当前的情况"></a>当前的情况</h2><p>管道操作符最早是由 <a href="https://github.com/gilbert" target="_blank" rel="noopener">Gilbert Garza</a> <a href="https://github.com/babel/babel/pull/3159" target="_blank" rel="noopener">引入</a>的，为了实现“使用可读的、有效的方式简化函数的链式调用”提供了简洁的语法。管道操作符在很多语言里能找到根源，比如 <code>F#</code>，<code>Hack</code>，<code>Elm</code>，<code>Elixir</code> 等等，但 JS 的语法中还存在两点争议：</p>
+<ul>
+<li>是否以及如何引入占位符</li>
+<li>管道中如何处理 async / await</li>
+</ul>
+<h3 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h3><p>第一个难点是占位符的问题。这是由 <a href="https://github.com/zenparsing" target="_blank" rel="noopener">Kevin Smith</a> 在这个 <a href="https://github.com/tc39/proposal-pipeline-operator/issues/84" target="_blank" rel="noopener">issue</a> 中提出来的，并且他推荐了 <a href="https://docs.hhvm.com/hack/operators/pipe-operator" target="_blank" rel="noopener">Hack-style pipelining</a>。在 <code>Hack</code> 中，占位符必须出现在管道操作符的右边，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">namespace Hack\UserDocumentation\Operators\Pipe\Examples\MapFilterCountPiped;</span><br><span class="line"></span><br><span class="line">function piped_example(array&lt;int&gt; $arr): int &#123;</span><br><span class="line">  return $arr</span><br><span class="line">    |&gt; \array_map($x ==&gt; $x * $x, $$)</span><br><span class="line">    |&gt; \array_filter($$, $x ==&gt; $x % 2 == 0)</span><br><span class="line">    |&gt; \count($$);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(piped_example(range(1, 10)));</span><br></pre></td></tr></table></figure>
+<p>我们以此为基础，代表前一步返回值的占位符可以用于任意表达式中。这让管道更具弹性，功能也更强大。</p>
+<p>缺点是引入新的 token 是一个很复杂的工程。虽然任一 <code>token</code> 都可能存在多个意义这点仍值得商榷，但 <code>#</code> 确实已经被选为当前的方案。<code>#</code> 同时应用在私有成员的提案中，而其他的选项也都存在各自的<a href="https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565" target="_blank" rel="noopener">应用场景</a>。</p>
+<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async / Await"></a>Async / Await</h3><p>早期的管道包含 <code>await</code> 的语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; <span class="keyword">await</span> f</span><br></pre></td></tr></table></figure>
+<p>它等同于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> f(x)</span><br></pre></td></tr></table></figure>
+<p>不幸的是，开发者可能也希望它等同于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">await</span> f)(x)</span><br></pre></td></tr></table></figure>
+<p>在管道中处理 <code>async</code> 语句这一想法被完全搁置后，委员会成员对此表达了担忧。虽然可以不借助于显式的语法，使用返回 <code>promise</code> 的函数替代，但这还是太麻烦了。</p>
+<h2 id="当前的解决方案"><a href="#当前的解决方案" class="headerlink" title="当前的解决方案"></a>当前的解决方案</h2><p>基于这些讨论，我们提出来两个基于 <code>minimal</code> 的解决方案：<code>F#</code> 管道和 <code>Smart</code> 管道。接下来让我们看看它们是怎样解决以上的问题的。</p>
+<h3 id="Minimal-Pipelines"><a href="#Minimal-Pipelines" class="headerlink" title="Minimal Pipelines"></a><a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">Minimal Pipelines</a></h3><p>这个提案包含了管道操作符的基本功能。该提案禁止 <code>await</code>，所以不支持 <code>async</code> 语法，并且不支持占位符。它和之前 babel plugin 提供的功能一致，而且它的语义和当前提案仓库中 <code>spec</code> 规定的行为一致。它的功能类似于稻草人，用于对比其他提案的优劣，并在其他提案都存在致命缺陷的情况下作为不得已的选择。</p>
+<h3 id="F-Pipelines"><a href="#F-Pipelines" class="headerlink" title="F# Pipelines"></a><a href="https://github.com/valtech-nyc/proposal-fsharp-pipelines/" target="_blank" rel="noopener">F# Pipelines</a></h3>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2322,7 +2546,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/02/09/关于javascript原型链的个人理解/">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="C tarol">
@@ -2341,8 +2565,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/02/09/关于javascript原型链的个人理解/" itemprop="url">
-                  关于 javascript 原型链的个人理解
+                <a class="post-title-link" href="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/" itemprop="url">
+                  JavaScript中你所不知道的Object（二）-- Function 篇
                 </a>
               
             
@@ -2368,7 +2592,7 @@
                 
               
 
-              <time title="创建时间：2015-02-09 16:31:13" itemprop="dateCreated datePublished" datetime="2015-02-09T16:31:13+08:00">2015-02-09</time>
+              <time title="创建时间：2015-07-25 17:12:33" itemprop="dateCreated datePublished" datetime="2015-07-25T17:12:33+08:00">2015-07-25</time>
             
 
             
@@ -2415,8 +2639,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/02/09/关于javascript原型链的个人理解/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/02/09/关于javascript原型链的个人理解/" itemprop="commentCount"></span>
+                <a href="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2438,7 +2662,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">5.6k</span>
               
 
               
@@ -2452,7 +2676,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -2474,36 +2698,61 @@
       
         
           
-            <p>首先 js 是一种面对对象的语言，虽然大多数时候是以面对过程的形式展现出来。先来看一段代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"tarol"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Base();</span><br><span class="line">Sub.prototype = b;</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Sub();</span><br><span class="line"><span class="built_in">console</span>.log(s.name); <span class="comment">//'tarol'</span></span><br></pre></td></tr></table></figure>
-<p>结果相信都知道，但是实现的原理却不明，于是逐行解析：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sub.prototype = b;</span><br></pre></td></tr></table></figure>
-<p>prototype 是函数对象（函数也是对象）的特有属性，普通对象是不存在这个属性的，该属性默认为{}。这个属性的作用就是，将这个属性赋予给、使用此函数作为构造函数进行实例化的对象、作为该对象[[Propertype]]的内部属性。所谓内部属性就是通过 js 不能访问的属性，庆幸的是现代浏览器开放了这个属性的访问，一般属性名为 <code>__proto__</code>。所以：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Sub();</span><br></pre></td></tr></table></figure>
-<p>这一段（也可以说每个 new 操作）可以展开：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = &#123;&#125;;</span><br><span class="line">s.__proto__ = Sub.prototype;</span><br><span class="line">Sub.call(s);</span><br></pre></td></tr></table></figure>
-<p>可见，对象实例化后，与构造函数的耦合在于前者的 <code>__proto__</code> 属性和后者的 prototype 属性为同一个对象的引用。</p>
-<p>然后 <code>__proto__</code> 这个内部属性是用来做什么的呢，是用来实现 js 中的“继承”的。这个“继承”之所以打引号是用来区别 c++ 和 java 中的类式继承的思想，这种方式称之为原型继承。</p>
-<p>原型继承的原理是：每个对象都保有一个指向其他对象的引用（也就是 <code>__proto__</code> 即原型），这条引用最终指向 null（null 也是对象），当访问这个对象的任一属性时，如果在本对象中没有找到，则向其 <code>__proto__</code> 指向的对象中寻找，直到原型链的尽头 null。需要注意的是：原型链中的所有元素都是实例化的对象。</p>
-<p>现在回到上面的代码，当访问对象 s 的属性 name 时，在 <code>s</code> 中没有找到，于是跑到 <code>s</code> 的 <code>__proto__</code> 指向的 Base 的实例对象中寻找，找到了 name 为’tarol’。</p>
-<p>但如果访问 s 的属性 gender 时，在 s 和 <code>s.__proto__</code> 中都没有找到，于是继续向 <code>s.__proto__.__proto__</code> 中寻找。由 <code>s.__proto__ === new Base</code>，可知 <code>s.__proto__.__proto__ === Base.prototype</code>（即<code>(new Constructor()).__proto__ === Constructor.prototype</code>）。上面说到，prototype 默认是{}，于是继续在 <code>Base.prototype.__proto__</code> 中找，即 <code>(new Object()).__proto__ === Object.prototype</code>。如果没有添加一些自定义的属性，<code>Object.prototype</code> 同样是{}，这样看来，似乎要陷入无限的循环当中，但其实到这里原型链就走向了尽头，因为浏览器会定义 <code>Object.prototype.__proto__ = null</code>。用下面的流程梳理下，–&gt;代表原型链上的传递，===代表对象不同引用间的替换。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.gender --&gt; s.__proto__.gender === Sub.prototype.gender === b.gender --&gt; b.__proto__.gender === Base.prototype.gender === (new Object()).gender --&gt; (new Object()).__proto__.gender === Object.prototype.gender --&gt; Object.prototype.__proto__ === null</span><br></pre></td></tr></table></figure>
-<p><code>Object.prototype.__proto__</code>也是所有对象原型链的尽头，包括 Function（函数的构造函数本身也是对象）、Date（普通对象）、Math（单体内置对象），因为 Function.prototype 是默认的{}，即进入上面流程中 (new Object()).gender 这一阶段。</p>
-<p>最后举个栗子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Class</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Class();</span><br><span class="line">Class.prototype = <span class="keyword">new</span> Class();</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Class();</span><br><span class="line"><span class="built_in">console</span>.log(b.__proto__.__proto__ === a.__proto__);</span><br></pre></td></tr></table></figure>
-<p>其中最让人困惑的估计是</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.prototype = <span class="keyword">new</span> Class();</span><br></pre></td></tr></table></figure>
-<p>如果用类式继承来理解，会误以为这句代码会陷入死循环调用当中，但注意上面红字标明那句话：原型链中的所有元素都是实例化的对象。也就是，这里只是将一个对象插入 Class 对象的原型链最前端（除对象本身外），至于这个对象是 new Class 还是 new Glass（见第一段红字，这句代码修改了构造函数的引用，使 __proto__ 和 prototype 之间的耦合解除了，可以说这个对象和构造函数“分家”了），都不影响调用的过程。所以，这句代码的目的是修改了 Class 构造函数，让其实例化的对象的原型链长度+1。</p>
-<p>写的有些凌乱，如果过段时间我看不懂了再回来改一改。</p>
-<p>参考：</p>
-<ul>
-<li><p><a href="http://www.cnblogs.com/winter-cn/archive/2009/05/16/1458390.html" target="_blank" rel="noopener">《理解 JavaScript 面向对象的思路》</a> By 温神</p>
-</li>
-<li><p>《关于__proto__和 prototype 的一些理解》By TonyCoolZhu</p>
-</li>
-<li><p>《JavaScript 高级程序设计》By Nicholas C.Zakas</p>
-</li>
-</ul>
+            <p>上一篇（JavaScript 中你所不知道的 Object（一））说到，Object 对象有大量的内部属性，而其中多数和外部属性的操作有关。最后留了个悬念，就是 Boolean、Date、Number、String、Function 等有更多的内部属性，而它们分别是什么呢？</p>
+<p>这些内部属性不能像 Object 的内部属性一样一言以蔽之，因为它们各有各的用处和特点。其中核心的部分自然是最特殊的对象，Function 对象。我们先从简单的开始：</p>
+<ol>
+<li>[[PrimitiveValue]]: 值的类型是基础数据类型。所以所有的包装类比如 Boolean、Number、String 都有此内部属性，其中 Date 也有，用来存储时间戳。</li>
+<li>[[Construct]]: 值的类型是方法。传入参数列表，返回 Object。Function 对象特有，当使用 new func()调用的就是这个内部属性。所以拥有这个属性的方法也可以叫做构造器。注意区分构造器的 prototype 对象下的 constructor 属性。</li>
+<li>[[Call]]: 值的类型是方法。传入参数列表，返回任意数据类型。Function 对象特有，当使用 func()调用的就是这个内部属性。</li>
+<li>[[HasInstance]]: 值的类型是方法。传入任意值，返回 Boolean。检测这个参数的原型链上是否有此函数的 prototype，即检测参数及其原型中是否有对象是此函数作为构造器时创建的。</li>
+<li>[[Scope]]: Function 对象特有，每当函数执行时使用此内部属性新建作用域链加入到新的执行环境中。</li>
+<li>[[FormalParameters]]: 形参列表。Function 对象特有。</li>
+<li>[[Code]]: JS 代码。Function 对象特有。</li>
+<li>[[TargetFunction]]: 如下</li>
+<li>[[BoundThis]]: 如下</li>
+<li>[[BoundArguments]]: 如下</li>
+<li>[[ParameterMap]]: 形参列表。arguments 对象特有。</li>
+</ol>
+<p>以上三个为 Function.prototype.bind 创建的函数特有的内部属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">  arr2 = [<span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = <span class="built_in">Array</span>.prototype.splice.bind(arr1, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">func.apply(arr1, arr2);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p>例子中，func 是通过 bind 创建的函数，其内部属性[[TargetFunction]]对应 Array.prototype.splice，[[BoundThis]]对应 arr1，[[BoundArguments]]对应 1,0 组成的列表。</p>
+<p>上面列出的属性乍看一下好像都能理解，但细思恐极，比如标红的作用域和执行环境，都是很抽象的概念，我们现在就来完整的剖析下这些概念。</p>
+<p>首先引入的概念就是可执行代码。ES 规定三种可执行代码：全局代码、Eval 代码、函数代码。当执行到这三种代码的时候，解释器会创建并进入新的执行环境，当代码运行完毕的时候，解释器会退出并销毁当前执行环境，并回到前一个执行环境。</p>
+<p>到现在为止执行环境还是一个抽象的概念，那执行环境的具体实现是怎样的呢？首先，它有三个要素：词法环境、变量环境、this 绑定。this 绑定我们都比较熟悉，那词法环境和变量环境分别是干什么用的呢？简单而不太严谨的说，词法环境就是作用域链，用来取变量的值；而变量环境暂时理解为当前作用域吧，用来赋变量的值。我们举个栗子吧：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test0</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">//0</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">//0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">//1</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">//1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">//2</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">//1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test0();</span><br><span class="line">test1();</span><br><span class="line">test2();</span><br></pre></td></tr></table></figure>
+<p>这里涉及 4 个执行环境：全局执行环境、test0-2 的执行环境。</p>
+<p>进入 test0 的执行环境以后，要打印出 a，当前的作用域中没有定义这个变量，于是沿着作用域链找，找到了全局执行环境中定义的 a，于是打印出来 0，相信这里没什么问题。</p>
+<p>进入 test1 的执行环境后，这时已经退出了 test0 的执行环境。这时候给 a 赋了一个值，可能就有人立即想到，赋值？ok，变量环境，作用于当前作用域，所以 a 应该是 1，window.a 应该还是 0，但结果却不是这样的。我们把 a = 1 拆开来看，首先是<strong>取 a 这个变量，当前作用域是没有这个变量的</strong>，所以 a 这个变量指向了全局执行环境中的 a，然后才是赋值，1 自然赋给了全局执行环境中的 a。那么怎么让当前作用域中有这个变量呢？<strong>声明</strong>！即 test2 中的 var a = 2，我们同样拆开来看，先是声明了 a，所以在当前作用域中绑定了 a 这个变量，即在变量环境中添加了 a，然后取 a 这个变量，从作用域链中的当前作用域就找到了 a，最后把 2 赋给 a。</p>
+<p>所以我们来规范一下上面的定义：词法环境用于查找变量，可以理解为<strong>作用域链</strong>。变量环境呢，不能再理解为作用域了，它是一个用来存储当前<strong>执行环境和变量之间的绑定信息</strong>的对象。注意这里隐藏了一个关键点：取变量是以作用域为单位查找的，而声明变量是以执行环境为单位存储的。不理解没关系，继续往下走。</p>
+<p>例子中细心的话可能察觉到一丝不对劲：为什么我在全局执行环境中声明的变量可以通过全局对象访问呢，那么我在 test2 中声明的 a 可以通过 test2.a 访问吗？</p>
+<p>当然是不行的。因为作用域分为两类：一种是声明式的，一种是对象式的。function 产生的作用域是声明式的，而全局执行环境对应的作用域是对象式的。对象式作用域中声明的所有变量都可以通过此对象的属性进行访问，而声明式则可以定义不可以被修改的变量，你在严格模式下修改 function 中的 arguments 试试。</p>
+<p>相信看到这里基本已经陷入混乱了。我来整理几个问题：作用域和执行环境到底什么关系？声明式和对象式作用域只对应 function 和全局吗？</p>
+<p>首先，一个执行环境中是可以产生多个作用域的，但都有一个基础作用域。然后其他作用域怎么生成呢？声明式的作用域还有一种方式生成，就是 catch 语句，我们在 catch(e){}的语句中可以通过 e 访问到错误对象，就是生成了一个声明式的作用域，并在这个作用域里添加了变量 e。而对象式的作用域也同样还有一种方式生成，就是 with 语句。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    name: <span class="string">"tarol"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  name = <span class="string">"okal"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> (a) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name); <span class="comment">//tarol</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.name); <span class="comment">//okal</span></span><br><span class="line">  name = <span class="string">"ctarol"</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(name); <span class="comment">//ctarol</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.name); <span class="comment">//okal</span></span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age); <span class="comment">//18</span></span><br></pre></td></tr></table></figure>
+<p>例子中，进入 with 语句后，生成了一个新的<strong>对象式作用域</strong>，并添加到了作用域链的头部，所以在语句中对变量 name 的访问是取 a.name 的值，对变量 name 的赋值也是对 a.name 的赋值。疑难点在 var age = 18 后，age 这个属性没有赋给 a，而是赋给了 window。就像小伙 a 看上了姑娘 age，说好了也订了婚，最后姑娘嫁给了 a 的老大 window（怎么有种曹操和关羽的既视感）。其实原因就在上面，with 语句修改了执行环境的词法环境，所以把访问变量的规则改了，但是没有修改变量环境，所以声明的变量统统都给了全局执行环境中的基础作用域（a：我怎么把这茬给忘了？）。</p>
+<p>另外把 var age = 18 中的 var 去掉，结果还是一样的。因为娶变量的时候，媒婆找啊找，找到最后一个作用域了都没找到，于是就停到那里了，突然看到有个值送上门来，也懒得换地方了，当场就在这个作用域把这个值打扮成了个变量。所以前一个例子中去掉 var a = 0 也不影响 test1()的结果。</p>
+<p><strong>注意！注意！注意！对整个作用域链中未定义的变量赋值，这个变量会绑定到作用域链的尾部，而给这个原型链中未定义的属性赋值，这个属性会绑到原型链的头部即当前的对象中。</strong>一次给两个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">with</span> (a) &#123;</span><br><span class="line">    age = <span class="number">19</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;,</span><br><span class="line">  b;</span><br><span class="line"></span><br><span class="line">b = <span class="built_in">Object</span>.create(a);</span><br><span class="line">b.age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>好了，说了那么多，回到之前的内部属性[[Scope]]。它是在创建函数生成，值是创建时的作用域链；并在执行函数时取用，生成新执行环境中的作用域链。</p>
+<p><strong>注意这个[[Scope]]是创建函数是生成！</strong></p>
+<p><strong>注意这个[[Scope]]是创建函数是生成！</strong></p>
+<p><strong>注意这个[[Scope]]是创建函数是生成！所以无论在哪里执行这个函数作用域链都是一样的。</strong></p>
+<p>给个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    age: <span class="number">18</span></span><br><span class="line">  &#125;,</span><br><span class="line">  age = <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> (a) &#123;</span><br><span class="line">  <span class="keyword">var</span> test0 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">  &#125;</span><br><span class="line">  test0(); <span class="comment">//18</span></span><br><span class="line">  test1(); <span class="comment">//19</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">!(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">  &#125;</span><br><span class="line">  test0(); <span class="comment">//18</span></span><br><span class="line">  test1(); <span class="comment">//19</span></span><br><span class="line">  test2(); <span class="comment">//20</span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">test0(); <span class="comment">//18</span></span><br><span class="line">test1(); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，在 with 语句中新建函数，如果此函数的作用域链中想插入 a，要用 test0 的声明方式，而不是 test1。至于为什么？那是变量声明和函数声明的时序问题，在进入执行环境后，会先遍历所有的变量声明和函数声明，会生成函数对象，但不会对变量赋值。这也是为什么 JS 中函数可以先调用后声明，因为你随便写在哪里，一进入执行环境就函数就生成了。而 test1 函数生成的时候还没有 run 到 with 语句，[[Scope]]自然是全局执行环境的基础作用域链。test0 开始只声明个 undefined 的变量，到 with 语句才进行赋值，所以这个函数的[[Scope]]中加入了 a。</p>
+<p>那么，[[Scope]]又是怎么生成作用域的呢，还有之前说到，全局代码和 function 代码都存在基础作用域，甚至是 with 语句，它们的作用域都是怎么生成的呢？</p>
+<p>首先，<strong>作用域都是在开始执行的时候生成的</strong>。</p>
+<p>全局代码和 with 语句生成作用域的过程是类似的，会绑定原型链上所有属性名和属性值作为变量名和变量值到作用域上。</p>
+<p>而 function 代码是先通过[[Scope]]生成新的作用域链，并绑定形参名和实参值作为变量名和变量值到作用域链的顶部即当前的作用域上。另外还有个特殊的变量，即 arguments。arguments 是一个特殊的对象，但不是数组对象，它在原型链上的位置处于倒数第三位，也就是原生 Object 对象的位置。那么，要把 arguments 装作用域，拢共分几步？</p>
+<p>四步：</p>
+<ol>
+<li>通过 Object 构建对象，并用实参数组的长度初始化此对象的 length 属性</li>
+<li>遍历实参数组，以 index 为属性名，对应实参为属性值给此对象添加属性</li>
+<li>将形参数组赋给此对象的[[ParameterMap]]（arguments 特有的内部属性），如果不在严格模式下，给此对象添加 callee 和 caller 属性</li>
+<li>绑定 arguments 到作用域，并指向此对象</li>
+</ol>
+<p>写的比较乱，而且为了便于理解，并没有规范化一些概念，比如 Environment Records 变成了作用域，Lexical Environments 变成了作用域链，以后再行整理。</p>
 
           
         
@@ -2557,7 +2806,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/01/04/JSONP的实现流程/">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="C tarol">
@@ -2576,8 +2825,8 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/01/04/JSONP的实现流程/" itemprop="url">
-                  JSONP的实现流程
+                <a class="post-title-link" href="/2015/07/23/JavaScript中你所不知道的Object（一）/" itemprop="url">
+                  JavaScript中你所不知道的Object（一）
                 </a>
               
             
@@ -2603,7 +2852,7 @@
                 
               
 
-              <time title="创建时间：2015-01-04 19:26:36" itemprop="dateCreated datePublished" datetime="2015-01-04T19:26:36+08:00">2015-01-04</time>
+              <time title="创建时间：2015-07-23 16:27:02" itemprop="dateCreated datePublished" datetime="2015-07-23T16:27:02+08:00">2015-07-23</time>
             
 
             
@@ -2635,7 +2884,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/H5/" itemprop="url" rel="index"><span itemprop="name">H5</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
 
                 
                 
@@ -2650,8 +2899,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/01/04/JSONP的实现流程/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/01/04/JSONP的实现流程/" itemprop="commentCount"></span>
+                <a href="/2015/07/23/JavaScript中你所不知道的Object（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/07/23/JavaScript中你所不知道的Object（一）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2673,7 +2922,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">5k</span>
               
 
               
@@ -2687,7 +2936,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -2709,42 +2958,177 @@
       
         
           
-            <p>&emsp;&emsp;在进行 AJAX 的时候会经常产生这样一个报错：</p>
-<p><img src="/assets/image/jsonp/1.png" alt="1"></p>
-<p>&emsp;&emsp;看红字，这是浏览器的同源策略，使跨域进行的 AJAX 无效。注意，不是不发送 AJAX 请求（其实就是 HTTP 请求），而是请求了，也返回了，但浏览器‘咔擦’一声，下面没有了。对比下 fiddler 和浏览器抓的包的异同：</p>
-<p><center>fiddler</center><br><img src="/assets/image/jsonp/2.png" alt="2"></p>
-<p><center>chrome</center><br><img src="/assets/image/jsonp/3.png" alt="3"><br><img src="/assets/image/jsonp/4.png" alt="4"></p>
-<p>&emsp;&emsp;简而言之，浏览器这边就是头（response header）给看，身体（response body）不给看。</p>
-<p>&emsp;&emsp;什么是同源策略？为什么会有同源策略？这一点在吴翰清老师著的《白帽子讲 Web 安全》一书中由阐述，这里就不赘述了。下面要做的，就是使用 JSONP 让上面的报错消失，按正确的流程进行下去。</p>
-<p>&emsp;&emsp;首先介绍下我这里的环境，两个 Web 服务器，Tomcat 监听 8081，Node 监听 3000，Tomcat 这边实现一个处理 AJAX 的 JSP 文件，很简单，返回一个 JSON</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"application/json; charset=utf-8"</span> %&gt;</span><br><span class="line">&#123;<span class="string">"status"</span>: <span class="keyword">true</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;Tomcat 的页面对这个 URL 发出 AJAX 请求，并打印出了返回值</p>
-<p><img src="/assets/image/jsonp/5.png" alt="5"></p>
-<p>&emsp;&emsp;但 Node 的页面发出 AJAX 请求，则像上面那样报错了，因为 AJAX 有同源策略保护。怎么绕过这个保护呢？平时我们页面引入的 CSS、JS 可能是从其他的服务器比如静态服务器、CDN 获取内容，都在不同的域，可知页面内的标签引入 JS 是没有同源策略一说的，而且也是进行 request 和处理 response，于是我们把这个 AJAX 请求改为如下代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">script.src = <span class="string">"http://localhost:8081/test/true.jsp"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.lastChild);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;但还是残忍的报错了</p>
-<p><img src="/assets/image/jsonp/6.png" alt="6"></p>
-<p>&emsp;&emsp;因为返回的 JSON({“status”: true})成为了一个独立的 js 片段，而这个片段明显是不符合语法的，如果返回的是符合语法规范的处理 JSON 的 js 片段而不仅仅是 JSON 就好了。比如我们将服务器端的代码改成这样：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"application/javascript; charset=utf-8"</span> %&gt;</span><br><span class="line">console.log(&#123;<span class="string">"status"</span>: <span class="keyword">true</span>&#125;);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;再在 Node 的页面进行 AJAX</p>
-<p><img src="/assets/image/jsonp/7.png" alt="7"></p>
-<p>&emsp;&emsp;目的是达到了，但问题是，这个 AJAX 的 servlet 不仅返回了数据，还返回了行为，难道我要把处理 DOM 的 js 写在这里面吗？页面重构了又跑到这里来修改？问题太美不敢想，所以请求成功的方法必须写在页面的 js 里面，比如这样</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">script.src = <span class="string">"http://localhost:8081/test/true.jsp"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.lastChild);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;而服务器返回的 js 片段直接调用这个 function 就行了，这个就叫回调函数了</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"application/javascript; charset=utf-8"</span> %&gt;</span><br><span class="line">callback(&#123;<span class="string">"status"</span>: <span class="keyword">true</span>&#125;);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;可以看到，这个方案比之前好多了，servlet 和请求页面的耦合度低了很多，但没完全解决，比如 callback 这个回调函数的名字，如果把这个名字放在请求的 parameter 中，比如这样</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">script.src = <span class="string">"http://localhost:8081/test/true.jsp?cb=callback"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.lastChild);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;服务器对这个 parameter 进行处理</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"application/javascript; charset=utf-8"</span> %&gt;</span><br><span class="line">&lt;%= request.getParameter(<span class="string">"cb"</span>) %&gt;(&#123;<span class="string">"status"</span>: <span class="keyword">true</span>&#125;);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;优化一下，对没有 cb 参数的请求仅返回 JSON</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    String callback = request.getParameter(<span class="string">"cb"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == callback) &#123;</span><br><span class="line">        response.setContentType(<span class="string">"application/json; charset=utf-8"</span>);</span><br><span class="line">%&gt;</span><br><span class="line">    &#123;<span class="string">"status"</span>: <span class="keyword">true</span>&#125;</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        response.setContentType(<span class="string">"application/javascript; charset=utf-8"</span>);</span><br><span class="line">%&gt;</span><br><span class="line">    &lt;%= callback %&gt;(&#123;<span class="string">"status"</span>: <span class="keyword">true</span>&#125;)</span><br><span class="line">&lt;%</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;那么整个 JSONP 的功能就实现了。但还有一点瑕疵，代码执行完 html 中留下了一个 script 标签，强迫症能忍？处女座能忍？</p>
-<p>&emsp;&emsp;解决方法：可以使用 jQuery 的方法，jQuery 会清除掉留下的 script 标签。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  url: <span class="string">"http://localhost:8081/test/true.jsp"</span>,</span><br><span class="line">  dataType: <span class="string">"jsonp"</span>,</span><br><span class="line">  jsonp: <span class="string">"cb"</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;也可以自己实现一个，我抛个砖，在 js 加载完成后删除节点。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">script.src = <span class="string">"http://localhost:8081/test/true.jsp?cb=callback"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.lastChild);</span><br><span class="line">script.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.parentNode.removeChild(<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;至此，不知道有人发现没有，JSONP 这种方式有一个致命的缺陷：就是由于它是通过引入 script 节点实现的，所以只支持 GET 方法。如果你任性，你无理取闹，你一定要用 post 跨域，那么只能考虑使用 CORS 了。</p>
-<p>&emsp;&emsp;JSONP 的东西就到此结束了，其实做完才发现，实际上这是个很简单的概念，取了个比较唬人的名字而已。</p>
+            <p>Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？</p>
+<ol>
+<li>当我们习惯用</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//18</span></span><br><span class="line">a.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<p>初始化和访问对象的时候，谁会在意这种方式也是合法的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  _age: <span class="number">18</span>,</span><br><span class="line">  set age(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>._age = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  get age() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//18</span></span><br><span class="line">a.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>当我们习惯用</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"tarol"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">B.prototype = a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//tarol</span></span><br></pre></td></tr></table></figure>
+<p>实现继承的时候，谁会在意其实也可以这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line">b.age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//tarol</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>当我们知道原型链以后，想恶作剧修改内置函数的原型，却发现没有办法</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype = a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype === a); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>如果你感兴趣，那么我从头说起：</p>
+<p>首先，JavaScript 中的对象是什么？ES5 中只给出一句话，对象是属性的集合。它只是一个盒子，它能做什么，取决于盒子里有什么。</p>
+<p>那么，属性是什么，一般看来，属性是一个 key, value 对，这个说法是对的吗？我们来剖析下属性。</p>
+<p>从一个程序员的角度来说，属性分为可通过 JS 调用的的和不可通过 JS 调用的。不可调用的叫做<strong>内部属性</strong>，那么可调用的我们对应着叫<strong>外部属性</strong>吧。内部属性是 JS 解释器实现各种接口的时候使用的算法中需要调用的属性，举个栗子，有个内部属性叫[[Put]]，这是一个内部方法，传入属性名和值，它的作用就是为属性赋值。所以当我们使用 a.age = 18 的时候，实际就调用到了这个内部属性。而外部属性又分为两种，一种是数据属性，一种是访问器属性。上面的例一中，第二种方式给对象 a 添加了三个属性，其中 name、_age 是数据属性，age 是访问器属性。当属性是数据属性的时候，属性是 key、value 对的说法好像是对的，但当属性是访问器属性的时候，这个说法好像有问题了，因为一个 key 对应的是一个 setter 和一个 getter。所以，这个说法是错的？</p>
+<p>其实，属性不是我们看到的那样，单单就一个 key 对应一个数据或者一个 setter 加一个 getter。属性还存在其他一些状态，我们称之为特性，无论是数据属性还是访问器属性，都存在四个特性。数据属性的特性为：[[Value]]、[[Writable]]、[[Enumerable]]、[[Configuration]]，访问器属性的特性为：[[Get]]、[[Set]]、[[Enumerable]]、[[Configuration]]。其中[[Value]]、[[Get]]、[[Set]]相信已经很好理解了，[[Writable]]描述数据属性是否可被重新赋值，[[Enumerable]]描述属性是否可被 for-in 遍历，[[Configuration]]描述属性特性是否可被修改（一旦设置为 false 则不可以再修改此特性）。</p>
+<p>JS 开放了三个接口用于设置和获取属性的特性，分别是 Object.defineProperty、Object.defineProperties 和 Object.getOwnPropertyDescriptor。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  job: <span class="string">"coder"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">"name"</span>, &#123;</span><br><span class="line">  value: <span class="string">"ctarol"</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configuration: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(a, &#123;</span><br><span class="line">  age: &#123;</span><br><span class="line">    value: <span class="number">19</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configuration: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  job: &#123;</span><br><span class="line">    value: <span class="string">"mental"</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configuration: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(a.name); <span class="comment">//tarol</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(a, <span class="string">"job"</span>)); <span class="comment">//Object &#123;value: "mental", writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>总的看来，属性还是可以作为一个 key, value 对的，但这个 value 不是我们赋的值，而是整个属性特性的集合，我们称之为<strong>属性描述</strong>。</p>
+<p>外部属性的问题解决了，内部属性我们还只是蜻蜓点水般浅尝辄止，所以接下来我们开始从内部属性入手，对 JS 中的对象做一个更深刻的认识。以下是内部属性的表格：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>用途</th>
+<th>属性类型</th>
+<th>方法返回值（仅适用方法）</th>
+<th>他处引用（仅适用数据）</th>
+<th>他处赋值（仅适用数据）</th>
+<th>他处调用（仅适用方法）</th>
+<th>调用其他（仅适用方法）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[Prototype]]</td>
+<td>对象原型</td>
+<td>Object</td>
+<td></td>
+<td><strong>proto</strong> etc.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[[Class]]</td>
+<td>对象类型</td>
+<td>String</td>
+<td></td>
+<td>Object.prototype.toString()</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[[Extensible]]</td>
+<td>可否添加属性</td>
+<td>Boolean</td>
+<td></td>
+<td>Object.seal(obj) –&gt; false <br> Object.freeze(obj) –&gt; false <br> Object.preventExtensions(obj) –&gt; false</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[[GetOwnProperty]]</td>
+<td>返回自身指定的属性描述</td>
+<td>func(‘prop’)</td>
+<td>属性描述</td>
+<td></td>
+<td></td>
+<td>Object.getOwnPropertyDescriptor(obj, ‘prop’) <br> [[GetProperty]]</td>
+<td></td>
+</tr>
+<tr>
+<td>[[GetProperty]]</td>
+<td>返回原型链上指定的属性描述</td>
+<td>func(‘prop’)</td>
+<td>属性描述</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetOwnProperty]]</td>
+</tr>
+<tr>
+<td>[[HasProperty]]</td>
+<td>返回原型链上是否有指定属性</td>
+<td>func(‘prop’)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetProperty]]</td>
+</tr>
+<tr>
+<td>[[DefineOwnProperty]]</td>
+<td>创建或修改自身的属性描述</td>
+<td>func(‘prop’, desc, Boolean)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td>Object.defineProperty(obj, ‘prop’, desc) <br> Object.defineProperties(obj,  descs)</td>
+<td></td>
+</tr>
+<tr>
+<td>[[DefaultValue]]</td>
+<td>将对象转换为对应的基础类型</td>
+<td>func(String/Number)</td>
+<td>String / Number</td>
+<td></td>
+<td></td>
+<td></td>
+<td>toString() <br> valueOf()</td>
+</tr>
+<tr>
+<td>[[Delete]]</td>
+<td>删除对象的属性</td>
+<td>func(‘prop’, Boolean)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetOwnProperty]]</td>
+</tr>
+<tr>
+<td>[[CanPut]]</td>
+<td>可否设置属性的值</td>
+<td>func(‘prop’)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetOwnProperty]] <br> [[GetProperty]] <br> [[Extensible]]</td>
+</tr>
+<tr>
+<td>[[Get]]</td>
+<td>获取属性的值</td>
+<td>func(‘prop’)</td>
+<td>mixin</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetProperty]]</td>
+</tr>
+<tr>
+<td>[[Put]]</td>
+<td>设置属性的值</td>
+<td>func(‘prop’, mixin, Boolean)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[CanPut]] <br> [[GetOwnProperty]] <br> [[GetProperty]] <br> [[DefineOwnProperty]]</td>
+</tr>
+</tbody>
+</table>
+<p>上面的表格稍显晦涩，看不懂不要紧，我们来分下类。内部属性中除了 [[Class]]、[[DefaultValue]] 用于展示信息以外，其他都是用来操作外部属性的，可见对象的核心就是属性。其中我列出 [[CanPut]] 和 [[Put]] 的算法实现，因为这两个方法的实现涵盖了基本所有的属性操作和思想。</p>
+<p>[[CanPut]]:</p>
+<p><img src="/assets/image/object/1.png" alt="1"></p>
+<p>[[Put]]:</p>
+<p><img src="/assets/image/object/2.png" alt="2"></p>
+<p>前面提到过，我们使用 <code>a.age = 18</code> 进行赋值的时候，调用的就是 [[Put]] 这个内部方法。由上图算法可知，当对属性赋值时，只要这个属性不是原型链上的访问器属性，那么就会修改或产生自身的数据属性，即不存在一种情况，就是修改原型链上的数据属性。我们测试下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'tarol'</span>,</span><br><span class="line">  _age: <span class="number">18</span>,</span><br><span class="line">  set age(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>._age = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  get age() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'_age'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'age'</span>));  <span class="comment">//false</span></span><br><span class="line">b.name = <span class="string">'okal'</span>;</span><br><span class="line">b.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'_age'</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'age'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(a.name);  <span class="comment">//tarol</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age);  <span class="comment">//18</span></span><br></pre></td></tr></table></figure>
+<p>由结果可知，我们在对 name 这个原型链上的数据属性进行赋值时，实际上是重新创建了一个自身属性，对原型上的数据属性是没有影响的。而调用访问器属性 age 的 [[Set]] 方法的时候，传入的 this 也是当前的对象而不是访问器属性的拥有者，所以在当前对象上创建了一个自身属性 _age。</p>
+<p>好了，上面说的是通用的内部属性，即 Object 类型的内部属性，而像 Boolean、Date、Number、String、Function 等拥有更多的内部属性，就留到下一篇再说。</p>
 
           
         
@@ -2786,6 +3170,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2828,7 +3216,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2953,7 +3341,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">78k</span>
   
 
   
@@ -2962,7 +3350,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">1:56</span>
+    <span title="站点阅读时长">2:21</span>
   
 </div>
 

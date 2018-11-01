@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN,zh-cn,zh-HK,zh-hk,zh-TW,zh-tw,en,default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？  当我们习惯用  1234567var a = &amp;#123;  name: &quot;tarol&quot;,  age: 18&amp;#125;;console.log(a.age); //18a.age = 19;console.log(a.age); //19 初始化和访问对象">
+<meta name="keywords" content="文章,ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中你所不知道的Object（一）">
+<meta property="og:url" content="https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/index.html">
+<meta property="og:site_name" content="tarol 的碎碎念">
+<meta property="og:description" content="Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？  当我们习惯用  1234567var a = &amp;#123;  name: &quot;tarol&quot;,  age: 18&amp;#125;;console.log(a.age); //18a.age = 19;console.log(a.age); //19 初始化和访问对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tarol.github.io/assets/image/object/1.png">
+<meta property="og:image" content="https://tarol.github.io/assets/image/object/2.png">
+<meta property="og:updated_time" content="2018-11-01T14:40:04.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中你所不知道的Object（一）">
+<meta name="twitter:description" content="Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？  当我们习惯用  1234567var a = &amp;#123;  name: &quot;tarol&quot;,  age: 18&amp;#125;;console.log(a.age); //18a.age = 19;console.log(a.age); //19 初始化和访问对象">
+<meta name="twitter:image" content="https://tarol.github.io/assets/image/object/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JavaScript中你所不知道的Object（一） | tarol 的碎碎念</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">tarol 的碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span></a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">JavaScript中你所不知道的Object（一）
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-07-23 16:27:02" itemprop="dateCreated datePublished" datetime="2015-07-23T16:27:02+08:00">2015-07-23</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/23/JavaScript中你所不知道的Object（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/07/23/JavaScript中你所不知道的Object（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!--false-->
+        <p>Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？</p>
+<ol>
+<li>当我们习惯用</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//18</span></span><br><span class="line">a.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<p>初始化和访问对象的时候，谁会在意这种方式也是合法的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  _age: <span class="number">18</span>,</span><br><span class="line">  set age(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>._age = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  get age() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//18</span></span><br><span class="line">a.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>当我们习惯用</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"tarol"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">B.prototype = a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//tarol</span></span><br></pre></td></tr></table></figure>
+<p>实现继承的时候，谁会在意其实也可以这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line">b.age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//tarol</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>当我们知道原型链以后，想恶作剧修改内置函数的原型，却发现没有办法</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype = a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype === a); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>如果你感兴趣，那么我从头说起：</p>
+<p>首先，JavaScript 中的对象是什么？ES5 中只给出一句话，对象是属性的集合。它只是一个盒子，它能做什么，取决于盒子里有什么。</p>
+<p>那么，属性是什么，一般看来，属性是一个 key, value 对，这个说法是对的吗？我们来剖析下属性。</p>
+<p>从一个程序员的角度来说，属性分为可通过 JS 调用的的和不可通过 JS 调用的。不可调用的叫做<strong>内部属性</strong>，那么可调用的我们对应着叫<strong>外部属性</strong>吧。内部属性是 JS 解释器实现各种接口的时候使用的算法中需要调用的属性，举个栗子，有个内部属性叫[[Put]]，这是一个内部方法，传入属性名和值，它的作用就是为属性赋值。所以当我们使用 a.age = 18 的时候，实际就调用到了这个内部属性。而外部属性又分为两种，一种是数据属性，一种是访问器属性。上面的例一中，第二种方式给对象 a 添加了三个属性，其中 name、_age 是数据属性，age 是访问器属性。当属性是数据属性的时候，属性是 key、value 对的说法好像是对的，但当属性是访问器属性的时候，这个说法好像有问题了，因为一个 key 对应的是一个 setter 和一个 getter。所以，这个说法是错的？</p>
+<p>其实，属性不是我们看到的那样，单单就一个 key 对应一个数据或者一个 setter 加一个 getter。属性还存在其他一些状态，我们称之为特性，无论是数据属性还是访问器属性，都存在四个特性。数据属性的特性为：[[Value]]、[[Writable]]、[[Enumerable]]、[[Configuration]]，访问器属性的特性为：[[Get]]、[[Set]]、[[Enumerable]]、[[Configuration]]。其中[[Value]]、[[Get]]、[[Set]]相信已经很好理解了，[[Writable]]描述数据属性是否可被重新赋值，[[Enumerable]]描述属性是否可被 for-in 遍历，[[Configuration]]描述属性特性是否可被修改（一旦设置为 false 则不可以再修改此特性）。</p>
+<p>JS 开放了三个接口用于设置和获取属性的特性，分别是 Object.defineProperty、Object.defineProperties 和 Object.getOwnPropertyDescriptor。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  job: <span class="string">"coder"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">"name"</span>, &#123;</span><br><span class="line">  value: <span class="string">"ctarol"</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configuration: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(a, &#123;</span><br><span class="line">  age: &#123;</span><br><span class="line">    value: <span class="number">19</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configuration: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  job: &#123;</span><br><span class="line">    value: <span class="string">"mental"</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configuration: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(a.name); <span class="comment">//tarol</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(a, <span class="string">"job"</span>)); <span class="comment">//Object &#123;value: "mental", writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>总的看来，属性还是可以作为一个 key, value 对的，但这个 value 不是我们赋的值，而是整个属性特性的集合，我们称之为<strong>属性描述</strong>。</p>
+<p>外部属性的问题解决了，内部属性我们还只是蜻蜓点水般浅尝辄止，所以接下来我们开始从内部属性入手，对 JS 中的对象做一个更深刻的认识。以下是内部属性的表格：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>用途</th>
+<th>属性类型</th>
+<th>方法返回值（仅适用方法）</th>
+<th>他处引用（仅适用数据）</th>
+<th>他处赋值（仅适用数据）</th>
+<th>他处调用（仅适用方法）</th>
+<th>调用其他（仅适用方法）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[Prototype]]</td>
+<td>对象原型</td>
+<td>Object</td>
+<td></td>
+<td><strong>proto</strong> etc.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[[Class]]</td>
+<td>对象类型</td>
+<td>String</td>
+<td></td>
+<td>Object.prototype.toString()</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[[Extensible]]</td>
+<td>可否添加属性</td>
+<td>Boolean</td>
+<td></td>
+<td>Object.seal(obj) –&gt; false <br> Object.freeze(obj) –&gt; false <br> Object.preventExtensions(obj) –&gt; false</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[[GetOwnProperty]]</td>
+<td>返回自身指定的属性描述</td>
+<td>func(‘prop’)</td>
+<td>属性描述</td>
+<td></td>
+<td></td>
+<td>Object.getOwnPropertyDescriptor(obj, ‘prop’) <br> [[GetProperty]]</td>
+<td></td>
+</tr>
+<tr>
+<td>[[GetProperty]]</td>
+<td>返回原型链上指定的属性描述</td>
+<td>func(‘prop’)</td>
+<td>属性描述</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetOwnProperty]]</td>
+</tr>
+<tr>
+<td>[[HasProperty]]</td>
+<td>返回原型链上是否有指定属性</td>
+<td>func(‘prop’)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetProperty]]</td>
+</tr>
+<tr>
+<td>[[DefineOwnProperty]]</td>
+<td>创建或修改自身的属性描述</td>
+<td>func(‘prop’, desc, Boolean)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td>Object.defineProperty(obj, ‘prop’, desc) <br> Object.defineProperties(obj,  descs)</td>
+<td></td>
+</tr>
+<tr>
+<td>[[DefaultValue]]</td>
+<td>将对象转换为对应的基础类型</td>
+<td>func(String/Number)</td>
+<td>String / Number</td>
+<td></td>
+<td></td>
+<td></td>
+<td>toString() <br> valueOf()</td>
+</tr>
+<tr>
+<td>[[Delete]]</td>
+<td>删除对象的属性</td>
+<td>func(‘prop’, Boolean)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetOwnProperty]]</td>
+</tr>
+<tr>
+<td>[[CanPut]]</td>
+<td>可否设置属性的值</td>
+<td>func(‘prop’)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetOwnProperty]] <br> [[GetProperty]] <br> [[Extensible]]</td>
+</tr>
+<tr>
+<td>[[Get]]</td>
+<td>获取属性的值</td>
+<td>func(‘prop’)</td>
+<td>mixin</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[GetProperty]]</td>
+</tr>
+<tr>
+<td>[[Put]]</td>
+<td>设置属性的值</td>
+<td>func(‘prop’, mixin, Boolean)</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td></td>
+<td>[[CanPut]] <br> [[GetOwnProperty]] <br> [[GetProperty]] <br> [[DefineOwnProperty]]</td>
+</tr>
+</tbody>
+</table>
+<p>上面的表格稍显晦涩，看不懂不要紧，我们来分下类。内部属性中除了 [[Class]]、[[DefaultValue]] 用于展示信息以外，其他都是用来操作外部属性的，可见对象的核心就是属性。其中我列出 [[CanPut]] 和 [[Put]] 的算法实现，因为这两个方法的实现涵盖了基本所有的属性操作和思想。</p>
+<p>[[CanPut]]:</p>
+<p><img src="/assets/image/object/1.png" alt="1"></p>
+<p>[[Put]]:</p>
+<p><img src="/assets/image/object/2.png" alt="2"></p>
+<p>前面提到过，我们使用 <code>a.age = 18</code> 进行赋值的时候，调用的就是 [[Put]] 这个内部方法。由上图算法可知，当对属性赋值时，只要这个属性不是原型链上的访问器属性，那么就会修改或产生自身的数据属性，即不存在一种情况，就是修改原型链上的数据属性。我们测试下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'tarol'</span>,</span><br><span class="line">  _age: <span class="number">18</span>,</span><br><span class="line">  set age(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>._age = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  get age() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'_age'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'age'</span>));  <span class="comment">//false</span></span><br><span class="line">b.name = <span class="string">'okal'</span>;</span><br><span class="line">b.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'_age'</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'age'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(a.name);  <span class="comment">//tarol</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age);  <span class="comment">//18</span></span><br></pre></td></tr></table></figure>
+<p>由结果可知，我们在对 name 这个原型链上的数据属性进行赋值时，实际上是重新创建了一个自身属性，对原型上的数据属性是没有影响的。而调用访问器属性 age 的 [[Set]] 方法的时候，传入的 this 也是当前的对象而不是访问器属性的拥有者，所以在当前对象上创建了一个自身属性 _age。</p>
+<p>好了，上面说的是通用的内部属性，即 Object 类型的内部属性，而像 Boolean、Date、Number、String、Function 等拥有更多的内部属性，就留到下一篇再说。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文章/" rel="tag"># 文章</a>
+          
+            <a href="/tags/ES/" rel="tag"># ES</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/21/从Object和Function说说JS的原型链/" rel="next" title="从 Object 和 Function 说说JS的原型链">
+                <i class="fa fa-chevron-left"></i> 从 Object 和 Function 说说JS的原型链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/" rel="prev" title="JavaScript中你所不知道的Object（二）-- Function 篇">
+                JavaScript中你所不知道的Object（二）-- Function 篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="C tarol">
+            
+              <p class="site-author-name" itemprop="name">C tarol</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/tarol" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="/atom.xml" target="_blank" title="RSS" rel="external nofollow"><i class="fa fa-fw fa-rss"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ctarol@163.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C tarol</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">78k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:21</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'GJoAzg0aeyMVJcHG20u4CeUR-gzGzoHsz',
+        appKey: '1qogMVj5TGazkDMx1Bh8iq8D',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+</body>
+</html>
