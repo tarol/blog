@@ -2,6 +2,12 @@
 title: JavaScript中你所不知道的Object（一）
 date: 2015-07-23 16:27:02
 tags:
+  - 文章
+  - ES
+categories:
+  - 技术
+  - 前端
+  - ES
 ---
 
 Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？
