@@ -5,7 +5,9 @@
   <span class="with-love" id="animate">
     <i class="fa fa-{{ theme.footer.icon.name }}"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright | default(author) }}</span>
+  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright | default(author) }}</span> 版权所有
+  <span class="post-meta-divider">|</span>
+  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow" style="color: #999; border-bottom: none;">粤ICP备17152300号-1</a>
 
   {% if config.symbols_count_time.total_symbols %}
     <span class="post-meta-divider">|</span>
