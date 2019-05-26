@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.3k</span>
+                <span title="本文字数">3.5k</span>
               
 
               
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -471,15 +471,52 @@
 <p>我们以此为基础，代表前一步返回值的占位符可以用于任意表达式中。这让管道更具弹性，功能也更强大。</p>
 <p>缺点是引入新的 token 是一个很复杂的工程。虽然任一 <code>token</code> 都可能存在多个意义这点仍值得商榷，但 <code>#</code> 确实已经被选为当前的方案。<code>#</code> 同时应用在私有成员的提案中，而其他的选项也都存在各自的<a href="https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565" target="_blank" rel="noopener">应用场景</a>。</p>
 <h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async / Await"></a>Async / Await</h3><p>早期的管道包含 <code>await</code> 的语法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; <span class="keyword">await</span> f</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; (<span class="keyword">await</span> f);</span><br></pre></td></tr></table></figure>
 <p>它等同于：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> f(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> f(x);</span><br></pre></td></tr></table></figure>
 <p>不幸的是，开发者可能也希望它等同于：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">await</span> f)(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">await</span> f)(x);</span><br></pre></td></tr></table></figure>
 <p>在管道中处理 <code>async</code> 语句这一想法被完全搁置后，委员会成员对此表达了担忧。虽然可以不借助于显式的语法，使用返回 <code>promise</code> 的函数替代，但这还是太麻烦了。</p>
 <h2 id="当前的解决方案"><a href="#当前的解决方案" class="headerlink" title="当前的解决方案"></a>当前的解决方案</h2><p>基于这些讨论，我们提出来两个基于 <code>minimal</code> 的解决方案：<code>F#</code> 管道和 <code>Smart</code> 管道。接下来让我们看看它们是怎样解决以上的问题的。</p>
 <h3 id="Minimal-Pipelines"><a href="#Minimal-Pipelines" class="headerlink" title="Minimal Pipelines"></a><a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">Minimal Pipelines</a></h3><p>这个提案包含了管道操作符的基本功能。该提案禁止 <code>await</code>，所以不支持 <code>async</code> 语法，并且不支持占位符。它和之前 babel plugin 提供的功能一致，而且它的语义和当前提案仓库中 <code>spec</code> 规定的行为一致。它的功能类似于稻草人，用于对比其他提案的优劣，并在其他提案都存在致命缺陷的情况下作为不得已的选择。</p>
-<h3 id="F-Pipelines"><a href="#F-Pipelines" class="headerlink" title="F# Pipelines"></a><a href="https://github.com/valtech-nyc/proposal-fsharp-pipelines/" target="_blank" rel="noopener">F# Pipelines</a></h3>
+<blockquote>
+<p>译者按：所谓的 <code>Minimal Pipelines</code> 就是不支持 <code>await</code> (因为会引发歧义)，没有占位符。</p>
+</blockquote>
+<h3 id="F-Pipelines"><a href="#F-Pipelines" class="headerlink" title="F# Pipelines"></a><a href="https://github.com/valtech-nyc/proposal-fsharp-pipelines/" target="_blank" rel="noopener">F# Pipelines</a></h3><p>在占位符的问题上，F# 提案认为它根本不需要。在 <code>minimal</code> 中，箭头函数可以实现此功能，这种实现不需要额外的语法，而且使用的是开发人员早在 ES2015 就已经熟悉的语法。</p>
+<p>如目前所述，箭头函数需要用括号包裹起来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123; <span class="attr">score</span>: <span class="number">25</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newScore =</span><br><span class="line">  person.score |&gt; double |&gt; (<span class="function"><span class="params">_</span> =&gt;</span> add(<span class="number">7</span>, _)) |&gt; (<span class="function"><span class="params">_</span> =&gt;</span> boundScore(<span class="number">0</span>, <span class="number">100</span>, _));</span><br></pre></td></tr></table></figure>
+<p>目前正在探索，是否可以不添加额外的圆括号，因为这是一个重大的语法负担。</p>
+<p>在 <code>async</code> 的问题上，F# 将 <code>await</code> 视为一个一元函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise |&gt; <span class="keyword">await</span></span><br></pre></td></tr></table></figure>
+<p>这等同于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> promise;</span><br></pre></td></tr></table></figure>
+<p>因此 <code>async</code> 可以用于较大的函数链中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">  |&gt; <span class="keyword">await</span></span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> doubleSay(x, <span class="string">', '</span>))</span><br><span class="line">  |&gt; capitalize</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="string">'!'</span>)</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> <span class="keyword">new</span> User.Message(x))</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> stream.write(x))</span><br><span class="line">  |&gt; <span class="keyword">await</span></span><br><span class="line">  |&gt; <span class="built_in">console</span>.log;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>译者按：所谓的 <code>F# Pipelines</code> 就是使用箭头函数把多元函数变为一元函数；仅允许 <code>bare await</code> 存在于管道步骤中（即仅允许 <code>p |&gt; await</code> 语法，不允许 <code>p |&gt; await f</code> 语法）。</p>
+</blockquote>
+<h3 id="Smart-Pipelines"><a href="#Smart-Pipelines" class="headerlink" title="Smart Pipelines"></a><a href="https://github.com/js-choi/proposal-smart-pipelines/" target="_blank" rel="noopener">Smart Pipelines</a></h3><p>这个提案引入了占位符，使其可以在管道中编写任意表达式。因此上面的长链可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">  |&gt; await #</span><br><span class="line">  |&gt; doubleSay(#, ', ')</span><br><span class="line">  |&gt; # || throw new TypeError()</span><br><span class="line">  |&gt; capitalize</span><br><span class="line">  |&gt; # + '!'</span><br><span class="line">  |&gt; new User.Message(#)</span><br><span class="line">  |&gt; await stream.write(#)</span><br><span class="line">  |&gt; <span class="built_in">console</span>.log;</span><br></pre></td></tr></table></figure>
+<p>如果管道中某一步只是个裸标识符，不需要写占位符，这种情况叫做 <a href="https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#bare-style" target="_blank" rel="noopener">bare style</a>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; a;</span><br><span class="line">x |&gt; f.b;</span><br></pre></td></tr></table></figure>
+<p>和 Hack 不同，一元函数不需要占位符。</p>
+<p>对于其他的表达式，占位符是必需的，如果缺少会抛出语法错误。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 |&gt; # + 1;</span><br><span class="line">promise |&gt; await #;</span><br></pre></td></tr></table></figure>
+<p>如果存在任意运算符、小括号（包括函数调用）、中括号、或除了标识符和 <code>.</code> 之外的任意内容，占位符都是必需的。这是为了避免自我混淆和消除二义性。</p>
+<p>Smart Pipelines 允许任意表达式存在于管道中，从而也解决了 <code>async</code> 的问题；其实不仅仅是 <code>await</code>，还包括 <code>typeof</code>，<code>yield</code>，和其他任意操作符。</p>
+<blockquote>
+<p>译者按：所谓的 <code>Smart Pipelines</code> 其实就是引入了占位符 <code>#</code>。</p>
+</blockquote>
+<blockquote>
+<p>译者按：<br>汇总一下：<br><code>minimal</code> 是一禁了之，既然有问题，那就不准这样写<br><code>F#</code> 是限制语法，在有限范围内行动，基本满足需求，缺点是开发人员要了解它提出的解决方案的思想<br><code>Smart</code> 是最开放的，也符合开发人员的编码习惯，缺点是引入了新的 <code>token</code></p>
+</blockquote>
+<h2 id="Babel-的抉择"><a href="#Babel-的抉择" class="headerlink" title="Babel 的抉择"></a>Babel 的抉择</h2><p>当三个提案都完善后，我们意识到任何的讨论都不能得到最佳的结论。而最好的方式是基于开发人员的反馈和真实的项目使用情况再做出最后的决定。考虑到 Babel 在社区中的角色，我们决定在 pipeline 的插件引入这三种提案。</p>
+<p>因为这三种提案在解析阶段存在些许不同，所以我们需要在 <code>@babel/parser</code> （以前的 <code>babylon</code>）添加此支持，并且需要配置当前使用的提案。因此 pipeline 的插件需要配置 <code>proposal</code> 选项，用于配置 <code>babylon</code> 的解析规则和自身的转换规则。</p>
+<p>我们的时间非常紧，因为我们需要在 <code>babel</code>，<code>@babel/parser</code>、pipeline 的插件中同时引入这个重大的修改。我们还希望当某一提案最终确定后，这个插件可以平滑切换到该提案，并废除这个配置项。</p>
+<p>考虑这两个原则，我们引入了这个新的配置选项并使其必填，强迫用户决定在项目中使用哪个建议。一旦其中某一提议被确认，我们就会废除这个选项，并默认切换到这一提案，其他的提案将在下个主版本中移除。</p>
+<h2 id="加入进来"><a href="#加入进来" class="headerlink" title="加入进来"></a>加入进来</h2><p>如果你对此提案感兴趣，关于这个提案的所有讨论都是公开的，你可以在 <a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">这里</a> 找到它们。你也可以找出最近一次委员会会议的 <a href="https://docs.google.com/presentation/d/1eFFRK1wLIazIuK0F6fY974OIDvvWXS890XAMB59PUBA/edit#slide=id.p" target="_blank" rel="noopener">会议纪要</a>。你还可以在 <code>Twitter</code> 上找到 <a href="https://twitter.com/jamesdigioia" target="_blank" rel="noopener">James DiGioia</a>，<a href="https://twitter.com/__jschoi" target="_blank" rel="noopener">J. S. Choi</a>，<a href="https://twitter.com/littledan" target="_blank" rel="noopener">Daniel Ehrenberg</a>。</p>
+<p>最重要的是，一旦这项工作完成，在你的项目中使用 pipeline 操作符！我们也为 <a href="https://babeljs.io/repl/" target="_blank" rel="noopener">在线编辑器</a> 添加了选项，你也可以在那里进行尝试。我们需要真实的反馈，所以我们希望听到你的声音。在 <code>Twitter</code> 上 <a href="https://twitter.com/babeljs" target="_blank" rel="noopener">@babeljs</a> 让我们知道。</p>
+
           
         
       
@@ -3329,11 +3366,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">C tarol</span>
+  <span class="author" itemprop="copyrightHolder">C tarol</span> 版权所有
+  <span class="post-meta-divider">|</span>
+  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow" style="color: #999; border-bottom: none;">粤ICP备17152300号-1</a>
 
   
     <span class="post-meta-divider">|</span>
@@ -3341,7 +3380,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">78k</span>
+    <span title="站点总字数">80k</span>
   
 
   
@@ -3350,7 +3389,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:21</span>
+    <span title="站点阅读时长">2:25</span>
   
 </div>
 
