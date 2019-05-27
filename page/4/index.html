@@ -228,7 +228,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
   </li>
 
       
@@ -292,6 +292,244 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2016/04/21/从web图片裁剪出发：了解H5中的canvas/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" itemprop="url">
+                  从web图片裁剪出发：了解H5中的canvas
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-04-21 17:42:00" itemprop="dateCreated datePublished" datetime="2016-04-21T17:42:00+08:00">2016-04-21</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/H5/" itemprop="url" rel="index"><span itemprop="name">H5</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&emsp;&emsp;<font color="#E21918">本篇内容不针对 canvas 文档对每个 api 进行逐个的详解！</font></p>
+<p>&emsp;&emsp;<font color="#E21918">本篇内容不针对 canvas 文档对每个 api 进行逐个的详解！</font></p>
+<p>&emsp;&emsp;<font color="#E21918">本篇内容不针对 canvas 文档对每个 api 进行逐个的详解！</font></p>
+<p>&emsp;&emsp;重说三，好了，现在进入正文。在上一回《从 web 图片裁剪出发：了解 H5 中的 blob》中我解释了图片在浏览器中以怎样的形式留存，并且在最后一个 example 中演示了选择图片、预览最后提交的过程。然而这个预览并没有起到什么卵用，因为只能预览不能处理，原图片还是原图片，预览变得可有可无。这一篇我们就在预览这一步里做点手脚，加入处理图片的功能。</p>
+<p>&emsp;&emsp;我们先修改之前的 example，既然要处理图片，肯定要引入 canvas，所以我们把原来 img 这个标签去掉，取而代之的是 canvas，并在 js 中加入对应的修改。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas'</span>),</span></span><br><span class="line"><span class="javascript">        ctx = canvas.getContext(<span class="string">'2d'</span>),</span></span><br><span class="line"><span class="javascript">        preview = <span class="keyword">new</span> Image();</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.test.file.addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="javascript">      fr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        preview.src = <span class="keyword">this</span>.result;</span></span><br><span class="line"><span class="undefined">        canvas.width = preview.width;</span></span><br><span class="line"><span class="undefined">        canvas.height = preview.height;</span></span><br><span class="line"><span class="undefined">        drawImage();</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="javascript">      fr.readAsDataURL(<span class="keyword">this</span>.files[<span class="number">0</span>]);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">drawImage</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      ctx.drawImage(preview, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">//把图片绘制到canvas上</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.test.addEventListener(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      e.preventDefault();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData(),</span></span><br><span class="line"><span class="javascript">          xhr = <span class="keyword">new</span> XMLHttpRequest(),</span></span><br><span class="line"><span class="javascript">          mime = <span class="string">'image/jpeg'</span>,</span></span><br><span class="line"><span class="javascript">          dataUrl = canvas.toDataURL(mime, <span class="number">0.8</span>),  <span class="comment">//取出base64</span></span></span><br><span class="line"><span class="javascript">          data = atob(dataUrl.split(<span class="string">','</span>)[<span class="number">1</span>]),</span></span><br><span class="line"><span class="undefined">          n = data.length,</span></span><br><span class="line"><span class="javascript">          uInt8 = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n),</span></span><br><span class="line"><span class="undefined">          blob;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">while</span>(n--) &#123;</span></span><br><span class="line"><span class="undefined">        uInt8[n] = data.charCodeAt(n);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      blob = <span class="keyword">new</span> Blob([uInt8.buffer], &#123;<span class="attr">type</span>: mime&#125;);</span></span><br><span class="line"><span class="javascript">      formData.append(<span class="string">'file'</span>, blob, <span class="string">'test.jpg'</span>);</span></span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">'post'</span>, <span class="string">'/upload'</span>);</span></span><br><span class="line"><span class="undefined">      xhr.send(formData);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;之前 example 的 canvas 版实现了，现在我们加入处理图片的功能。首先我们加入裁剪的功能，裁剪的引入必须先引入橡皮筋功能，就是一个选取框。一般我们见过的选取框是这样的。</p>
+<p><img src="/assets/image/canvas/1.png" width="200" height="200"></p>
+<center>预览的样子</center><br><img src="/assets/image/canvas/2.png" width="200" height="200"><br><center>选取的样子</center>
+
+<p>&emsp;&emsp;<strong>我们来分析下实现这样一个功能需要做什么</strong>。首先选取框有个开始点和结束点，在鼠标按下去的时候确定开始点，在松开的时候确定结束点，在移动的时候还要不停的绘制。<strong>那么绘制一个有选取框的内容分几步呢？</strong>第一步是绘制底图，第二步是绘制阴影，第三部还是绘制底图，但是只作用于选取框内部。<strong>最后想取消选取框怎么办</strong>，我们还要有个方法重置开始点和结束点，并且只绘制底图。</p>
+<p>&emsp;&emsp;我们一步一步来，首先确定开始点和结束点。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sPoint = &#123;&#125;,</span><br><span class="line">  ePoint = &#123;&#125;;</span><br><span class="line">canvas.addEventListener(<span class="string">"mousedown"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.button === <span class="number">0</span>) &#123;</span><br><span class="line">    sPoint.x = e.offsetX;</span><br><span class="line">    sPoint.y = e.offsetY;</span><br><span class="line">    sPoint.drag = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;然后我们确定绘制阴影的的方法，并且在鼠标按下去移动的时候不停的绘制。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCover</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  ctx.save();</span><br><span class="line">  ctx.fillStyle = <span class="string">"rgba(0, 0, 0, 0.3)"</span>;</span><br><span class="line">  ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">  ctx.restore();</span><br><span class="line">&#125;</span><br><span class="line">canvas.addEventListener(<span class="string">"mousemove"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.button === <span class="number">0</span> &amp;&amp; sPoint.drag) &#123;</span><br><span class="line">    <span class="keyword">var</span> nPoint = &#123;</span><br><span class="line">      x: e.offsetX,</span><br><span class="line">      y: e.offsetY</span><br><span class="line">    &#125;;</span><br><span class="line">    ctx.save(); <span class="comment">//clip要通过restore回复</span></span><br><span class="line">    ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height); <span class="comment">//画布全清</span></span><br><span class="line">    drawImage(); <span class="comment">//绘制底图</span></span><br><span class="line">    drawCover(); <span class="comment">//绘制阴影</span></span><br><span class="line">    ctx.beginPath(); <span class="comment">//开始路径</span></span><br><span class="line">    ctx.rect(sPoint.x, sPoint.y, nPoint.x - sPoint.x, nPoint.y - sPoint.y); <span class="comment">//设置路径为选取框</span></span><br><span class="line">    ctx.clip(); <span class="comment">//截取路径内为新的作用区域</span></span><br><span class="line">    drawImage(); <span class="comment">//在选取框内绘制底图</span></span><br><span class="line">    ctx.restore(); <span class="comment">//恢复clip截取的作用范围</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;最后我们添加松开鼠标的事件监听，松开左键为拖动结束，松开右键为复原</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">canvas.addEventListener(<span class="string">"mouseup"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.button === <span class="number">0</span>) &#123;</span><br><span class="line">    sPoint.drag = <span class="literal">false</span>;</span><br><span class="line">    ePoint.x = e.offsetX;</span><br><span class="line">    ePoint.y = e.offsetY;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.button === <span class="number">2</span>) &#123;</span><br><span class="line">    restore();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">restore</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  sPoint = &#123;&#125;;</span><br><span class="line">  ePoint = &#123;&#125;;</span><br><span class="line">  drawImage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;由于右键会出现恶心的浏览器自带菜单栏，影响体验，我们屏蔽它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'contextmenu'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      e.preventDefault();</span><br><span class="line">      e.stopPropagation();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="string">``</span><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;现在选取框有了，我们要开始截取了。新添加一个按钮，然后添加点击监听。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"clip"</span>&gt;</span>裁剪<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clip = <span class="built_in">document</span>.querySelector(<span class="string">"#clip"</span>);</span><br><span class="line">clip.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.preventDefault(); <span class="comment">//阻止默认事件，不然会触发form的submit</span></span><br><span class="line">  <span class="keyword">if</span> (sPoint.x !== <span class="literal">undefined</span> &amp;&amp; ePoint.x !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> imgData = ctx.getImageData(</span><br><span class="line">      sPoint.x,</span><br><span class="line">      sPoint.y,</span><br><span class="line">      ePoint.x - sPoint.x,</span><br><span class="line">      ePoint.y - sPoint.y</span><br><span class="line">    ); <span class="comment">//把裁剪区域的图片信息提取出来</span></span><br><span class="line">    ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height); <span class="comment">//清空画布</span></span><br><span class="line">    canvas.width = <span class="built_in">Math</span>.abs(ePoint.x - sPoint.x); <span class="comment">//重置canvas的大小为新图的大小</span></span><br><span class="line">    canvas.height = <span class="built_in">Math</span>.abs(ePoint.y - sPoint.y);</span><br><span class="line">    ctx.putImageData(imgData, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">//把提取出来的图片信息放进canvas中</span></span><br><span class="line">    preview.src = canvas.toDataURL(); <span class="comment">//裁剪后我们用新图替换底图，方便继续处理</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">"没有选择区域"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;现在我们裁剪后选择提交，会发现服务器生成的是裁剪后的图片</p>
+<p><img src="/assets/image/canvas/3.png" width="200" height="200"></p>
+<p>&emsp;&emsp;裁剪的功能完成了，我们在来实现第二个功能：灰度。如果说裁剪的功能在于 clip 的用法，那么灰度的实现是基于 getImageData 返回的对象的认识。这个对象中有一个属性叫 data，这是一个数组，以 4 个为一组，分别存储了一个像素 red、green、blue、opacity 四个数据。也就是当你的 canvas 尺寸为 1*1 时，它的 ImageData.data 元素为 4 个。</p>
+<p>&emsp;&emsp;废话不多说，直接给出实现的代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"clip"</span>&gt;</span>裁剪<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"grey"</span>&gt;</span>灰度<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> grey = <span class="built_in">document</span>.querySelector(<span class="string">"#grey"</span>);</span><br><span class="line">grey.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">  <span class="keyword">var</span> startX = <span class="number">0</span>,</span><br><span class="line">    startY = <span class="number">0</span>,</span><br><span class="line">    width = canvas.width,</span><br><span class="line">    height = canvas.height;</span><br><span class="line">  ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height); <span class="comment">//一如既往的先清空画布，不然会处理含有选取框的图片内容</span></span><br><span class="line">  drawImage(); <span class="comment">//绘制底图</span></span><br><span class="line">  <span class="keyword">var</span> imgData = ctx.getImageData(startX, startY, width, height); <span class="comment">//把整个底图的图片内容取出来</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; imgData.data.length; ) &#123;</span><br><span class="line">    <span class="keyword">var</span> red = imgData.data[i],</span><br><span class="line">      green = imgData.data[i + <span class="number">1</span>],</span><br><span class="line">      blue = imgData.data[i + <span class="number">2</span>],</span><br><span class="line">      opacity = imgData.data[i + <span class="number">3</span>], <span class="comment">//不处理，可以省去这一行，占位说明这一位是透明度</span></span><br><span class="line">      average = (red + green + blue) / <span class="number">3</span>; <span class="comment">//所谓灰度其实是取三种颜色的平均值</span></span><br><span class="line">    imgData.data[i] = imgData.data[i + <span class="number">1</span>] = imgData.data[i + <span class="number">2</span>] = average; <span class="comment">//三个颜色设为一样即是对应的灰色</span></span><br><span class="line">    i += <span class="number">4</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.putImageData(imgData, startX, startY, <span class="number">0</span>, <span class="number">0</span>, width, height); <span class="comment">//把处理过的imagedata放回canvas中</span></span><br><span class="line">  preview.src = canvas.toDataURL(); <span class="comment">//保存图片信息方便再进行处理</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;选择灰度并提交，我们看服务器上生成的图片</p>
+<p><img src="/assets/image/canvas/4.png" width="200" height="200"></p>
+<p>&emsp;&emsp;最后我们结合裁剪和灰度，一起处理一张图片再提交。</p>
+<p><img src="/assets/image/canvas/5.png" width="200" height="200"></p>
+<p>&emsp;&emsp;好了，简单的两个图片处理的方式就介绍到这，至于复杂的，你可以拿到每一个像素的信息，还担心实现不了其他的功能么。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -531,252 +769,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2016/03/30/玩一把JS的链式调用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tarol 的碎碎念">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/30/玩一把JS的链式调用/" itemprop="url">
-                  玩一把JS的链式调用
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-03-30 16:00:31" itemprop="dateCreated datePublished" datetime="2016-03-30T16:00:31+08:00">2016-03-30</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/03/30/玩一把JS的链式调用/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/03/30/玩一把JS的链式调用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">7.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">13 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>链式调用我们平常用到很多，比如 jQuery 中的 <code>$(ele).show().find(child).hide()</code>，再比如 angularjs 中的 <code>$http.get(url).success(fn_s).error(fn_e)</code>。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。</p>
-<p>随着链式调用的普及，实现的方案也越来越多。最常见的，是 jQuery 直接返回 <code>this</code> 的方式，underscore 的可选式的方式，和 lodash 惰性求值的方式。我们分别来了解，并逐个完成它们的 demo。</p>
-<p><strong>我们从最简单的开始</strong>，直接返回 <code>this</code> 是最常见的方式，也是所有方式的基础。我们实现一个简单的链式运算类，首先它得有个字段保留结果。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value = num || <span class="number">0</span>; <span class="comment">//不做传参校验了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后添加进行运算并返回 <code>this</code> 的方法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value += a;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.reduce = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value -= a;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>最后为了显示正常修改两个继承的方法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.valueOf = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.value + <span class="string">""</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>进行验证。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A(<span class="number">2</span>);</span><br><span class="line">alert(a.add(<span class="number">1</span>).reduce(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
-<p>这个 demo 应该简单到不用对任何代码进行说明，<strong>我们快速来到第二个</strong>，就是 underscore 中用到 chain。underscore 规定了两种调用方式，<code>_.forEach(arr, fn);_.map(arr, fn);</code> 和 <code>_.chain(arr).forEach(fn).map(fn)</code>。</p>
-<p>我们先实现前面一种调用方式，因为这里不是讲解 underscore，所以我们只是简单实现 <code>forEach</code> 和 <code>map</code> 的功能，不对对象而仅对数组进行处理。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = &#123;&#125;;</span><br><span class="line">_.forEach = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">_.map = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> array.map(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>上面的代码很简单，直接调用 ES5 中数组原型的方法。接下来问题就来了，要实现链式调用，我们首先要做什么？我们看到第二种调用方式中，所有的操作无论是 forEach 还是 map 都是在 <code>_.chain(arr)</code> 上调用的，所以 <code>_.chain(arr)</code> 应该是返回了一个对象，这个对象上有和 <code>_</code> 上相同的方法，只是实现上传参由 2 个变成了 1 个，因为原来的第一个参数永远是 <code>_.chain</code> 中传入的参数的拷贝。</p>
-<p>好了，确定 <code>_.chain(arr)</code> 要返回一个对象了，那这个对象的构造函数怎么写呢？我们借用一个现成的变量来保存这个构造函数，就是 <code>_</code>。函数也是对象，所以当 <code>_</code> 由对象变成函数，不会影响原来的逻辑，而这个函数要传入一个 array，并返回一个新的对象。所以上面的代码应该改成这样。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>._value = <span class="built_in">Array</span>.prototype.slice.apply(array);</span><br><span class="line">&#125;;</span><br><span class="line">_.forEach = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">_.map = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> array.map(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">_.chain = <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> _(array);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>新的构造函数有了，但它生成的对象除了 <code>_value</code> 就是一片空白，我们要怎么把原本 <code>_</code> 上的方法稍加修改的移植到 <code>_</code> 生成的对象上呢？代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> _) &#123;</span><br><span class="line">  <span class="comment">//首先我们要遍历_</span></span><br><span class="line">  <span class="keyword">if</span> (i !== <span class="string">"chain"</span>) &#123;</span><br><span class="line">    <span class="comment">//然后要去除chain</span></span><br><span class="line">    _.prototype[i] = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//把其他的方法都经过处理赋给_.prototype</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//i是全局变量，我们要通过闭包转化为局部变量</span></span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>); <span class="comment">//取出新方法的参数，其实就fn一个</span></span><br><span class="line">        args.unshift(<span class="keyword">this</span>._value); <span class="comment">//把_value放入参数数组的第一位</span></span><br><span class="line">        <span class="keyword">if</span> (i === <span class="string">"map"</span>) &#123;</span><br><span class="line">          <span class="comment">//当方法是map的时候，需要修改_value的值</span></span><br><span class="line">          <span class="keyword">this</span>._value = _[i].apply(<span class="keyword">this</span>, args);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//当方法是forEach的时候，不需要修改_value的值</span></span><br><span class="line">          _[i].apply(<span class="keyword">this</span>, args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;)(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后我们模仿 underscore 使用 <code>value</code> 返回当前的 <code>_value</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_.prototype.value = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>._value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>进行验证。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">_.forEach(a, <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(v);</span><br><span class="line">&#125;);</span><br><span class="line">alert(</span><br><span class="line">  _.map(a, <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ++v;</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br><span class="line">alert(</span><br><span class="line">  _.chain(a)</span><br><span class="line">    .map(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ++v;</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(v);</span><br><span class="line">    &#125;)</span><br><span class="line">    .value()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>以上是 underscore 中用到的链式调用的简化版，应该不难理解。那最复杂的来了，lodash 惰性调用又是怎样的呢？首先我来解释下什么是惰性调用，比如上面的 <code>_.chain(arr).forEach(fn).map(fn).value()</code>，当执行到 <code>chain(arr)</code> 的时候，返回了一个对象，执行到 <code>forEach</code> 的时候开始轮询，轮询完再返回这个对象，执行到 <code>map</code> 的时候再次开始轮询，轮询完又返回这个对象，最后执行到 <code>value</code>，返回对象中 <code>_value</code> 的值。其中每一步都是独立的，依次进行的。而惰性调用就是，执行到 <code>forEach</code> 的时候不执行轮询的操作，而是把这个操作塞进队列，执行到 <code>map</code> 的时候，再把 <code>map</code> 的操作塞进队列。那什么时候执行呢？当某个特定的操作塞进队列的时候开始执行之前队列中所有的操作，比如当 <code>value</code> 被调用时，开始执行 <code>forEach</code>、<code>map</code> 和 <code>value</code>。</p>
-<p>惰性调用有什么好处呢，为什么把一堆操作塞在一起反倒是更优秀的方案的？我们看传统的链式操作都是这样的格式，<code>obj.job1().job2().job3()</code>，没错整个函数链都是 job 链，如果这时候有一个简单的需求，比如连续执行 100 遍 job1-3，那么我们就要写 100 遍，或者用 for 把整个链条断开 100 次。所以传统链式操作的缺点很明显，函数链中都是 job，不存在 controller。而一旦加上 controller，比如上面的需求我们用简单的惰性调用来实现，那就是 <code>obj.loop(100).job1().job2().job3().end().done()</code>。其中 loop 是声明开启 100 次循环，end 是结束当前这次循环，done 是开始执行任务的标志，代码多么简单！</p>
-<p>现在我们实现一下惰性链式调用，由于 lodash 就是 underscore 的威力加强版，大体架构都差不多，而上面已经有 underscore 的基本链式实现，所以我们脱离 lodash 和 underscore 的其他代码，仅仅实现一个类似的惰性调用的 demo。</p>
-<p>首先我们要有一个构造函数，生成可供链式调用的对象。之前提到的，任何 controller 或者 job 的调用都是把它塞入任务队列，那么这个构造函数自然要有一个队列属性。有了队列，肯定要有索引指明当前执行的任务，所以要有队列索引。那么这个构造函数暂时就这样了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Task</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.queen = [];</span><br><span class="line">  <span class="keyword">this</span>.queenIndex = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果我们要实现 loop，那么还要有个 loop 的总次数和当前 loop 的次数，而如果一次 loop 结束，我们要回到任务队列哪里呢？所以还要有个属性记录 loop 开始的地方。构造函数最终的形态如此：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Task</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.queen = [];</span><br><span class="line">  <span class="keyword">this</span>.queenIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.loopCount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.loopIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.loopStart = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在我们开始实现 controller 和 job，比如上面这个例子中说到的：job()、loop()、end()、done()。它们应该都包含两种形态，一种是本来的业务逻辑，比如 job 的业务就是 do something，而 loop 的控制逻辑就是记录 loopCount 和 loopStart，end 的控制逻辑就是 loopIndex+1 和检查 loopIndex 看是否需要回到 loopStart 的位置再次遍历。而另一种形态是不管业务逻辑是什么，把业务逻辑对应的代码统一塞进任务队列，这种形态可以称之为第一种形态的包装器。</p>
-<p>如果我们最终的调用格式是 <code>new Task().loop(100).job().end().done()</code>，那么方法链上的方法肯定是包装器，这些方法自然应该放在 Task.prototype 上，那第一种形态的方法何去何从呢？那就放在 <code>Task.prototype.__proto__</code> 上吧。我们这样写</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _task_proto = &#123;</span><br><span class="line">  loop: <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loopStart = <span class="keyword">this</span>.queenIndex;</span><br><span class="line">    <span class="keyword">this</span>.loopCount = num;</span><br><span class="line">  &#125;,</span><br><span class="line">  job: <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(str);</span><br><span class="line">  &#125;,</span><br><span class="line">  end: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loopIndex++;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.loopIndex &lt; <span class="keyword">this</span>.loopCount) &#123;</span><br><span class="line">      <span class="keyword">this</span>.queenIndex = <span class="keyword">this</span>.loopStart;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.loopIndex = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  done: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"done"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Task.prototype.__proto__ = _task_proto;</span><br></pre></td></tr></table></figure>
-<p>然后在遍历 <code>_task_proto</code> 在 <code>Task.prototype</code> 上生成包装器，并让每个包装器返回 <code>this</code> 以供链式调用（看见没，其实每一种链式调用的方式都要这么做）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> _task_proto) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> raw = Task.prototype[i];</span><br><span class="line">    Task.prototype[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.queen.push(&#123;</span><br><span class="line">        name: i,</span><br><span class="line">        fn: raw,</span><br><span class="line">        args: <span class="built_in">arguments</span></span><br><span class="line">      &#125;); <span class="comment">//保存具体的实现方法、名字和参数到任务队列</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在问题来了，我们什么时候开始执行具体的任务，又怎样让任务有条不紊的执行和跳转呢？这时候我们要在 <code>Task.prototype</code> 上定义一个新的方法，这个方法专门用来控制任务的执行的，因为任务队列是依次执行并由索引定位的，跟迭代器有那么一点相像，我们定义这个新的方法叫 <code>next</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Task.prototype.next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> task = <span class="keyword">this</span>.queen[<span class="keyword">this</span>.queenIndex]; <span class="comment">//取出新的任务</span></span><br><span class="line">  task.fn.apply(<span class="keyword">this</span>, task.args); <span class="comment">//执行任务中指向的具体的实现方法，并传入之前保存的参数</span></span><br><span class="line">  <span class="keyword">if</span> (task.name !== <span class="string">"done"</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.queenIndex++;</span><br><span class="line">    <span class="keyword">this</span>.next(); <span class="comment">//如果没执行完，任务索引+1并再次调用next</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.queen = [];</span><br><span class="line">    <span class="keyword">this</span>.queenIndex = <span class="number">0</span>; <span class="comment">//如果执行完了，清空任务队列，重置任务索引</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>添加了 <code>next</code>，我们需要在 <code>done</code> 的包装器上加点东西以便让任务队列开始执行，修改之前生成包装器的代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> _task_proto) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> raw = Task.prototype[i];</span><br><span class="line">    Task.prototype[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.queen.push(&#123;</span><br><span class="line">        name: i,</span><br><span class="line">        fn: raw,</span><br><span class="line">        args: <span class="built_in">arguments</span></span><br><span class="line">      &#125;); <span class="comment">//保存具体的实现方法、名字和参数到任务队列</span></span><br><span class="line">      <span class="keyword">if</span> (i === <span class="string">"done"</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.next();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后我们进行验证。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> Task();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line">t.job(<span class="string">"fuck"</span>)</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .job(<span class="string">"!"</span>)</span><br><span class="line">  .done();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>);</span><br><span class="line">t.job(<span class="string">"fuck"</span>)</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .job(<span class="string">"!"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .done();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"3"</span>);</span><br><span class="line">t.job(<span class="string">"fuck"</span>)</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .job(<span class="string">"!"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .job(<span class="string">"!"</span>);</span><br></pre></td></tr></table></figure>
-<p>好了，链式调用玩到这里了。这几个 demo 尤其是惰性调用稍加改造后，功能可以大大加强，但是这里就不再讨论了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -826,7 +818,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -953,7 +945,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">80k</span>
+    <span title="站点总字数">83k</span>
   
 
   
@@ -962,7 +954,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:25</span>
+    <span title="站点阅读时长">2:30</span>
   
 </div>
 

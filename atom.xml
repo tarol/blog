@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tarol.github.io/"/>
-  <updated>2019-03-23T07:09:33.848Z</updated>
+  <updated>2019-05-27T15:28:12.740Z</updated>
   <id>https://tarol.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ES的一等公民——函数（一）</title>
+    <link href="https://tarol.github.io/2019/05/27/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://tarol.github.io/2019/05/27/ES的一等公民——函数（一）/</id>
+    <published>2019-05-27T15:27:37.000Z</published>
+    <updated>2019-05-27T15:28:12.740Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;众所周知的是，函数是 ES 的一等公民，尤其是 ES6 发布后，随着箭头函数和类的加入，函数的 feature 日趋复杂。而现在，在
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+    
+    
+      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+    
+  </entry>
   
   <entry>
     <title>管道（|&gt;）提案怎么了？</title>

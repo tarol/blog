@@ -108,14 +108,21 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tarol 的碎碎念">
-<meta property="og:url" content="https://tarol.github.io/archives/2016/index.html">
+  <meta name="description" content="前言众所周知的是，函数是 ES 的一等公民，尤其是 ES6 发布后，随着箭头函数和类的加入，函数的 feature 日趋复杂。而现在，在 TC39 的 proposals 中，越来越多的 feature 是基于函数的，比如 decorators、 partial-application、 Pipeline Operator 等 我们从头到尾缕一遍函数的特性，包括最早的闭包，ES5 的 call、a">
+<meta name="keywords" content="文章,ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES的一等公民——函数（一）">
+<meta property="og:url" content="https://tarol.github.io/2019/05/27/ES的一等公民——函数（一）/index.html">
 <meta property="og:site_name" content="tarol 的碎碎念">
+<meta property="og:description" content="前言众所周知的是，函数是 ES 的一等公民，尤其是 ES6 发布后，随着箭头函数和类的加入，函数的 feature 日趋复杂。而现在，在 TC39 的 proposals 中，越来越多的 feature 是基于函数的，比如 decorators、 partial-application、 Pipeline Operator 等 我们从头到尾缕一遍函数的特性，包括最早的闭包，ES5 的 call、a">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-27T15:28:12.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tarol 的碎碎念">
+<meta name="twitter:title" content="ES的一等公民——函数（一）">
+<meta name="twitter:description" content="前言众所周知的是，函数是 ES 的一等公民，尤其是 ES6 发布后，随着箭头函数和类的加入，函数的 feature 日趋复杂。而现在，在 TC39 的 proposals 中，越来越多的 feature 是基于函数的，比如 decorators、 partial-application、 Pipeline Operator 等 我们从头到尾缕一遍函数的特性，包括最早的闭包，ES5 的 call、a">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
@@ -123,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://tarol.github.io/archives/2016/">
+  <link rel="canonical" href="https://tarol.github.io/2019/05/27/ES的一等公民——函数（一）/">
 
 
 
@@ -133,7 +140,7 @@
   };
 </script>
 
-  <title>归档 | tarol 的碎碎念</title>
+  <title>ES的一等公民——函数（一） | tarol 的碎碎念</title>
   
 
 
@@ -180,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -225,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
   </li>
@@ -287,165 +294,270 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2019/05/27/ES的一等公民——函数（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">ES的一等公民——函数（一）
+              
+            
+          </h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-27 23:27:37" itemprop="dateCreated datePublished" datetime="2019-05-27T23:27:37+08:00">2019-05-27</time>
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 14 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
-      
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
-        
-        
-        
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
 
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2016">2016</h2>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/27/ES的一等公民——函数（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/05/27/ES的一等公民——函数（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" itemprop="url">
+          
+
+          
+            <div class="post-symbolscount">
               
-                <span itemprop="name">从web图片裁剪出发：了解H5中的canvas</span>
+
               
-            </a>
-        
-      </h3>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.8k</span>
+              
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-21T17:42:00+08:00" content="2016-04-21">
-          04-21
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/15/从web图片裁剪出发：了解H5中的Blob/" itemprop="url">
-              
-                <span itemprop="name">从web图片裁剪出发：了解H5中的Blob</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-04-15T16:11:00+08:00" content="2016-04-15">
-          04-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/30/玩一把JS的链式调用/" itemprop="url">
-              
-                <span itemprop="name">玩一把JS的链式调用</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-03-30T16:00:31+08:00" content="2016-03-30">
-          03-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <!--false-->
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>众所周知的是，函数是 ES 的一等公民，尤其是 ES6 发布后，随着箭头函数和类的加入，函数的 feature 日趋复杂。而现在，在 TC39 的 <a href="https://github.com/tc39/proposals" target="_blank" rel="noopener">proposals</a> 中，越来越多的 feature 是基于函数的，比如 <a href="https://github.com/tc39/proposal-decorators" target="_blank" rel="noopener">decorators</a>、 <a href="https://github.com/tc39/proposal-partial-application" target="_blank" rel="noopener">partial-application</a>、 <a href="https://github.com/tc39/proposal-pipeline-operator" target="_blank" rel="noopener">Pipeline Operator</a> 等</p>
+<p>我们从头到尾缕一遍函数的特性，包括最早的闭包，ES5 的 call、apply、bind，ES6 的箭头函数和类</p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包其实是一个 PL 的概念，如果某个编程语言不支持闭包，那将是很严重的事情。我们一步步来理解这句话</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>4<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>5<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> btns = <span class="built_in">document</span>.querySelectorAll(<span class="string">'button'</span>)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; btns.length; i++) &#123;</span><br><span class="line">  btns[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是最典型的引入闭包的例子，各种教材都有提到，如果你想打印的是 0 - 4，那么这种写法是错的。为什么是错的呢？因为任何一个监听函数触发的时候，打印的 i 都是父级作用域的 i，而这时候父级作用域的 i 已经变成了 5，所以任何监听函数触发后打印的都是 5</p>
+<p>要解决这个问题，就要引入闭包，将代码改造为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">btns[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(i)</span><br></pre></td></tr></table></figure>
+<p>很多人知道怎么改，但还是不理解，怎么就闭包了，哪一部分就闭包了？</p>
+<p>我们说理解一个概念最重要的一点在于举一反三，现在我举另一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'tarol'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">'okal'</span></span><br><span class="line">  fn1()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn2() <span class="comment">// tarol or okal ?</span></span><br></pre></td></tr></table></figure>
+<p>这个问题很大一部分人会陷入迷糊，尤其是在聊闭包的时候抛出来。因为例 1 中模糊了一个概念，因为 onclick 是由外部行为触发的，所以很少有人关注到：当返回的闭包函数执行时，i 的值到底是由定义函数时的环境决定的，还是运行函数时的环境决定的，还是他们之间有一个先后顺序，就像原型链一样，运行时的作用域不存在 i，就追溯定义时的作用域？</p>
+<p>例 2 的答案是 <code>tarol</code>，原因很简单，就是闭包的核心概念：当一个函数<strong>运行</strong>时，它可以访问<strong>定义</strong>函数时所在的作用域</p>
+<p>为什么可以访问呢？因为函数在定义时，把当前的作用域作为内部属性（不开放给外部访问）固化在了这个函数的实例中，当函数运行的时候，把这个内部属性拿过来，用这个作用域作为父作用域，生成一个新的作用域链</p>
+<p>为什么要这么设计呢？为什么不能像前面猜测的一样，使用运行时的作用域来生成作用域链呢？</p>
+<p>我们看到例 2 迷糊还有个很重要的原因是例 2 这种代码在平常基本看不到，太抽象了，我们要理解它必须用概念来解构，不能用经验来推断。现在我们来改造一下，把例子中两个函数的定义分开</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'tarol'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; fn1 &#125; <span class="keyword">from</span> <span class="string">'./a.js'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">'okal'</span></span><br><span class="line">  fn1()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn2()</span><br></pre></td></tr></table></figure>
+<p>这样一拆分，是不是凭经验就可以推断出打印的肯定是 <code>tarol</code> 了，我们再改造下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sdk.js</span></span><br><span class="line"><span class="keyword">const</span> version = <span class="string">'1.0.0'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getVersion</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> version</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; getVersion &#125; <span class="keyword">from</span> <span class="string">'./sdk.js'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printVersions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> version = <span class="string">'0.0.1'</span></span><br><span class="line">  <span class="keyword">const</span> sdkVersion = getVersion()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`app version: <span class="subst">$&#123;version&#125;</span>`</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`sdk version: <span class="subst">$&#123;sdkVersion&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printVersions()</span><br></pre></td></tr></table></figure>
+<p>这样一来，是不是跟我们平时写的业务代码很相似了？同时你也可以看到，如果父级作用域是在运行时确定的，那么我们在调用任何第三方库的时候，都要去了解第三方库，确保当前作用域的变量声明和第三方库中没有命名冲突。这样的编程体验，对于编程语言来说，岂不是一种灾难？</p>
+<p>好了，闭包大概就聊到这里。刚才提到过，运行函数代码前很重要的一步是创建作用域链，但实际是这里漏了一步，就是 <code>this 绑定</code>。ES5 中针对这一过程添加了一系列特性，比如 Function.prototype.call/apply/bind，也许你会说，这几个方法你都用的很熟练了，下面我举个栗子，让它们重新陌生起来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  name : <span class="string">'tarol'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = &#123;</span><br><span class="line">  name : <span class="string">'okal'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test.bind(a).bind(b)();</span><br></pre></td></tr></table></figure>
+<p>以上代码的运行结果是 <code>tarol</code>，哪怕代码是 <code>test.bind(a).bind(b).call(b)</code>，或者 <code>test.bind(a).bind(b).apply(b)</code>，运行结果都是 <code>tarol</code></p>
+<p>要解释这个现象，必须深入分析函数运行的整个过程，下一篇会详细阐述这部分内容</p>
 
       
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文章/" rel="tag"># 文章</a>
+          
+            <a href="/tags/ES/" rel="tag"># ES</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/01/管道提案怎么了？/" rel="next" title="管道（|>）提案怎么了？">
+                <i class="fa fa-chevron-left"></i> 管道（|>）提案怎么了？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -466,8 +578,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -583,6 +704,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">1.1.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -734,6 +871,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1131,7 +1272,7 @@
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 

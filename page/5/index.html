@@ -228,7 +228,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
   </li>
 
       
@@ -292,6 +292,252 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2016/03/30/玩一把JS的链式调用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/30/玩一把JS的链式调用/" itemprop="url">
+                  玩一把JS的链式调用
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-03-30 16:00:31" itemprop="dateCreated datePublished" datetime="2016-03-30T16:00:31+08:00">2016-03-30</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/30/玩一把JS的链式调用/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/03/30/玩一把JS的链式调用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">13 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>链式调用我们平常用到很多，比如 jQuery 中的 <code>$(ele).show().find(child).hide()</code>，再比如 angularjs 中的 <code>$http.get(url).success(fn_s).error(fn_e)</code>。但这都是已经包装好的链式调用，我们只能体会链式调用带来的方便，却不知道形成这样一条函数链的原理是什么。</p>
+<p>随着链式调用的普及，实现的方案也越来越多。最常见的，是 jQuery 直接返回 <code>this</code> 的方式，underscore 的可选式的方式，和 lodash 惰性求值的方式。我们分别来了解，并逐个完成它们的 demo。</p>
+<p><strong>我们从最简单的开始</strong>，直接返回 <code>this</code> 是最常见的方式，也是所有方式的基础。我们实现一个简单的链式运算类，首先它得有个字段保留结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value = num || <span class="number">0</span>; <span class="comment">//不做传参校验了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后添加进行运算并返回 <code>this</code> 的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value += a;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.reduce = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.value -= a;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>最后为了显示正常修改两个继承的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.valueOf = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.value + <span class="string">""</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>进行验证。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A(<span class="number">2</span>);</span><br><span class="line">alert(a.add(<span class="number">1</span>).reduce(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+<p>这个 demo 应该简单到不用对任何代码进行说明，<strong>我们快速来到第二个</strong>，就是 underscore 中用到 chain。underscore 规定了两种调用方式，<code>_.forEach(arr, fn);_.map(arr, fn);</code> 和 <code>_.chain(arr).forEach(fn).map(fn)</code>。</p>
+<p>我们先实现前面一种调用方式，因为这里不是讲解 underscore，所以我们只是简单实现 <code>forEach</code> 和 <code>map</code> 的功能，不对对象而仅对数组进行处理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = &#123;&#125;;</span><br><span class="line">_.forEach = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">_.map = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> array.map(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码很简单，直接调用 ES5 中数组原型的方法。接下来问题就来了，要实现链式调用，我们首先要做什么？我们看到第二种调用方式中，所有的操作无论是 forEach 还是 map 都是在 <code>_.chain(arr)</code> 上调用的，所以 <code>_.chain(arr)</code> 应该是返回了一个对象，这个对象上有和 <code>_</code> 上相同的方法，只是实现上传参由 2 个变成了 1 个，因为原来的第一个参数永远是 <code>_.chain</code> 中传入的参数的拷贝。</p>
+<p>好了，确定 <code>_.chain(arr)</code> 要返回一个对象了，那这个对象的构造函数怎么写呢？我们借用一个现成的变量来保存这个构造函数，就是 <code>_</code>。函数也是对象，所以当 <code>_</code> 由对象变成函数，不会影响原来的逻辑，而这个函数要传入一个 array，并返回一个新的对象。所以上面的代码应该改成这样。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>._value = <span class="built_in">Array</span>.prototype.slice.apply(array);</span><br><span class="line">&#125;;</span><br><span class="line">_.forEach = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  array.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">_.map = <span class="function"><span class="keyword">function</span>(<span class="params">array, fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> array.map(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(v, [v, i, array]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">_.chain = <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> _(array);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>新的构造函数有了，但它生成的对象除了 <code>_value</code> 就是一片空白，我们要怎么把原本 <code>_</code> 上的方法稍加修改的移植到 <code>_</code> 生成的对象上呢？代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> _) &#123;</span><br><span class="line">  <span class="comment">//首先我们要遍历_</span></span><br><span class="line">  <span class="keyword">if</span> (i !== <span class="string">"chain"</span>) &#123;</span><br><span class="line">    <span class="comment">//然后要去除chain</span></span><br><span class="line">    _.prototype[i] = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//把其他的方法都经过处理赋给_.prototype</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//i是全局变量，我们要通过闭包转化为局部变量</span></span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>); <span class="comment">//取出新方法的参数，其实就fn一个</span></span><br><span class="line">        args.unshift(<span class="keyword">this</span>._value); <span class="comment">//把_value放入参数数组的第一位</span></span><br><span class="line">        <span class="keyword">if</span> (i === <span class="string">"map"</span>) &#123;</span><br><span class="line">          <span class="comment">//当方法是map的时候，需要修改_value的值</span></span><br><span class="line">          <span class="keyword">this</span>._value = _[i].apply(<span class="keyword">this</span>, args);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//当方法是forEach的时候，不需要修改_value的值</span></span><br><span class="line">          _[i].apply(<span class="keyword">this</span>, args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;)(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后我们模仿 underscore 使用 <code>value</code> 返回当前的 <code>_value</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_.prototype.value = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>._value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>进行验证。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">_.forEach(a, <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(v);</span><br><span class="line">&#125;);</span><br><span class="line">alert(</span><br><span class="line">  _.map(a, <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ++v;</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br><span class="line">alert(</span><br><span class="line">  _.chain(a)</span><br><span class="line">    .map(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ++v;</span><br><span class="line">    &#125;)</span><br><span class="line">    .forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(v);</span><br><span class="line">    &#125;)</span><br><span class="line">    .value()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>以上是 underscore 中用到的链式调用的简化版，应该不难理解。那最复杂的来了，lodash 惰性调用又是怎样的呢？首先我来解释下什么是惰性调用，比如上面的 <code>_.chain(arr).forEach(fn).map(fn).value()</code>，当执行到 <code>chain(arr)</code> 的时候，返回了一个对象，执行到 <code>forEach</code> 的时候开始轮询，轮询完再返回这个对象，执行到 <code>map</code> 的时候再次开始轮询，轮询完又返回这个对象，最后执行到 <code>value</code>，返回对象中 <code>_value</code> 的值。其中每一步都是独立的，依次进行的。而惰性调用就是，执行到 <code>forEach</code> 的时候不执行轮询的操作，而是把这个操作塞进队列，执行到 <code>map</code> 的时候，再把 <code>map</code> 的操作塞进队列。那什么时候执行呢？当某个特定的操作塞进队列的时候开始执行之前队列中所有的操作，比如当 <code>value</code> 被调用时，开始执行 <code>forEach</code>、<code>map</code> 和 <code>value</code>。</p>
+<p>惰性调用有什么好处呢，为什么把一堆操作塞在一起反倒是更优秀的方案的？我们看传统的链式操作都是这样的格式，<code>obj.job1().job2().job3()</code>，没错整个函数链都是 job 链，如果这时候有一个简单的需求，比如连续执行 100 遍 job1-3，那么我们就要写 100 遍，或者用 for 把整个链条断开 100 次。所以传统链式操作的缺点很明显，函数链中都是 job，不存在 controller。而一旦加上 controller，比如上面的需求我们用简单的惰性调用来实现，那就是 <code>obj.loop(100).job1().job2().job3().end().done()</code>。其中 loop 是声明开启 100 次循环，end 是结束当前这次循环，done 是开始执行任务的标志，代码多么简单！</p>
+<p>现在我们实现一下惰性链式调用，由于 lodash 就是 underscore 的威力加强版，大体架构都差不多，而上面已经有 underscore 的基本链式实现，所以我们脱离 lodash 和 underscore 的其他代码，仅仅实现一个类似的惰性调用的 demo。</p>
+<p>首先我们要有一个构造函数，生成可供链式调用的对象。之前提到的，任何 controller 或者 job 的调用都是把它塞入任务队列，那么这个构造函数自然要有一个队列属性。有了队列，肯定要有索引指明当前执行的任务，所以要有队列索引。那么这个构造函数暂时就这样了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Task</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.queen = [];</span><br><span class="line">  <span class="keyword">this</span>.queenIndex = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们要实现 loop，那么还要有个 loop 的总次数和当前 loop 的次数，而如果一次 loop 结束，我们要回到任务队列哪里呢？所以还要有个属性记录 loop 开始的地方。构造函数最终的形态如此：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Task</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.queen = [];</span><br><span class="line">  <span class="keyword">this</span>.queenIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.loopCount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.loopIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.loopStart = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们开始实现 controller 和 job，比如上面这个例子中说到的：job()、loop()、end()、done()。它们应该都包含两种形态，一种是本来的业务逻辑，比如 job 的业务就是 do something，而 loop 的控制逻辑就是记录 loopCount 和 loopStart，end 的控制逻辑就是 loopIndex+1 和检查 loopIndex 看是否需要回到 loopStart 的位置再次遍历。而另一种形态是不管业务逻辑是什么，把业务逻辑对应的代码统一塞进任务队列，这种形态可以称之为第一种形态的包装器。</p>
+<p>如果我们最终的调用格式是 <code>new Task().loop(100).job().end().done()</code>，那么方法链上的方法肯定是包装器，这些方法自然应该放在 Task.prototype 上，那第一种形态的方法何去何从呢？那就放在 <code>Task.prototype.__proto__</code> 上吧。我们这样写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _task_proto = &#123;</span><br><span class="line">  loop: <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loopStart = <span class="keyword">this</span>.queenIndex;</span><br><span class="line">    <span class="keyword">this</span>.loopCount = num;</span><br><span class="line">  &#125;,</span><br><span class="line">  job: <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(str);</span><br><span class="line">  &#125;,</span><br><span class="line">  end: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loopIndex++;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.loopIndex &lt; <span class="keyword">this</span>.loopCount) &#123;</span><br><span class="line">      <span class="keyword">this</span>.queenIndex = <span class="keyword">this</span>.loopStart;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.loopIndex = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  done: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"done"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Task.prototype.__proto__ = _task_proto;</span><br></pre></td></tr></table></figure>
+<p>然后在遍历 <code>_task_proto</code> 在 <code>Task.prototype</code> 上生成包装器，并让每个包装器返回 <code>this</code> 以供链式调用（看见没，其实每一种链式调用的方式都要这么做）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> _task_proto) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> raw = Task.prototype[i];</span><br><span class="line">    Task.prototype[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.queen.push(&#123;</span><br><span class="line">        name: i,</span><br><span class="line">        fn: raw,</span><br><span class="line">        args: <span class="built_in">arguments</span></span><br><span class="line">      &#125;); <span class="comment">//保存具体的实现方法、名字和参数到任务队列</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在问题来了，我们什么时候开始执行具体的任务，又怎样让任务有条不紊的执行和跳转呢？这时候我们要在 <code>Task.prototype</code> 上定义一个新的方法，这个方法专门用来控制任务的执行的，因为任务队列是依次执行并由索引定位的，跟迭代器有那么一点相像，我们定义这个新的方法叫 <code>next</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Task.prototype.next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> task = <span class="keyword">this</span>.queen[<span class="keyword">this</span>.queenIndex]; <span class="comment">//取出新的任务</span></span><br><span class="line">  task.fn.apply(<span class="keyword">this</span>, task.args); <span class="comment">//执行任务中指向的具体的实现方法，并传入之前保存的参数</span></span><br><span class="line">  <span class="keyword">if</span> (task.name !== <span class="string">"done"</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.queenIndex++;</span><br><span class="line">    <span class="keyword">this</span>.next(); <span class="comment">//如果没执行完，任务索引+1并再次调用next</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.queen = [];</span><br><span class="line">    <span class="keyword">this</span>.queenIndex = <span class="number">0</span>; <span class="comment">//如果执行完了，清空任务队列，重置任务索引</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>添加了 <code>next</code>，我们需要在 <code>done</code> 的包装器上加点东西以便让任务队列开始执行，修改之前生成包装器的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> _task_proto) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> raw = Task.prototype[i];</span><br><span class="line">    Task.prototype[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.queen.push(&#123;</span><br><span class="line">        name: i,</span><br><span class="line">        fn: raw,</span><br><span class="line">        args: <span class="built_in">arguments</span></span><br><span class="line">      &#125;); <span class="comment">//保存具体的实现方法、名字和参数到任务队列</span></span><br><span class="line">      <span class="keyword">if</span> (i === <span class="string">"done"</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.next();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后我们进行验证。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> Task();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"1"</span>);</span><br><span class="line">t.job(<span class="string">"fuck"</span>)</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .job(<span class="string">"!"</span>)</span><br><span class="line">  .done();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>);</span><br><span class="line">t.job(<span class="string">"fuck"</span>)</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .job(<span class="string">"!"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .done();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"3"</span>);</span><br><span class="line">t.job(<span class="string">"fuck"</span>)</span><br><span class="line">  .loop(<span class="number">3</span>)</span><br><span class="line">  .job(<span class="string">"world"</span>)</span><br><span class="line">  .job(<span class="string">"!"</span>)</span><br><span class="line">  .end()</span><br><span class="line">  .job(<span class="string">"!"</span>);</span><br></pre></td></tr></table></figure>
+<p>好了，链式调用玩到这里了。这几个 demo 尤其是惰性调用稍加改造后，功能可以大大加强，但是这里就不再讨论了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -553,382 +799,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tarol 的碎碎念">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/07/23/JavaScript中你所不知道的Object（一）/" itemprop="url">
-                  JavaScript中你所不知道的Object（一）
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-07-23 16:27:02" itemprop="dateCreated datePublished" datetime="2015-07-23T16:27:02+08:00">2015-07-23</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/07/23/JavaScript中你所不知道的Object（一）/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/07/23/JavaScript中你所不知道的Object（一）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">9 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Object 实在是 JavaScript 中很基础的东西了，在工作中，它只有那么贫瘠的几个用法，让人感觉不过尔尔，但是我们真的了解它吗？</p>
-<ol>
-<li>当我们习惯用</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//18</span></span><br><span class="line">a.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
-<p>初始化和访问对象的时候，谁会在意这种方式也是合法的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  _age: <span class="number">18</span>,</span><br><span class="line">  set age(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>._age = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  get age() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//18</span></span><br><span class="line">a.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>当我们习惯用</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"tarol"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">B.prototype = a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> B();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//tarol</span></span><br></pre></td></tr></table></figure>
-<p>实现继承的时候，谁会在意其实也可以这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line">b.age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//tarol</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>当我们知道原型链以后，想恶作剧修改内置函数的原型，却发现没有办法</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype = a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype === a); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>如果你感兴趣，那么我从头说起：</p>
-<p>首先，JavaScript 中的对象是什么？ES5 中只给出一句话，对象是属性的集合。它只是一个盒子，它能做什么，取决于盒子里有什么。</p>
-<p>那么，属性是什么，一般看来，属性是一个 key, value 对，这个说法是对的吗？我们来剖析下属性。</p>
-<p>从一个程序员的角度来说，属性分为可通过 JS 调用的的和不可通过 JS 调用的。不可调用的叫做<strong>内部属性</strong>，那么可调用的我们对应着叫<strong>外部属性</strong>吧。内部属性是 JS 解释器实现各种接口的时候使用的算法中需要调用的属性，举个栗子，有个内部属性叫[[Put]]，这是一个内部方法，传入属性名和值，它的作用就是为属性赋值。所以当我们使用 a.age = 18 的时候，实际就调用到了这个内部属性。而外部属性又分为两种，一种是数据属性，一种是访问器属性。上面的例一中，第二种方式给对象 a 添加了三个属性，其中 name、_age 是数据属性，age 是访问器属性。当属性是数据属性的时候，属性是 key、value 对的说法好像是对的，但当属性是访问器属性的时候，这个说法好像有问题了，因为一个 key 对应的是一个 setter 和一个 getter。所以，这个说法是错的？</p>
-<p>其实，属性不是我们看到的那样，单单就一个 key 对应一个数据或者一个 setter 加一个 getter。属性还存在其他一些状态，我们称之为特性，无论是数据属性还是访问器属性，都存在四个特性。数据属性的特性为：[[Value]]、[[Writable]]、[[Enumerable]]、[[Configuration]]，访问器属性的特性为：[[Get]]、[[Set]]、[[Enumerable]]、[[Configuration]]。其中[[Value]]、[[Get]]、[[Set]]相信已经很好理解了，[[Writable]]描述数据属性是否可被重新赋值，[[Enumerable]]描述属性是否可被 for-in 遍历，[[Configuration]]描述属性特性是否可被修改（一旦设置为 false 则不可以再修改此特性）。</p>
-<p>JS 开放了三个接口用于设置和获取属性的特性，分别是 Object.defineProperty、Object.defineProperties 和 Object.getOwnPropertyDescriptor。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">"tarol"</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  job: <span class="string">"coder"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">"name"</span>, &#123;</span><br><span class="line">  value: <span class="string">"ctarol"</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configuration: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(a, &#123;</span><br><span class="line">  age: &#123;</span><br><span class="line">    value: <span class="number">19</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configuration: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  job: &#123;</span><br><span class="line">    value: <span class="string">"mental"</span>,</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configuration: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(a.name); <span class="comment">//tarol</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//19</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(a, <span class="string">"job"</span>)); <span class="comment">//Object &#123;value: "mental", writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
-<p>总的看来，属性还是可以作为一个 key, value 对的，但这个 value 不是我们赋的值，而是整个属性特性的集合，我们称之为<strong>属性描述</strong>。</p>
-<p>外部属性的问题解决了，内部属性我们还只是蜻蜓点水般浅尝辄止，所以接下来我们开始从内部属性入手，对 JS 中的对象做一个更深刻的认识。以下是内部属性的表格：</p>
-<table>
-<thead>
-<tr>
-<th>属性名</th>
-<th>用途</th>
-<th>属性类型</th>
-<th>方法返回值（仅适用方法）</th>
-<th>他处引用（仅适用数据）</th>
-<th>他处赋值（仅适用数据）</th>
-<th>他处调用（仅适用方法）</th>
-<th>调用其他（仅适用方法）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[[Prototype]]</td>
-<td>对象原型</td>
-<td>Object</td>
-<td></td>
-<td><strong>proto</strong> etc.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>[[Class]]</td>
-<td>对象类型</td>
-<td>String</td>
-<td></td>
-<td>Object.prototype.toString()</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>[[Extensible]]</td>
-<td>可否添加属性</td>
-<td>Boolean</td>
-<td></td>
-<td>Object.seal(obj) –&gt; false <br> Object.freeze(obj) –&gt; false <br> Object.preventExtensions(obj) –&gt; false</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>[[GetOwnProperty]]</td>
-<td>返回自身指定的属性描述</td>
-<td>func(‘prop’)</td>
-<td>属性描述</td>
-<td></td>
-<td></td>
-<td>Object.getOwnPropertyDescriptor(obj, ‘prop’) <br> [[GetProperty]]</td>
-<td></td>
-</tr>
-<tr>
-<td>[[GetProperty]]</td>
-<td>返回原型链上指定的属性描述</td>
-<td>func(‘prop’)</td>
-<td>属性描述</td>
-<td></td>
-<td></td>
-<td></td>
-<td>[[GetOwnProperty]]</td>
-</tr>
-<tr>
-<td>[[HasProperty]]</td>
-<td>返回原型链上是否有指定属性</td>
-<td>func(‘prop’)</td>
-<td>Boolean</td>
-<td></td>
-<td></td>
-<td></td>
-<td>[[GetProperty]]</td>
-</tr>
-<tr>
-<td>[[DefineOwnProperty]]</td>
-<td>创建或修改自身的属性描述</td>
-<td>func(‘prop’, desc, Boolean)</td>
-<td>Boolean</td>
-<td></td>
-<td></td>
-<td>Object.defineProperty(obj, ‘prop’, desc) <br> Object.defineProperties(obj,  descs)</td>
-<td></td>
-</tr>
-<tr>
-<td>[[DefaultValue]]</td>
-<td>将对象转换为对应的基础类型</td>
-<td>func(String/Number)</td>
-<td>String / Number</td>
-<td></td>
-<td></td>
-<td></td>
-<td>toString() <br> valueOf()</td>
-</tr>
-<tr>
-<td>[[Delete]]</td>
-<td>删除对象的属性</td>
-<td>func(‘prop’, Boolean)</td>
-<td>Boolean</td>
-<td></td>
-<td></td>
-<td></td>
-<td>[[GetOwnProperty]]</td>
-</tr>
-<tr>
-<td>[[CanPut]]</td>
-<td>可否设置属性的值</td>
-<td>func(‘prop’)</td>
-<td>Boolean</td>
-<td></td>
-<td></td>
-<td></td>
-<td>[[GetOwnProperty]] <br> [[GetProperty]] <br> [[Extensible]]</td>
-</tr>
-<tr>
-<td>[[Get]]</td>
-<td>获取属性的值</td>
-<td>func(‘prop’)</td>
-<td>mixin</td>
-<td></td>
-<td></td>
-<td></td>
-<td>[[GetProperty]]</td>
-</tr>
-<tr>
-<td>[[Put]]</td>
-<td>设置属性的值</td>
-<td>func(‘prop’, mixin, Boolean)</td>
-<td>Boolean</td>
-<td></td>
-<td></td>
-<td></td>
-<td>[[CanPut]] <br> [[GetOwnProperty]] <br> [[GetProperty]] <br> [[DefineOwnProperty]]</td>
-</tr>
-</tbody>
-</table>
-<p>上面的表格稍显晦涩，看不懂不要紧，我们来分下类。内部属性中除了 [[Class]]、[[DefaultValue]] 用于展示信息以外，其他都是用来操作外部属性的，可见对象的核心就是属性。其中我列出 [[CanPut]] 和 [[Put]] 的算法实现，因为这两个方法的实现涵盖了基本所有的属性操作和思想。</p>
-<p>[[CanPut]]:</p>
-<p><img src="/assets/image/object/1.png" alt="1"></p>
-<p>[[Put]]:</p>
-<p><img src="/assets/image/object/2.png" alt="2"></p>
-<p>前面提到过，我们使用 <code>a.age = 18</code> 进行赋值的时候，调用的就是 [[Put]] 这个内部方法。由上图算法可知，当对属性赋值时，只要这个属性不是原型链上的访问器属性，那么就会修改或产生自身的数据属性，即不存在一种情况，就是修改原型链上的数据属性。我们测试下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'tarol'</span>,</span><br><span class="line">  _age: <span class="number">18</span>,</span><br><span class="line">  set age(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>._age = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  get age() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'_age'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'age'</span>));  <span class="comment">//false</span></span><br><span class="line">b.name = <span class="string">'okal'</span>;</span><br><span class="line">b.age = <span class="number">19</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'_age'</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.hasOwnProperty(<span class="string">'age'</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(a.name);  <span class="comment">//tarol</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age);  <span class="comment">//18</span></span><br></pre></td></tr></table></figure>
-<p>由结果可知，我们在对 name 这个原型链上的数据属性进行赋值时，实际上是重新创建了一个自身属性，对原型上的数据属性是没有影响的。而调用访问器属性 age 的 [[Set]] 方法的时候，传入的 this 也是当前的对象而不是访问器属性的拥有者，所以在当前对象上创建了一个自身属性 _age。</p>
-<p>好了，上面说的是通用的内部属性，即 Object 类型的内部属性，而像 Boolean、Date、Number、String、Function 等拥有更多的内部属性，就留到下一篇再说。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -978,7 +848,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1105,7 +975,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">80k</span>
+    <span title="站点总字数">83k</span>
   
 
   
@@ -1114,7 +984,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:25</span>
+    <span title="站点阅读时长">2:30</span>
   
 </div>
 
