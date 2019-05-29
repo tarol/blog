@@ -228,7 +228,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
   </li>
 
       
@@ -292,6 +292,259 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2019/05/28/ES的一等公民——函数（二）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/28/ES的一等公民——函数（二）/" itemprop="url">
+                  ES的一等公民——函数（二）
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-28 23:39:58" itemprop="dateCreated datePublished" datetime="2019-05-28T23:39:58+08:00">2019-05-28</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/28/ES的一等公民——函数（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/05/28/ES的一等公民——函数（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前一篇聊到了闭包和作用域链，最后留下了一段运行结果出人意料的代码。本篇由我娓娓道来，为什么会是这样</p>
+<h4 id="标准流程"><a href="#标准流程" class="headerlink" title="标准流程"></a>标准流程</h4><p>函数/方法调用的语法一般是这样，[obj.]method(…args)，涉及 3 个对象：调用者 obj、函数 method、参数列表 args</p>
+<p>当解释器解释这种语法时，执行以下步骤：</p>
+<ol>
+<li>如果是严格模式，绑定 this 为 <code>obj</code></li>
+<li>如果是非严格模式<ol>
+<li>当 <code>obj</code> 为 null 或 undefined 时，绑定 this 为全局对象（如例 1）</li>
+<li>当 <code>obj</code> 为基础数据类型时，绑定 this 为其包装类对象（如例 2）</li>
+<li>其他情况绑定 this 为 <code>obj</code></li>
+</ol>
+</li>
+<li>创建运行环境（可以理解为作用域） <code>env</code><ol>
+<li>将 <code>词法环境</code> 设置为 <code>env</code></li>
+<li>将 <code>变量环境</code> 设置为 <code>env</code></li>
+</ol>
+</li>
+<li>载入函数体 <code>code</code>，作为内部属性 [[Code]]</li>
+<li>通过 <code>code</code> 和 <code>args</code> 进行变量绑定</li>
+<li>通过 <code>this</code> 和 <code>args</code> 调用函数的内部属性 [[Call]]</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;).call(<span class="literal">null</span>)  <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.log = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line">a.log() <span class="comment">// Number &#123;1&#125;</span></span><br></pre></td></tr></table></figure>
+<p>以上，第 1、2 条比较好理解，3、4、5有点不知所云，暂且略过，最重要的是第 6 点</p>
+<p>就像上一篇提到的内部属性 [[Scope]]，[[Call]] 是函数另一个很重要的内部属性</p>
+<p>普通函数的 [[Call]] 的逻辑很简单，进入新的执行环境，解释上述第 4 点生成的 [[Code]] 并跳出执行环境，根据解释结果 result 选择接下来的行为：</p>
+<ol>
+<li>如果 <code>result.type</code> 是 <code>throw</code>，抛出 <code>result.value</code></li>
+<li>如果 <code>result.type</code> 是 <code>return</code>，返回 <code>result.value</code></li>
+<li>否则 <code>result.type</code> 必定是 <code>normal</code>，返回 <code>undefined</code></li>
+</ol>
+<p>以上是最常见的函数执行过程，平时我们调用自定义的函数遵循的就是这个流程，现在我们进入稍微复杂一点的区域：apply &amp; call。鉴于 apply 和 call 的解释器算法差不多，而 call 更为简化，以下的分析都是基于 call 的</p>
+<h4 id="apply-amp-call"><a href="#apply-amp-call" class="headerlink" title="apply &amp; call"></a>apply &amp; call</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = &#123;</span><br><span class="line">  name: <span class="string">'tarol'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`hello <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">hello.call(p)</span><br></pre></td></tr></table></figure>
+<p>以上是最常见的 call 用例。从语法上来说，被调用的函数不是 <code>hello</code> 而是 <code>hello.call</code>，也就是上面的标准流程适用于 <code>hello.call</code>，而非 <code>hello</code>。</p>
+<p>按照标准流程，现在解释器来到了 <code>hello.call</code> 的 [[Code]]，之后 [[Code]] 做了以下这些事情，让控制权由 <code>hello.call</code> 成功转移到了 <code>hello</code>：</p>
+<ol>
+<li>类型检查</li>
+<li>由第二个参数得到 <code>args</code></li>
+<li>由第一个参数得到 <code>this</code></li>
+<li>通过 <code>this</code> 和 <code>args</code> 调用 <code>hello</code> 的内部属性 [[Call]]</li>
+</ol>
+<p>由此可见，<code>call</code> 的语义还是比较简单的，只是由调用 <code>hello</code> 转变为通过 <code>call</code> 调用 <code>hello</code>，这个行为在 <code>call</code> 的 [[Code]] 层面进行了定义，<code>call</code> 本身可以理解为一个普通函数的内置版（由浏览器定义）</p>
+<p>现在我们来到大 Boss —— bind 的面前</p>
+<h4 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  name : <span class="string">'tarol'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test.bind(a)();</span><br></pre></td></tr></table></figure>
+<p>经过了 <code>call</code> 部分的科普，我们发现 <code>bind</code> 突然变得陌生起来，不再和 <code>call</code> 类似了。因为 <code>call</code> 的语义是：通过 <code>call</code> 的调用完成控制的转移。而 <code>bind</code> 是返回一个新的函数 <code>fn</code>，最终调用的也是这个 <code>fn</code></p>
+<p>按照前面所述，函数的调用应该统一遵循标准流程。那么调用 <code>fn</code> ，进行到第 6 步时，传入 [[Call]] 的 <code>this</code> 应该是 undefined 或者 global，不可能会是 a。但最后的结果却恰恰是 a，所以猫腻肯定藏在之后的某个地方，<code>call</code> 的猫腻藏在 [[Code]] 里面，而 <code>bind</code> 的猫腻则藏在 [[Call]] 里面</p>
+<p>上面提到的 [[Call]] 的运行逻辑是普通函数的运行逻辑，而 <code>bind</code> 返回的函数不是普通函数，是 <strong>bound function</strong></p>
+<p>假设普通函数 <code>fn</code>，<code>fn.bind(obj, ...args)</code> 返回的 bound function 为 <code>bfn</code>，<code>bfn</code> 和 <code>fn</code> 存在以下不同：</p>
+<ol>
+<li><code>bfn</code> 多出的内部属性<ol>
+<li>[[TargetFunction]]：指向了 <code>fn</code></li>
+<li>[[BoundThis]]：指向了 <code>obj</code></li>
+<li>[[BoundArgs]]：指向了 <code>args</code></li>
+</ol>
+</li>
+<li><code>bfn(extraArgs)</code> 的 [[Call]] 算法不同<ol>
+<li>将 <code>bfn</code> 的 <code>[[BoundArgs]]</code> 和 <code>extraArgs</code> 结合形成新的 args</li>
+<li>通过 <code>bfn</code> 的 <code>[[BoundThis]]</code> 和 <code>args</code> 调用 <code>bfn</code> 的 [[TargetFunction]] 的 [[Call]]</li>
+</ol>
+</li>
+</ol>
+<p>这样讲有些抽象，我们结合上一篇最后的例子 <code>test.bind(a).bind(b)()</code>，为什么最后 <code>test</code> 绑定的 this 是 a？</p>
+<p>这个调用链涉及 3 个函数：普通函数 test，test.bind(a) =&gt; boundA，test.bind(a).bind(b) =&gt; boundB。其中 bound function 的内部属性是这样的（我们省略掉所有的参数）</p>
+<ol>
+<li>boundA<ol>
+<li>[[TargetFunction]]：test</li>
+<li>[[BoundThis]]：a</li>
+</ol>
+</li>
+<li>boundB<ol>
+<li>[[TargetFunction]]：boundA</li>
+<li>[[BoundThis]]：b</li>
+</ol>
+</li>
+</ol>
+<p>我们知道，最后被调用的是 <code>boundB</code>，即按照函数调用的标准流程执行到了 <code>boundB</code> 的 [[Call]]。遵循以上 bound function 的 [[Call]] 算法，通过 <code>boundB</code> 的 [[BoundThis]] 即 <code>b</code> 调用 <code>boundB</code> 的 [[TargetFunction]] 即 <code>boundA</code> 的 [[Call]]，现在控制权到了 <code>boundA</code>，由于它也是 bound function，所以继续遵循以上算法，通过 <code>boundA</code> 的 [[BoundThis]] 即 <code>a</code> 调用 <code>boundA</code> 的 [[TargetFunction]] 即 <code>test</code>。理所应当的，test 调用时的 this 绑定就是 a 而不是 b 了</p>
+<p>以上内容解释了上一篇最终留下的问题，本篇的结尾处同样也会留下一个问题</p>
+<p>随着 ES6 的发布，函数的特性再一次被扩展，最典型的就是不能被 new 的箭头函数，和不能被直接调用的类函数了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arrow = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</span><br><span class="line"><span class="keyword">new</span> arrow()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">klass</span> </span>&#123;&#125;</span><br><span class="line">klass()</span><br></pre></td></tr></table></figure>
+<p>以上两个例子都会报错，而 ES5 中的自定义函数从来不会出现类似的问题，那么 ES6 中又给函数带来了哪些隐藏的特性？下一篇会给出答案</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -524,272 +777,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2018/11/01/管道提案怎么了？/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tarol 的碎碎念">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/01/管道提案怎么了？/" itemprop="url">
-                  管道（|>）提案怎么了？
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-11-01 20:56:02" itemprop="dateCreated datePublished" datetime="2018-11-01T20:56:02+08:00">2018-11-01</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/01/管道提案怎么了？/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/01/管道提案怎么了？/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">3.5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在发布的 <a href="https://github.com/babel/babel/releases/tag/v7.0.0-beta.52" target="_blank" rel="noopener">babel@7.0.0-beta52</a> 中，我们为 <code>@babel/plugin-proposal-pipeline-operator</code> 引入了一个必填的配置项，这是管道操作的一个重大的改动。为了不给大家带来困惑，我们一起来了解一下管道提案以及我们为什么引入该配置项。</p>
-<h2 id="当前的情况"><a href="#当前的情况" class="headerlink" title="当前的情况"></a>当前的情况</h2><p>管道操作符最早是由 <a href="https://github.com/gilbert" target="_blank" rel="noopener">Gilbert Garza</a> <a href="https://github.com/babel/babel/pull/3159" target="_blank" rel="noopener">引入</a>的，为了实现“使用可读的、有效的方式简化函数的链式调用”提供了简洁的语法。管道操作符在很多语言里能找到根源，比如 <code>F#</code>，<code>Hack</code>，<code>Elm</code>，<code>Elixir</code> 等等，但 JS 的语法中还存在两点争议：</p>
-<ul>
-<li>是否以及如何引入占位符</li>
-<li>管道中如何处理 async / await</li>
-</ul>
-<h3 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h3><p>第一个难点是占位符的问题。这是由 <a href="https://github.com/zenparsing" target="_blank" rel="noopener">Kevin Smith</a> 在这个 <a href="https://github.com/tc39/proposal-pipeline-operator/issues/84" target="_blank" rel="noopener">issue</a> 中提出来的，并且他推荐了 <a href="https://docs.hhvm.com/hack/operators/pipe-operator" target="_blank" rel="noopener">Hack-style pipelining</a>。在 <code>Hack</code> 中，占位符必须出现在管道操作符的右边，示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">namespace Hack\UserDocumentation\Operators\Pipe\Examples\MapFilterCountPiped;</span><br><span class="line"></span><br><span class="line">function piped_example(array&lt;int&gt; $arr): int &#123;</span><br><span class="line">  return $arr</span><br><span class="line">    |&gt; \array_map($x ==&gt; $x * $x, $$)</span><br><span class="line">    |&gt; \array_filter($$, $x ==&gt; $x % 2 == 0)</span><br><span class="line">    |&gt; \count($$);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(piped_example(range(1, 10)));</span><br></pre></td></tr></table></figure>
-<p>我们以此为基础，代表前一步返回值的占位符可以用于任意表达式中。这让管道更具弹性，功能也更强大。</p>
-<p>缺点是引入新的 token 是一个很复杂的工程。虽然任一 <code>token</code> 都可能存在多个意义这点仍值得商榷，但 <code>#</code> 确实已经被选为当前的方案。<code>#</code> 同时应用在私有成员的提案中，而其他的选项也都存在各自的<a href="https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565" target="_blank" rel="noopener">应用场景</a>。</p>
-<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async / Await"></a>Async / Await</h3><p>早期的管道包含 <code>await</code> 的语法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; (<span class="keyword">await</span> f);</span><br></pre></td></tr></table></figure>
-<p>它等同于：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> f(x);</span><br></pre></td></tr></table></figure>
-<p>不幸的是，开发者可能也希望它等同于：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">await</span> f)(x);</span><br></pre></td></tr></table></figure>
-<p>在管道中处理 <code>async</code> 语句这一想法被完全搁置后，委员会成员对此表达了担忧。虽然可以不借助于显式的语法，使用返回 <code>promise</code> 的函数替代，但这还是太麻烦了。</p>
-<h2 id="当前的解决方案"><a href="#当前的解决方案" class="headerlink" title="当前的解决方案"></a>当前的解决方案</h2><p>基于这些讨论，我们提出来两个基于 <code>minimal</code> 的解决方案：<code>F#</code> 管道和 <code>Smart</code> 管道。接下来让我们看看它们是怎样解决以上的问题的。</p>
-<h3 id="Minimal-Pipelines"><a href="#Minimal-Pipelines" class="headerlink" title="Minimal Pipelines"></a><a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">Minimal Pipelines</a></h3><p>这个提案包含了管道操作符的基本功能。该提案禁止 <code>await</code>，所以不支持 <code>async</code> 语法，并且不支持占位符。它和之前 babel plugin 提供的功能一致，而且它的语义和当前提案仓库中 <code>spec</code> 规定的行为一致。它的功能类似于稻草人，用于对比其他提案的优劣，并在其他提案都存在致命缺陷的情况下作为不得已的选择。</p>
-<blockquote>
-<p>译者按：所谓的 <code>Minimal Pipelines</code> 就是不支持 <code>await</code> (因为会引发歧义)，没有占位符。</p>
-</blockquote>
-<h3 id="F-Pipelines"><a href="#F-Pipelines" class="headerlink" title="F# Pipelines"></a><a href="https://github.com/valtech-nyc/proposal-fsharp-pipelines/" target="_blank" rel="noopener">F# Pipelines</a></h3><p>在占位符的问题上，F# 提案认为它根本不需要。在 <code>minimal</code> 中，箭头函数可以实现此功能，这种实现不需要额外的语法，而且使用的是开发人员早在 ES2015 就已经熟悉的语法。</p>
-<p>如目前所述，箭头函数需要用括号包裹起来：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123; <span class="attr">score</span>: <span class="number">25</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newScore =</span><br><span class="line">  person.score |&gt; double |&gt; (<span class="function"><span class="params">_</span> =&gt;</span> add(<span class="number">7</span>, _)) |&gt; (<span class="function"><span class="params">_</span> =&gt;</span> boundScore(<span class="number">0</span>, <span class="number">100</span>, _));</span><br></pre></td></tr></table></figure>
-<p>目前正在探索，是否可以不添加额外的圆括号，因为这是一个重大的语法负担。</p>
-<p>在 <code>async</code> 的问题上，F# 将 <code>await</code> 视为一个一元函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise |&gt; <span class="keyword">await</span></span><br></pre></td></tr></table></figure>
-<p>这等同于：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> promise;</span><br></pre></td></tr></table></figure>
-<p>因此 <code>async</code> 可以用于较大的函数链中：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">  |&gt; <span class="keyword">await</span></span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> doubleSay(x, <span class="string">', '</span>))</span><br><span class="line">  |&gt; capitalize</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="string">'!'</span>)</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> <span class="keyword">new</span> User.Message(x))</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> stream.write(x))</span><br><span class="line">  |&gt; <span class="keyword">await</span></span><br><span class="line">  |&gt; <span class="built_in">console</span>.log;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>译者按：所谓的 <code>F# Pipelines</code> 就是使用箭头函数把多元函数变为一元函数；仅允许 <code>bare await</code> 存在于管道步骤中（即仅允许 <code>p |&gt; await</code> 语法，不允许 <code>p |&gt; await f</code> 语法）。</p>
-</blockquote>
-<h3 id="Smart-Pipelines"><a href="#Smart-Pipelines" class="headerlink" title="Smart Pipelines"></a><a href="https://github.com/js-choi/proposal-smart-pipelines/" target="_blank" rel="noopener">Smart Pipelines</a></h3><p>这个提案引入了占位符，使其可以在管道中编写任意表达式。因此上面的长链可以这样写：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">  |&gt; await #</span><br><span class="line">  |&gt; doubleSay(#, ', ')</span><br><span class="line">  |&gt; # || throw new TypeError()</span><br><span class="line">  |&gt; capitalize</span><br><span class="line">  |&gt; # + '!'</span><br><span class="line">  |&gt; new User.Message(#)</span><br><span class="line">  |&gt; await stream.write(#)</span><br><span class="line">  |&gt; <span class="built_in">console</span>.log;</span><br></pre></td></tr></table></figure>
-<p>如果管道中某一步只是个裸标识符，不需要写占位符，这种情况叫做 <a href="https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#bare-style" target="_blank" rel="noopener">bare style</a>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; a;</span><br><span class="line">x |&gt; f.b;</span><br></pre></td></tr></table></figure>
-<p>和 Hack 不同，一元函数不需要占位符。</p>
-<p>对于其他的表达式，占位符是必需的，如果缺少会抛出语法错误。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 |&gt; # + 1;</span><br><span class="line">promise |&gt; await #;</span><br></pre></td></tr></table></figure>
-<p>如果存在任意运算符、小括号（包括函数调用）、中括号、或除了标识符和 <code>.</code> 之外的任意内容，占位符都是必需的。这是为了避免自我混淆和消除二义性。</p>
-<p>Smart Pipelines 允许任意表达式存在于管道中，从而也解决了 <code>async</code> 的问题；其实不仅仅是 <code>await</code>，还包括 <code>typeof</code>，<code>yield</code>，和其他任意操作符。</p>
-<blockquote>
-<p>译者按：所谓的 <code>Smart Pipelines</code> 其实就是引入了占位符 <code>#</code>。</p>
-</blockquote>
-<blockquote>
-<p>译者按：<br>汇总一下：<br><code>minimal</code> 是一禁了之，既然有问题，那就不准这样写<br><code>F#</code> 是限制语法，在有限范围内行动，基本满足需求，缺点是开发人员要了解它提出的解决方案的思想<br><code>Smart</code> 是最开放的，也符合开发人员的编码习惯，缺点是引入了新的 <code>token</code></p>
-</blockquote>
-<h2 id="Babel-的抉择"><a href="#Babel-的抉择" class="headerlink" title="Babel 的抉择"></a>Babel 的抉择</h2><p>当三个提案都完善后，我们意识到任何的讨论都不能得到最佳的结论。而最好的方式是基于开发人员的反馈和真实的项目使用情况再做出最后的决定。考虑到 Babel 在社区中的角色，我们决定在 pipeline 的插件引入这三种提案。</p>
-<p>因为这三种提案在解析阶段存在些许不同，所以我们需要在 <code>@babel/parser</code> （以前的 <code>babylon</code>）添加此支持，并且需要配置当前使用的提案。因此 pipeline 的插件需要配置 <code>proposal</code> 选项，用于配置 <code>babylon</code> 的解析规则和自身的转换规则。</p>
-<p>我们的时间非常紧，因为我们需要在 <code>babel</code>，<code>@babel/parser</code>、pipeline 的插件中同时引入这个重大的修改。我们还希望当某一提案最终确定后，这个插件可以平滑切换到该提案，并废除这个配置项。</p>
-<p>考虑这两个原则，我们引入了这个新的配置选项并使其必填，强迫用户决定在项目中使用哪个建议。一旦其中某一提议被确认，我们就会废除这个选项，并默认切换到这一提案，其他的提案将在下个主版本中移除。</p>
-<h2 id="加入进来"><a href="#加入进来" class="headerlink" title="加入进来"></a>加入进来</h2><p>如果你对此提案感兴趣，关于这个提案的所有讨论都是公开的，你可以在 <a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">这里</a> 找到它们。你也可以找出最近一次委员会会议的 <a href="https://docs.google.com/presentation/d/1eFFRK1wLIazIuK0F6fY974OIDvvWXS890XAMB59PUBA/edit#slide=id.p" target="_blank" rel="noopener">会议纪要</a>。你还可以在 <code>Twitter</code> 上找到 <a href="https://twitter.com/jamesdigioia" target="_blank" rel="noopener">James DiGioia</a>，<a href="https://twitter.com/__jschoi" target="_blank" rel="noopener">J. S. Choi</a>，<a href="https://twitter.com/littledan" target="_blank" rel="noopener">Daniel Ehrenberg</a>。</p>
-<p>最重要的是，一旦这项工作完成，在你的项目中使用 pipeline 操作符！我们也为 <a href="https://babeljs.io/repl/" target="_blank" rel="noopener">在线编辑器</a> 添加了选项，你也可以在那里进行尝试。我们需要真实的反馈，所以我们希望听到你的声音。在 <code>Twitter</code> 上 <a href="https://twitter.com/babeljs" target="_blank" rel="noopener">@babeljs</a> 让我们知道。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -834,7 +826,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -961,7 +953,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">83k</span>
+    <span title="站点总字数">86k</span>
   
 
   
@@ -970,7 +962,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:30</span>
+    <span title="站点阅读时长">2:36</span>
   
 </div>
 

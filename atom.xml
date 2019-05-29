@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tarol.github.io/"/>
-  <updated>2019-05-27T15:28:12.740Z</updated>
+  <updated>2019-05-29T14:42:26.073Z</updated>
   <id>https://tarol.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ES的一等公民——函数（二）</title>
+    <link href="https://tarol.github.io/2019/05/28/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://tarol.github.io/2019/05/28/ES的一等公民——函数（二）/</id>
+    <published>2019-05-28T15:39:58.000Z</published>
+    <updated>2019-05-29T14:42:26.073Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;前一篇聊到了闭包和作用域链，最后留下了一段运行结果出人意料的代码。本篇由我娓娓道来，为什么会是这样&lt;/p&gt;
+&lt;h4
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>ES的一等公民——函数（一）</title>
     <link href="https://tarol.github.io/2019/05/27/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://tarol.github.io/2019/05/27/ES的一等公民——函数（一）/</id>
     <published>2019-05-27T15:27:37.000Z</published>
-    <updated>2019-05-27T15:28:12.740Z</updated>
+    <updated>2019-05-29T14:41:49.958Z</updated>
     
     <summary type="html">
     

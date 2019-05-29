@@ -228,7 +228,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
   </li>
 
       
@@ -292,6 +292,266 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/" itemprop="url">
+                  JavaScript中你所不知道的Object（二）-- Function 篇
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-07-25 17:12:33" itemprop="dateCreated datePublished" datetime="2015-07-25T17:12:33+08:00">2015-07-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上一篇（JavaScript 中你所不知道的 Object（一））说到，Object 对象有大量的内部属性，而其中多数和外部属性的操作有关。最后留了个悬念，就是 Boolean、Date、Number、String、Function 等有更多的内部属性，而它们分别是什么呢？</p>
+<p>这些内部属性不能像 Object 的内部属性一样一言以蔽之，因为它们各有各的用处和特点。其中核心的部分自然是最特殊的对象，Function 对象。我们先从简单的开始：</p>
+<ol>
+<li>[[PrimitiveValue]]: 值的类型是基础数据类型。所以所有的包装类比如 Boolean、Number、String 都有此内部属性，其中 Date 也有，用来存储时间戳。</li>
+<li>[[Construct]]: 值的类型是方法。传入参数列表，返回 Object。Function 对象特有，当使用 new func()调用的就是这个内部属性。所以拥有这个属性的方法也可以叫做构造器。注意区分构造器的 prototype 对象下的 constructor 属性。</li>
+<li>[[Call]]: 值的类型是方法。传入参数列表，返回任意数据类型。Function 对象特有，当使用 func()调用的就是这个内部属性。</li>
+<li>[[HasInstance]]: 值的类型是方法。传入任意值，返回 Boolean。检测这个参数的原型链上是否有此函数的 prototype，即检测参数及其原型中是否有对象是此函数作为构造器时创建的。</li>
+<li>[[Scope]]: Function 对象特有，每当函数执行时使用此内部属性新建作用域链加入到新的执行环境中。</li>
+<li>[[FormalParameters]]: 形参列表。Function 对象特有。</li>
+<li>[[Code]]: JS 代码。Function 对象特有。</li>
+<li>[[TargetFunction]]: 如下</li>
+<li>[[BoundThis]]: 如下</li>
+<li>[[BoundArguments]]: 如下</li>
+<li>[[ParameterMap]]: 形参列表。arguments 对象特有。</li>
+</ol>
+<p>以上三个为 Function.prototype.bind 创建的函数特有的内部属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">  arr2 = [<span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = <span class="built_in">Array</span>.prototype.splice.bind(arr1, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">func.apply(arr1, arr2);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p>例子中，func 是通过 bind 创建的函数，其内部属性[[TargetFunction]]对应 Array.prototype.splice，[[BoundThis]]对应 arr1，[[BoundArguments]]对应 1,0 组成的列表。</p>
+<p>上面列出的属性乍看一下好像都能理解，但细思恐极，比如标红的作用域和执行环境，都是很抽象的概念，我们现在就来完整的剖析下这些概念。</p>
+<p>首先引入的概念就是可执行代码。ES 规定三种可执行代码：全局代码、Eval 代码、函数代码。当执行到这三种代码的时候，解释器会创建并进入新的执行环境，当代码运行完毕的时候，解释器会退出并销毁当前执行环境，并回到前一个执行环境。</p>
+<p>到现在为止执行环境还是一个抽象的概念，那执行环境的具体实现是怎样的呢？首先，它有三个要素：词法环境、变量环境、this 绑定。this 绑定我们都比较熟悉，那词法环境和变量环境分别是干什么用的呢？简单而不太严谨的说，词法环境就是作用域链，用来取变量的值；而变量环境暂时理解为当前作用域吧，用来赋变量的值。我们举个栗子吧：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test0</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">//0</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">//0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">//1</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">//1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">//2</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="comment">//1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test0();</span><br><span class="line">test1();</span><br><span class="line">test2();</span><br></pre></td></tr></table></figure>
+<p>这里涉及 4 个执行环境：全局执行环境、test0-2 的执行环境。</p>
+<p>进入 test0 的执行环境以后，要打印出 a，当前的作用域中没有定义这个变量，于是沿着作用域链找，找到了全局执行环境中定义的 a，于是打印出来 0，相信这里没什么问题。</p>
+<p>进入 test1 的执行环境后，这时已经退出了 test0 的执行环境。这时候给 a 赋了一个值，可能就有人立即想到，赋值？ok，变量环境，作用于当前作用域，所以 a 应该是 1，window.a 应该还是 0，但结果却不是这样的。我们把 a = 1 拆开来看，首先是<strong>取 a 这个变量，当前作用域是没有这个变量的</strong>，所以 a 这个变量指向了全局执行环境中的 a，然后才是赋值，1 自然赋给了全局执行环境中的 a。那么怎么让当前作用域中有这个变量呢？<strong>声明</strong>！即 test2 中的 var a = 2，我们同样拆开来看，先是声明了 a，所以在当前作用域中绑定了 a 这个变量，即在变量环境中添加了 a，然后取 a 这个变量，从作用域链中的当前作用域就找到了 a，最后把 2 赋给 a。</p>
+<p>所以我们来规范一下上面的定义：词法环境用于查找变量，可以理解为<strong>作用域链</strong>。变量环境呢，不能再理解为作用域了，它是一个用来存储当前<strong>执行环境和变量之间的绑定信息</strong>的对象。注意这里隐藏了一个关键点：取变量是以作用域为单位查找的，而声明变量是以执行环境为单位存储的。不理解没关系，继续往下走。</p>
+<p>例子中细心的话可能察觉到一丝不对劲：为什么我在全局执行环境中声明的变量可以通过全局对象访问呢，那么我在 test2 中声明的 a 可以通过 test2.a 访问吗？</p>
+<p>当然是不行的。因为作用域分为两类：一种是声明式的，一种是对象式的。function 产生的作用域是声明式的，而全局执行环境对应的作用域是对象式的。对象式作用域中声明的所有变量都可以通过此对象的属性进行访问，而声明式则可以定义不可以被修改的变量，你在严格模式下修改 function 中的 arguments 试试。</p>
+<p>相信看到这里基本已经陷入混乱了。我来整理几个问题：作用域和执行环境到底什么关系？声明式和对象式作用域只对应 function 和全局吗？</p>
+<p>首先，一个执行环境中是可以产生多个作用域的，但都有一个基础作用域。然后其他作用域怎么生成呢？声明式的作用域还有一种方式生成，就是 catch 语句，我们在 catch(e){}的语句中可以通过 e 访问到错误对象，就是生成了一个声明式的作用域，并在这个作用域里添加了变量 e。而对象式的作用域也同样还有一种方式生成，就是 with 语句。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    name: <span class="string">"tarol"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  name = <span class="string">"okal"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> (a) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name); <span class="comment">//tarol</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.name); <span class="comment">//okal</span></span><br><span class="line">  name = <span class="string">"ctarol"</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(name); <span class="comment">//ctarol</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.name); <span class="comment">//okal</span></span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age); <span class="comment">//18</span></span><br></pre></td></tr></table></figure>
+<p>例子中，进入 with 语句后，生成了一个新的<strong>对象式作用域</strong>，并添加到了作用域链的头部，所以在语句中对变量 name 的访问是取 a.name 的值，对变量 name 的赋值也是对 a.name 的赋值。疑难点在 var age = 18 后，age 这个属性没有赋给 a，而是赋给了 window。就像小伙 a 看上了姑娘 age，说好了也订了婚，最后姑娘嫁给了 a 的老大 window（怎么有种曹操和关羽的既视感）。其实原因就在上面，with 语句修改了执行环境的词法环境，所以把访问变量的规则改了，但是没有修改变量环境，所以声明的变量统统都给了全局执行环境中的基础作用域（a：我怎么把这茬给忘了？）。</p>
+<p>另外把 var age = 18 中的 var 去掉，结果还是一样的。因为娶变量的时候，媒婆找啊找，找到最后一个作用域了都没找到，于是就停到那里了，突然看到有个值送上门来，也懒得换地方了，当场就在这个作用域把这个值打扮成了个变量。所以前一个例子中去掉 var a = 0 也不影响 test1()的结果。</p>
+<p><strong>注意！注意！注意！对整个作用域链中未定义的变量赋值，这个变量会绑定到作用域链的尾部，而给这个原型链中未定义的属性赋值，这个属性会绑到原型链的头部即当前的对象中。</strong>一次给两个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">with</span> (a) &#123;</span><br><span class="line">    age = <span class="number">19</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;,</span><br><span class="line">  b;</span><br><span class="line"></span><br><span class="line">b = <span class="built_in">Object</span>.create(a);</span><br><span class="line">b.age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>好了，说了那么多，回到之前的内部属性[[Scope]]。它是在创建函数生成，值是创建时的作用域链；并在执行函数时取用，生成新执行环境中的作用域链。</p>
+<p><strong>注意这个[[Scope]]是创建函数是生成！</strong></p>
+<p><strong>注意这个[[Scope]]是创建函数是生成！</strong></p>
+<p><strong>注意这个[[Scope]]是创建函数是生成！所以无论在哪里执行这个函数作用域链都是一样的。</strong></p>
+<p>给个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    age: <span class="number">18</span></span><br><span class="line">  &#125;,</span><br><span class="line">  age = <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> (a) &#123;</span><br><span class="line">  <span class="keyword">var</span> test0 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">  &#125;</span><br><span class="line">  test0(); <span class="comment">//18</span></span><br><span class="line">  test1(); <span class="comment">//19</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">!(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">  &#125;</span><br><span class="line">  test0(); <span class="comment">//18</span></span><br><span class="line">  test1(); <span class="comment">//19</span></span><br><span class="line">  test2(); <span class="comment">//20</span></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">test0(); <span class="comment">//18</span></span><br><span class="line">test1(); <span class="comment">//19</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，在 with 语句中新建函数，如果此函数的作用域链中想插入 a，要用 test0 的声明方式，而不是 test1。至于为什么？那是变量声明和函数声明的时序问题，在进入执行环境后，会先遍历所有的变量声明和函数声明，会生成函数对象，但不会对变量赋值。这也是为什么 JS 中函数可以先调用后声明，因为你随便写在哪里，一进入执行环境就函数就生成了。而 test1 函数生成的时候还没有 run 到 with 语句，[[Scope]]自然是全局执行环境的基础作用域链。test0 开始只声明个 undefined 的变量，到 with 语句才进行赋值，所以这个函数的[[Scope]]中加入了 a。</p>
+<p>那么，[[Scope]]又是怎么生成作用域的呢，还有之前说到，全局代码和 function 代码都存在基础作用域，甚至是 with 语句，它们的作用域都是怎么生成的呢？</p>
+<p>首先，<strong>作用域都是在开始执行的时候生成的</strong>。</p>
+<p>全局代码和 with 语句生成作用域的过程是类似的，会绑定原型链上所有属性名和属性值作为变量名和变量值到作用域上。</p>
+<p>而 function 代码是先通过[[Scope]]生成新的作用域链，并绑定形参名和实参值作为变量名和变量值到作用域链的顶部即当前的作用域上。另外还有个特殊的变量，即 arguments。arguments 是一个特殊的对象，但不是数组对象，它在原型链上的位置处于倒数第三位，也就是原生 Object 对象的位置。那么，要把 arguments 装作用域，拢共分几步？</p>
+<p>四步：</p>
+<ol>
+<li>通过 Object 构建对象，并用实参数组的长度初始化此对象的 length 属性</li>
+<li>遍历实参数组，以 index 为属性名，对应实参为属性值给此对象添加属性</li>
+<li>将形参数组赋给此对象的[[ParameterMap]]（arguments 特有的内部属性），如果不在严格模式下，给此对象添加 callee 和 caller 属性</li>
+<li>绑定 arguments 到作用域，并指向此对象</li>
+</ol>
+<p>写的比较乱，而且为了便于理解，并没有规范化一些概念，比如 Environment Records 变成了作用域，Lexical Environments 变成了作用域链，以后再行整理。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -669,208 +929,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2015/07/21/从Object和Function说说JS的原型链/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tarol 的碎碎念">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/07/21/从Object和Function说说JS的原型链/" itemprop="url">
-                  从 Object 和 Function 说说JS的原型链
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-07-21 16:45:03" itemprop="dateCreated datePublished" datetime="2015-07-21T16:45:03+08:00">2015-07-21</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/07/21/从Object和Function说说JS的原型链/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2015/07/21/从Object和Function说说JS的原型链/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">3 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ECMAScript 规定了两个特殊的内置对象：Object 和 Function。他们的特殊性在于，他们本身既是对象又是函数，而他们同时也是对象和函数的构造器。这种自己生自己的逻辑显然违反人性，如果还停留在类的继承的思想上，那么更加无法理解。</p>
-<p>然而 ECMAScript 是基于原型链的，所以忘掉类的继承，从原型链入手：原型链是对象的集合，每个对象都有内部属性 [[Prototype]]（注 1）指向另一个对象；当访问对象某一属性的时候，如果此属性不为此对象的自身属性（注 2），则继续去 [[Prototype]] 指向的对象上查找此属性。[[Prototype]] 形成的对象的链式集合即原型链。这里可以得出：<strong>原型链上的所有元素都是对象</strong>。</p>
-<p>ECMASciprt 规定：原型链必须是有限长度（注 3），而且终点必须是 null。现在终点是唯一的，那么原型链上倒数第二个元素是不是唯一的呢？ECMAScript 没有规定，但从实现上来看，是唯一的。因为原型链上所有的元素都是对象，所以倒数第二个元素应该是所有对象的基础对象。这个对象在实现中只给出一个引用，就是 Object.prototype。这里可以得出：<strong>原型链上有两个元素是固定的，终点是 null，倒数第二的元素是 Object.prototype 指向的对象（注 4）</strong>。</p>
-<p>那么倒数第三个元素是不是固定的呢？不是。从倒数第二个元素是 Object.prototype 来看，通过{}字面量和 new Object()创建的对象都在倒数第三这个位置，即 POJO 都在倒数第三。另外还有两个特例，一个是除内置函数之外的内置对象，如 Math、JSON；一个是除 Object 之外的内置函数的 prototype 属性指向的对象，如 Function.prototype。这里可以得出：<strong>原型链上倒数第三的元素一般是 POJO+Math/JSON+(Function/Array/String/Boolean/Number/Date/RegExp/Error).prototype</strong>。</p>
-<p>倒数第三的位置出现了这么多的 prototype，那么倒数第四的位置就好推测了，所有除 Object 之外的内置函数作为构造器调用（注 5）时生成的实例对象都在倒数第四。其中需要注意的是，所有的内置函数本身是 Function 作为构造器调用生成的实例对象，所以都在这个位置。这里可以得出：<strong>原型链上倒数第四的元素一般是(Function/Array/String/Boolean/Number/Date/RegExp/Error)实例，其中包括（Object/Function/Array/String/Boolean/Number/Date/RegExp/Error），注意这个括号里面 Object 回来了</strong>。</p>
-<p>原型链基本结构如下图：</p>
-<p><img src="/assets/image/proto/1.png" alt="1"></p>
-<p>从图上看来：</p>
-<ol>
-<li>array 等非 POJO 对象在原型链上和他们的构造器属于同一级别</li>
-<li>POJO 在原型链上比他的构造器还靠后一个级别</li>
-</ol>
-<p>参考文档：<a href="https://www.w3.org/html/ig/zh/wiki/ES5" target="_blank" rel="noopener">ES5</a></p>
-<p>注：</p>
-<ol>
-<li>内部属性是不开放给 JS 访问的属性，但现代浏览器已经可以通过<strong>proto</strong>属性访问和设置[[Prototype]]</li>
-<li>own property，即直接设置在此对象上的属性</li>
-<li>执行以下代码感受下：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line">a.__proto__ = a;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>Object.prototype 和基础对象的关系好比快捷方式和应用程序，本身没有任何关系，现在可以指向基础对象，以后也可以指向其他对象。当然原则上是不允许的，基础对象没有引用内存会被回收，所以 ECMAScript 规定 Object 下的 prototype 属性的 writable 和 configuration 特性都是 false（特性的问题以后另起一篇）</li>
-<li>假设 func 为一个函数，func()即作为函数调用（调用内部函数属性[[Call]]），new func()即作为构造器调用（调用内部函数属性[[Construct]]）</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -915,7 +978,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1042,7 +1105,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">83k</span>
+    <span title="站点总字数">86k</span>
   
 
   
@@ -1051,7 +1114,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:30</span>
+    <span title="站点阅读时长">2:36</span>
   
 </div>
 

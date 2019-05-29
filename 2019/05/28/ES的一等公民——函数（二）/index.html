@@ -108,14 +108,20 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tarol 的碎碎念">
-<meta property="og:url" content="https://tarol.github.io/categories/翻译/前端/index.html">
+  <meta name="description" content="前言前一篇聊到了闭包和作用域链，最后留下了一段运行结果出人意料的代码。本篇由我娓娓道来，为什么会是这样 标准流程函数/方法调用的语法一般是这样，[obj.]method(…args)，涉及 3 个对象：调用者 obj、函数 method、参数列表 args 当解释器解释这种语法时，执行以下步骤：  如果是严格模式，绑定 this 为 obj 如果是非严格模式 当 obj 为 null 或 unde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES的一等公民——函数（二）">
+<meta property="og:url" content="https://tarol.github.io/2019/05/28/ES的一等公民——函数（二）/index.html">
 <meta property="og:site_name" content="tarol 的碎碎念">
+<meta property="og:description" content="前言前一篇聊到了闭包和作用域链，最后留下了一段运行结果出人意料的代码。本篇由我娓娓道来，为什么会是这样 标准流程函数/方法调用的语法一般是这样，[obj.]method(…args)，涉及 3 个对象：调用者 obj、函数 method、参数列表 args 当解释器解释这种语法时，执行以下步骤：  如果是严格模式，绑定 this 为 obj 如果是非严格模式 当 obj 为 null 或 unde">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-29T14:42:26.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tarol 的碎碎念">
+<meta name="twitter:title" content="ES的一等公民——函数（二）">
+<meta name="twitter:description" content="前言前一篇聊到了闭包和作用域链，最后留下了一段运行结果出人意料的代码。本篇由我娓娓道来，为什么会是这样 标准流程函数/方法调用的语法一般是这样，[obj.]method(…args)，涉及 3 个对象：调用者 obj、函数 method、参数列表 args 当解释器解释这种语法时，执行以下步骤：  如果是严格模式，绑定 this 为 obj 如果是非严格模式 当 obj 为 null 或 unde">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
@@ -123,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="https://tarol.github.io/categories/翻译/前端/">
+  <link rel="canonical" href="https://tarol.github.io/2019/05/28/ES的一等公民——函数（二）/">
 
 
 
@@ -133,7 +139,7 @@
   };
 </script>
 
-  <title>分类: 前端 | tarol 的碎碎念</title>
+  <title>ES的一等公民——函数（二） | tarol 的碎碎念</title>
   
 
 
@@ -180,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -287,126 +293,284 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>前端<small>分类</small>
-        </h2>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2019/05/28/ES的一等公民——函数（二）/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/01/管道提案怎么了？/" itemprop="url">
-              
-                <span itemprop="name">管道（|>）提案怎么了？</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">ES的一等公民——函数（二）
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-01T20:56:02+08:00" content="2018-11-01">
-          11-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-28 23:39:58" itemprop="dateCreated datePublished" datetime="2019-05-28T23:39:58+08:00">2019-05-28</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/28/ES的一等公民——函数（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/05/28/ES的一等公民——函数（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/28/私有成员语法FAQ/" itemprop="url">
-              
-                <span itemprop="name">私有成员语法 FAQ</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-28T20:58:12+08:00" content="2018-10-28">
-          10-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/22/TC39 标准追踪：babel 中的 decorators/" itemprop="url">
-              
-                <span itemprop="name">TC39 标准追踪：babel 中的 decorators</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-09-22T20:10:42+08:00" content="2018-09-22">
-          09-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <!--false-->
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前一篇聊到了闭包和作用域链，最后留下了一段运行结果出人意料的代码。本篇由我娓娓道来，为什么会是这样</p>
+<h4 id="标准流程"><a href="#标准流程" class="headerlink" title="标准流程"></a>标准流程</h4><p>函数/方法调用的语法一般是这样，[obj.]method(…args)，涉及 3 个对象：调用者 obj、函数 method、参数列表 args</p>
+<p>当解释器解释这种语法时，执行以下步骤：</p>
+<ol>
+<li>如果是严格模式，绑定 this 为 <code>obj</code></li>
+<li>如果是非严格模式<ol>
+<li>当 <code>obj</code> 为 null 或 undefined 时，绑定 this 为全局对象（如例 1）</li>
+<li>当 <code>obj</code> 为基础数据类型时，绑定 this 为其包装类对象（如例 2）</li>
+<li>其他情况绑定 this 为 <code>obj</code></li>
+</ol>
+</li>
+<li>创建运行环境（可以理解为作用域） <code>env</code><ol>
+<li>将 <code>词法环境</code> 设置为 <code>env</code></li>
+<li>将 <code>变量环境</code> 设置为 <code>env</code></li>
+</ol>
+</li>
+<li>载入函数体 <code>code</code>，作为内部属性 [[Code]]</li>
+<li>通过 <code>code</code> 和 <code>args</code> 进行变量绑定</li>
+<li>通过 <code>this</code> 和 <code>args</code> 调用函数的内部属性 [[Call]]</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;).call(<span class="literal">null</span>)  <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.log = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>) &#125;</span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line">a.log() <span class="comment">// Number &#123;1&#125;</span></span><br></pre></td></tr></table></figure>
+<p>以上，第 1、2 条比较好理解，3、4、5有点不知所云，暂且略过，最重要的是第 6 点</p>
+<p>就像上一篇提到的内部属性 [[Scope]]，[[Call]] 是函数另一个很重要的内部属性</p>
+<p>普通函数的 [[Call]] 的逻辑很简单，进入新的执行环境，解释上述第 4 点生成的 [[Code]] 并跳出执行环境，根据解释结果 result 选择接下来的行为：</p>
+<ol>
+<li>如果 <code>result.type</code> 是 <code>throw</code>，抛出 <code>result.value</code></li>
+<li>如果 <code>result.type</code> 是 <code>return</code>，返回 <code>result.value</code></li>
+<li>否则 <code>result.type</code> 必定是 <code>normal</code>，返回 <code>undefined</code></li>
+</ol>
+<p>以上是最常见的函数执行过程，平时我们调用自定义的函数遵循的就是这个流程，现在我们进入稍微复杂一点的区域：apply &amp; call。鉴于 apply 和 call 的解释器算法差不多，而 call 更为简化，以下的分析都是基于 call 的</p>
+<h4 id="apply-amp-call"><a href="#apply-amp-call" class="headerlink" title="apply &amp; call"></a>apply &amp; call</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = &#123;</span><br><span class="line">  name: <span class="string">'tarol'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`hello <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">hello.call(p)</span><br></pre></td></tr></table></figure>
+<p>以上是最常见的 call 用例。从语法上来说，被调用的函数不是 <code>hello</code> 而是 <code>hello.call</code>，也就是上面的标准流程适用于 <code>hello.call</code>，而非 <code>hello</code>。</p>
+<p>按照标准流程，现在解释器来到了 <code>hello.call</code> 的 [[Code]]，之后 [[Code]] 做了以下这些事情，让控制权由 <code>hello.call</code> 成功转移到了 <code>hello</code>：</p>
+<ol>
+<li>类型检查</li>
+<li>由第二个参数得到 <code>args</code></li>
+<li>由第一个参数得到 <code>this</code></li>
+<li>通过 <code>this</code> 和 <code>args</code> 调用 <code>hello</code> 的内部属性 [[Call]]</li>
+</ol>
+<p>由此可见，<code>call</code> 的语义还是比较简单的，只是由调用 <code>hello</code> 转变为通过 <code>call</code> 调用 <code>hello</code>，这个行为在 <code>call</code> 的 [[Code]] 层面进行了定义，<code>call</code> 本身可以理解为一个普通函数的内置版（由浏览器定义）</p>
+<p>现在我们来到大 Boss —— bind 的面前</p>
+<h4 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  name : <span class="string">'tarol'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test.bind(a)();</span><br></pre></td></tr></table></figure>
+<p>经过了 <code>call</code> 部分的科普，我们发现 <code>bind</code> 突然变得陌生起来，不再和 <code>call</code> 类似了。因为 <code>call</code> 的语义是：通过 <code>call</code> 的调用完成控制的转移。而 <code>bind</code> 是返回一个新的函数 <code>fn</code>，最终调用的也是这个 <code>fn</code></p>
+<p>按照前面所述，函数的调用应该统一遵循标准流程。那么调用 <code>fn</code> ，进行到第 6 步时，传入 [[Call]] 的 <code>this</code> 应该是 undefined 或者 global，不可能会是 a。但最后的结果却恰恰是 a，所以猫腻肯定藏在之后的某个地方，<code>call</code> 的猫腻藏在 [[Code]] 里面，而 <code>bind</code> 的猫腻则藏在 [[Call]] 里面</p>
+<p>上面提到的 [[Call]] 的运行逻辑是普通函数的运行逻辑，而 <code>bind</code> 返回的函数不是普通函数，是 <strong>bound function</strong></p>
+<p>假设普通函数 <code>fn</code>，<code>fn.bind(obj, ...args)</code> 返回的 bound function 为 <code>bfn</code>，<code>bfn</code> 和 <code>fn</code> 存在以下不同：</p>
+<ol>
+<li><code>bfn</code> 多出的内部属性<ol>
+<li>[[TargetFunction]]：指向了 <code>fn</code></li>
+<li>[[BoundThis]]：指向了 <code>obj</code></li>
+<li>[[BoundArgs]]：指向了 <code>args</code></li>
+</ol>
+</li>
+<li><code>bfn(extraArgs)</code> 的 [[Call]] 算法不同<ol>
+<li>将 <code>bfn</code> 的 <code>[[BoundArgs]]</code> 和 <code>extraArgs</code> 结合形成新的 args</li>
+<li>通过 <code>bfn</code> 的 <code>[[BoundThis]]</code> 和 <code>args</code> 调用 <code>bfn</code> 的 [[TargetFunction]] 的 [[Call]]</li>
+</ol>
+</li>
+</ol>
+<p>这样讲有些抽象，我们结合上一篇最后的例子 <code>test.bind(a).bind(b)()</code>，为什么最后 <code>test</code> 绑定的 this 是 a？</p>
+<p>这个调用链涉及 3 个函数：普通函数 test，test.bind(a) =&gt; boundA，test.bind(a).bind(b) =&gt; boundB。其中 bound function 的内部属性是这样的（我们省略掉所有的参数）</p>
+<ol>
+<li>boundA<ol>
+<li>[[TargetFunction]]：test</li>
+<li>[[BoundThis]]：a</li>
+</ol>
+</li>
+<li>boundB<ol>
+<li>[[TargetFunction]]：boundA</li>
+<li>[[BoundThis]]：b</li>
+</ol>
+</li>
+</ol>
+<p>我们知道，最后被调用的是 <code>boundB</code>，即按照函数调用的标准流程执行到了 <code>boundB</code> 的 [[Call]]。遵循以上 bound function 的 [[Call]] 算法，通过 <code>boundB</code> 的 [[BoundThis]] 即 <code>b</code> 调用 <code>boundB</code> 的 [[TargetFunction]] 即 <code>boundA</code> 的 [[Call]]，现在控制权到了 <code>boundA</code>，由于它也是 bound function，所以继续遵循以上算法，通过 <code>boundA</code> 的 [[BoundThis]] 即 <code>a</code> 调用 <code>boundA</code> 的 [[TargetFunction]] 即 <code>test</code>。理所应当的，test 调用时的 this 绑定就是 a 而不是 b 了</p>
+<p>以上内容解释了上一篇最终留下的问题，本篇的结尾处同样也会留下一个问题</p>
+<p>随着 ES6 的发布，函数的特性再一次被扩展，最典型的就是不能被 new 的箭头函数，和不能被直接调用的类函数了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arrow = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</span><br><span class="line"><span class="keyword">new</span> arrow()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">klass</span> </span>&#123;&#125;</span><br><span class="line">klass()</span><br></pre></td></tr></table></figure>
+<p>以上两个例子都会报错，而 ES5 中的自定义函数从来不会出现类似的问题，那么 ES6 中又给函数带来了哪些隐藏的特性？下一篇会给出答案</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/ES的一等公民——函数（一）/" rel="next" title="ES的一等公民——函数（一）">
+                <i class="fa fa-chevron-left"></i> ES的一等公民——函数（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -427,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -544,6 +717,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准流程"><span class="nav-number">1.1.</span> <span class="nav-text">标准流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-amp-call"><span class="nav-number">1.2.</span> <span class="nav-text">apply &amp; call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bind"><span class="nav-number">1.3.</span> <span class="nav-text">bind</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -695,6 +884,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1092,7 +1285,7 @@
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 

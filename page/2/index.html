@@ -228,7 +228,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
   </li>
 
       
@@ -292,6 +292,267 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2018/11/01/管道提案怎么了？/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="C tarol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tarol 的碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/01/管道提案怎么了？/" itemprop="url">
+                  管道（|>）提案怎么了？
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-01 20:56:02" itemprop="dateCreated datePublished" datetime="2018-11-01T20:56:02+08:00">2018-11-01</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/01/管道提案怎么了？/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/01/管道提案怎么了？/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在发布的 <a href="https://github.com/babel/babel/releases/tag/v7.0.0-beta.52" target="_blank" rel="noopener">babel@7.0.0-beta52</a> 中，我们为 <code>@babel/plugin-proposal-pipeline-operator</code> 引入了一个必填的配置项，这是管道操作的一个重大的改动。为了不给大家带来困惑，我们一起来了解一下管道提案以及我们为什么引入该配置项。</p>
+<h2 id="当前的情况"><a href="#当前的情况" class="headerlink" title="当前的情况"></a>当前的情况</h2><p>管道操作符最早是由 <a href="https://github.com/gilbert" target="_blank" rel="noopener">Gilbert Garza</a> <a href="https://github.com/babel/babel/pull/3159" target="_blank" rel="noopener">引入</a>的，为了实现“使用可读的、有效的方式简化函数的链式调用”提供了简洁的语法。管道操作符在很多语言里能找到根源，比如 <code>F#</code>，<code>Hack</code>，<code>Elm</code>，<code>Elixir</code> 等等，但 JS 的语法中还存在两点争议：</p>
+<ul>
+<li>是否以及如何引入占位符</li>
+<li>管道中如何处理 async / await</li>
+</ul>
+<h3 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h3><p>第一个难点是占位符的问题。这是由 <a href="https://github.com/zenparsing" target="_blank" rel="noopener">Kevin Smith</a> 在这个 <a href="https://github.com/tc39/proposal-pipeline-operator/issues/84" target="_blank" rel="noopener">issue</a> 中提出来的，并且他推荐了 <a href="https://docs.hhvm.com/hack/operators/pipe-operator" target="_blank" rel="noopener">Hack-style pipelining</a>。在 <code>Hack</code> 中，占位符必须出现在管道操作符的右边，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">namespace Hack\UserDocumentation\Operators\Pipe\Examples\MapFilterCountPiped;</span><br><span class="line"></span><br><span class="line">function piped_example(array&lt;int&gt; $arr): int &#123;</span><br><span class="line">  return $arr</span><br><span class="line">    |&gt; \array_map($x ==&gt; $x * $x, $$)</span><br><span class="line">    |&gt; \array_filter($$, $x ==&gt; $x % 2 == 0)</span><br><span class="line">    |&gt; \count($$);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(piped_example(range(1, 10)));</span><br></pre></td></tr></table></figure>
+<p>我们以此为基础，代表前一步返回值的占位符可以用于任意表达式中。这让管道更具弹性，功能也更强大。</p>
+<p>缺点是引入新的 token 是一个很复杂的工程。虽然任一 <code>token</code> 都可能存在多个意义这点仍值得商榷，但 <code>#</code> 确实已经被选为当前的方案。<code>#</code> 同时应用在私有成员的提案中，而其他的选项也都存在各自的<a href="https://github.com/tc39/proposal-partial-application/issues/21#issuecomment-361092565" target="_blank" rel="noopener">应用场景</a>。</p>
+<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async / Await"></a>Async / Await</h3><p>早期的管道包含 <code>await</code> 的语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; (<span class="keyword">await</span> f);</span><br></pre></td></tr></table></figure>
+<p>它等同于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> f(x);</span><br></pre></td></tr></table></figure>
+<p>不幸的是，开发者可能也希望它等同于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">await</span> f)(x);</span><br></pre></td></tr></table></figure>
+<p>在管道中处理 <code>async</code> 语句这一想法被完全搁置后，委员会成员对此表达了担忧。虽然可以不借助于显式的语法，使用返回 <code>promise</code> 的函数替代，但这还是太麻烦了。</p>
+<h2 id="当前的解决方案"><a href="#当前的解决方案" class="headerlink" title="当前的解决方案"></a>当前的解决方案</h2><p>基于这些讨论，我们提出来两个基于 <code>minimal</code> 的解决方案：<code>F#</code> 管道和 <code>Smart</code> 管道。接下来让我们看看它们是怎样解决以上的问题的。</p>
+<h3 id="Minimal-Pipelines"><a href="#Minimal-Pipelines" class="headerlink" title="Minimal Pipelines"></a><a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">Minimal Pipelines</a></h3><p>这个提案包含了管道操作符的基本功能。该提案禁止 <code>await</code>，所以不支持 <code>async</code> 语法，并且不支持占位符。它和之前 babel plugin 提供的功能一致，而且它的语义和当前提案仓库中 <code>spec</code> 规定的行为一致。它的功能类似于稻草人，用于对比其他提案的优劣，并在其他提案都存在致命缺陷的情况下作为不得已的选择。</p>
+<blockquote>
+<p>译者按：所谓的 <code>Minimal Pipelines</code> 就是不支持 <code>await</code> (因为会引发歧义)，没有占位符。</p>
+</blockquote>
+<h3 id="F-Pipelines"><a href="#F-Pipelines" class="headerlink" title="F# Pipelines"></a><a href="https://github.com/valtech-nyc/proposal-fsharp-pipelines/" target="_blank" rel="noopener">F# Pipelines</a></h3><p>在占位符的问题上，F# 提案认为它根本不需要。在 <code>minimal</code> 中，箭头函数可以实现此功能，这种实现不需要额外的语法，而且使用的是开发人员早在 ES2015 就已经熟悉的语法。</p>
+<p>如目前所述，箭头函数需要用括号包裹起来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123; <span class="attr">score</span>: <span class="number">25</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newScore =</span><br><span class="line">  person.score |&gt; double |&gt; (<span class="function"><span class="params">_</span> =&gt;</span> add(<span class="number">7</span>, _)) |&gt; (<span class="function"><span class="params">_</span> =&gt;</span> boundScore(<span class="number">0</span>, <span class="number">100</span>, _));</span><br></pre></td></tr></table></figure>
+<p>目前正在探索，是否可以不添加额外的圆括号，因为这是一个重大的语法负担。</p>
+<p>在 <code>async</code> 的问题上，F# 将 <code>await</code> 视为一个一元函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise |&gt; <span class="keyword">await</span></span><br></pre></td></tr></table></figure>
+<p>这等同于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> promise;</span><br></pre></td></tr></table></figure>
+<p>因此 <code>async</code> 可以用于较大的函数链中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">  |&gt; <span class="keyword">await</span></span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> doubleSay(x, <span class="string">', '</span>))</span><br><span class="line">  |&gt; capitalize</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="string">'!'</span>)</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> <span class="keyword">new</span> User.Message(x))</span><br><span class="line">  |&gt; (<span class="function"><span class="params">x</span> =&gt;</span> stream.write(x))</span><br><span class="line">  |&gt; <span class="keyword">await</span></span><br><span class="line">  |&gt; <span class="built_in">console</span>.log;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>译者按：所谓的 <code>F# Pipelines</code> 就是使用箭头函数把多元函数变为一元函数；仅允许 <code>bare await</code> 存在于管道步骤中（即仅允许 <code>p |&gt; await</code> 语法，不允许 <code>p |&gt; await f</code> 语法）。</p>
+</blockquote>
+<h3 id="Smart-Pipelines"><a href="#Smart-Pipelines" class="headerlink" title="Smart Pipelines"></a><a href="https://github.com/js-choi/proposal-smart-pipelines/" target="_blank" rel="noopener">Smart Pipelines</a></h3><p>这个提案引入了占位符，使其可以在管道中编写任意表达式。因此上面的长链可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line">  |&gt; await #</span><br><span class="line">  |&gt; doubleSay(#, ', ')</span><br><span class="line">  |&gt; # || throw new TypeError()</span><br><span class="line">  |&gt; capitalize</span><br><span class="line">  |&gt; # + '!'</span><br><span class="line">  |&gt; new User.Message(#)</span><br><span class="line">  |&gt; await stream.write(#)</span><br><span class="line">  |&gt; <span class="built_in">console</span>.log;</span><br></pre></td></tr></table></figure>
+<p>如果管道中某一步只是个裸标识符，不需要写占位符，这种情况叫做 <a href="https://github.com/js-choi/proposal-smart-pipelines/blob/master/readme.md#bare-style" target="_blank" rel="noopener">bare style</a>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x |&gt; a;</span><br><span class="line">x |&gt; f.b;</span><br></pre></td></tr></table></figure>
+<p>和 Hack 不同，一元函数不需要占位符。</p>
+<p>对于其他的表达式，占位符是必需的，如果缺少会抛出语法错误。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 |&gt; # + 1;</span><br><span class="line">promise |&gt; await #;</span><br></pre></td></tr></table></figure>
+<p>如果存在任意运算符、小括号（包括函数调用）、中括号、或除了标识符和 <code>.</code> 之外的任意内容，占位符都是必需的。这是为了避免自我混淆和消除二义性。</p>
+<p>Smart Pipelines 允许任意表达式存在于管道中，从而也解决了 <code>async</code> 的问题；其实不仅仅是 <code>await</code>，还包括 <code>typeof</code>，<code>yield</code>，和其他任意操作符。</p>
+<blockquote>
+<p>译者按：所谓的 <code>Smart Pipelines</code> 其实就是引入了占位符 <code>#</code>。</p>
+</blockquote>
+<blockquote>
+<p>译者按：<br>汇总一下：<br><code>minimal</code> 是一禁了之，既然有问题，那就不准这样写<br><code>F#</code> 是限制语法，在有限范围内行动，基本满足需求，缺点是开发人员要了解它提出的解决方案的思想<br><code>Smart</code> 是最开放的，也符合开发人员的编码习惯，缺点是引入了新的 <code>token</code></p>
+</blockquote>
+<h2 id="Babel-的抉择"><a href="#Babel-的抉择" class="headerlink" title="Babel 的抉择"></a>Babel 的抉择</h2><p>当三个提案都完善后，我们意识到任何的讨论都不能得到最佳的结论。而最好的方式是基于开发人员的反馈和真实的项目使用情况再做出最后的决定。考虑到 Babel 在社区中的角色，我们决定在 pipeline 的插件引入这三种提案。</p>
+<p>因为这三种提案在解析阶段存在些许不同，所以我们需要在 <code>@babel/parser</code> （以前的 <code>babylon</code>）添加此支持，并且需要配置当前使用的提案。因此 pipeline 的插件需要配置 <code>proposal</code> 选项，用于配置 <code>babylon</code> 的解析规则和自身的转换规则。</p>
+<p>我们的时间非常紧，因为我们需要在 <code>babel</code>，<code>@babel/parser</code>、pipeline 的插件中同时引入这个重大的修改。我们还希望当某一提案最终确定后，这个插件可以平滑切换到该提案，并废除这个配置项。</p>
+<p>考虑这两个原则，我们引入了这个新的配置选项并使其必填，强迫用户决定在项目中使用哪个建议。一旦其中某一提议被确认，我们就会废除这个选项，并默认切换到这一提案，其他的提案将在下个主版本中移除。</p>
+<h2 id="加入进来"><a href="#加入进来" class="headerlink" title="加入进来"></a>加入进来</h2><p>如果你对此提案感兴趣，关于这个提案的所有讨论都是公开的，你可以在 <a href="https://github.com/tc39/proposal-pipeline-operator/" target="_blank" rel="noopener">这里</a> 找到它们。你也可以找出最近一次委员会会议的 <a href="https://docs.google.com/presentation/d/1eFFRK1wLIazIuK0F6fY974OIDvvWXS890XAMB59PUBA/edit#slide=id.p" target="_blank" rel="noopener">会议纪要</a>。你还可以在 <code>Twitter</code> 上找到 <a href="https://twitter.com/jamesdigioia" target="_blank" rel="noopener">James DiGioia</a>，<a href="https://twitter.com/__jschoi" target="_blank" rel="noopener">J. S. Choi</a>，<a href="https://twitter.com/littledan" target="_blank" rel="noopener">Daniel Ehrenberg</a>。</p>
+<p>最重要的是，一旦这项工作完成，在你的项目中使用 pipeline 操作符！我们也为 <a href="https://babeljs.io/repl/" target="_blank" rel="noopener">在线编辑器</a> 添加了选项，你也可以在那里进行尝试。我们需要真实的反馈，所以我们希望听到你的声音。在 <code>Twitter</code> 上 <a href="https://twitter.com/babeljs" target="_blank" rel="noopener">@babeljs</a> 让我们知道。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -647,274 +908,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2018/09/22/TC39 标准追踪：babel 中的 decorators/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tarol 的碎碎念">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/22/TC39 标准追踪：babel 中的 decorators/" itemprop="url">
-                  TC39 标准追踪：babel 中的 decorators
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-09-22 20:10:42" itemprop="dateCreated datePublished" datetime="2018-09-22T20:10:42+08:00">2018-09-22</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/翻译/前端/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/22/TC39 标准追踪：babel 中的 decorators/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/09/22/TC39 标准追踪：babel 中的 decorators/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">4.9k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">9 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="翻译自"><a href="#翻译自" class="headerlink" title="翻译自"></a>翻译自</h2><blockquote>
-<p><a href="https://babeljs.io/blog/2018/09/17/decorators" target="_blank" rel="noopener">TC39 Standards Track Decorators in Babel</a></p>
-</blockquote>
-<p>&emsp;&emsp;Babel 7.1.0 终于支持了新的 decorators 提案：你可以通过使用 <a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener">@babel/plugin-proposal-decorators</a> 进行体验。</p>
-<h2 id="历史的进程"><a href="#历史的进程" class="headerlink" title="历史的进程"></a>历史的进程</h2><p>&emsp;&emsp;decorators 的<a href="https://github.com/wycats/javascript-decorators" target="_blank" rel="noopener">第一个方案</a>是由<a href="https://github.com/wycats" target="_blank" rel="noopener">Yehuda Katz</a>在三年前提出的。TypeScript 也在<a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#typescript-15" target="_blank" rel="noopener">1.5 版本（2015）</a>与 ES6 特性一起发布了 decorators。一些主流的前端框架，比如 angular 和 MobX，也开始用 decorators 加强开发体验：这让 decorators 更加流行，却让社区误以为 decorators 是一个稳定的特性。</p>
-<p>&emsp;&emsp;Babel 在<a href="https://github.com/babel/babel/blob/master/.github/CHANGELOG-v5.md#500" target="_blank" rel="noopener">5.0 版本</a>实现了 decorators。但是在 Babel 6 移除了它，因为它并不稳定。为此 <a href="https://github.com/loganfsmyth" target="_blank" rel="noopener">Logan Smyth</a> 创建了非官方插件 <a href="https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy" target="_blank" rel="noopener">babel-plugin-transform-decorators-legacy</a>，这个插件的实现和 Babel 5 保持一致。直到 <a href="https://github.com/babel/babel/tree/v7.0.0-alpha.1/packages/babel-plugin-transform-decorators" target="_blank" rel="noopener">Babel 7 alpha</a> 发布，这个插件才重新回到 Babel 的官方库中。该插件仍然使用旧提案的语义，因为新的语义还不够明确。</p>
-<p>&emsp;&emsp;从那时候开始，<a href="https://github.com/littledan" target="_blank" rel="noopener">Daniel Ehrenberg</a> 和 <a href="https://github.com/bterlson" target="_blank" rel="noopener">Brian Terlson</a> 开始协助 <a href="https://github.com/wycats" target="_blank" rel="noopener">Yehuda Katz</a> 整理新的 decorators 提案，他们几乎重写了这份提案。但即便如此，仍然无法保证面面俱到，迄今为止的实现方式还是不够兼容。</p>
-<p>&emsp;&emsp;Babel 7.0.0 为 <code>@babel/plugin-proposal-decorators</code> 引入了一个配置项：<code>legacy</code>，但是当时它只存在 <code>true</code> 这一个合法的值。这个突破性的变化用于日后新旧版本的平滑过渡。</p>
-<p>&emsp;&emsp;Babel 7.1.0 提供了对新提案的支持，而且 <code>@babel/plugin-proposal-decorators</code> 默认启用新的实现。</p>
-<p>&emsp;&emsp;新提案同时支持对私有成员和私有方法进行装饰，但这些特性在 Babel 中尚未实现，或许很快就会实现了。</p>
-<h2 id="新提案有哪些变化？"><a href="#新提案有哪些变化？" class="headerlink" title="新提案有哪些变化？"></a>新提案有哪些变化？</h2><p>&emsp;&emsp;虽然新提案看上去和旧提案很像，但几个关键的差别导致了两者的不兼容。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>&emsp;&emsp;旧提案支持任意的左值表达式作为 decorators 的 body（即@后面的内容）。举个例子，这是合法的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  @getDecorators().methods[name]</span><br><span class="line">  foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @decorator</span><br><span class="line">  [bar]() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这个语法有个问题：[…] 符号同时作为 decorators body 中的属性访问符（即 <code>methods[name]</code> 中的 <code>[name]</code> ）和类方法的计算属性名（即 <code>[bar]() {}</code> 中的 <code>[bar]</code> ）。为了防止语义模糊，新提案中只允许 <code>.</code> 作为属性访问符。如果你想实现诸如<code>@getDecorators().methods[name]</code>的功能，需要借助圆括号：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  @(getDecorators().methods[name])</span><br><span class="line">  foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  @decorator</span><br><span class="line">  [bar]() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>译者按：以上的例子我按个人的理解做了调整。而且据我测试，第一个例子中的第二个 decorator 的写法在旧提案中是错误的。因为 [bar] 会作为 decorators body 的 token 而非 class method 的 name。那么 class method 就不存在 name，会报 unexpected token 的语法错误。</p>
-</blockquote>
-<h3 id="对象-decorators"><a href="#对象-decorators" class="headerlink" title="对象 decorators"></a>对象 decorators</h3><p>&emsp;&emsp;旧提案除了支持类 decorators、类成员 decorators，还支持对象 decorators：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObj = &#123;</span><br><span class="line">  @dec1</span><br><span class="line">  foo: <span class="number">3</span>,</span><br><span class="line">  @dec2</span><br><span class="line">  bar() &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;鉴于当前的对象 decorators 语义存在不兼容性，该特性从提案从被移除了。如果你在代码中使用了此特性，请保持关注，因为在后续的 <a href="https://github.com/tc39/proposal-decorators/issues/119" target="_blank" rel="noopener">提案</a> 中可能被再次引入。</p>
-<h3 id="decorators-参数"><a href="#decorators-参数" class="headerlink" title="decorators 参数"></a>decorators 参数</h3><p>&emsp;&emsp;第三个关键的改动是 decorators 的参数列表</p>
-<p>&emsp;&emsp;在旧提案中，类成员 decorators 接收三个参数，target（类的原型）、key（成员名）、property descriptor（属性描述符）—— 类似于 <code>Object.defineProperty</code> 的参数列表。而类 decorators 仅接收 <code>constructor</code> 这一个参数。</p>
-<p>&emsp;&emsp;新提案在这点上要强大的多：成员 decorators 接收一个对象，这个对象包含以下属性，你可以对其进行任意的修改：<code>descriptor</code>(原 descriptor)、<code>key</code>(成员名)、<code>placement</code>(属性的位置，<code>static</code>、<code>prototype</code>、<code>own</code>)、<code>kind</code>(属性的类型，<code>field</code>、<code>method</code>)。</p>
-<p>&emsp;&emsp;类 decorators 同样接收一个对象，通过这个对象可以访问到所有的类成员 decorators 的入参，这个特性确保了在创建类之前还可以对类成员做进一步的修改。</p>
-<blockquote>
-<p>译者按：这部分才是最重大的修改，也是不兼容的核心原因。如果要一一列出比较,应该独立成一篇 blog，所以此处不做赘述。</p>
-</blockquote>
-<h3 id="升级方式"><a href="#升级方式" class="headerlink" title="升级方式"></a>升级方式</h3><p>&emsp;&emsp;由于不兼容，如果项目中采用了新提案，就不能使用旧的 decorators：因为现存的库（MobX， Angular 等）都没有引入新特性，这会导致迁移过程非常慢。鉴于这个问题，我们发布了一个工具包，你可以在你的代码中使用它包装原有的 decorators 作为变通的方案。先运行这个工具包，然后你就可以在 Babel 的 config 中配置新提案了。</p>
-<p>&emsp;&emsp;你可以这样更新你的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install wrap-legacy-decorators -D</span><br><span class="line">npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-export --write</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果你的代码运行在 node 环境，或者你使用 webpack 或者 rollup 打包你的代码，你可以引入外部依赖而不是在每个文件中都注入工具包提供的包装函数。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install decorators-compat</span><br><span class="line">npx wrap-legacy-decorators src/file-with-decorators.js --decorators-before-export --external-helpers --write</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;更多的信息，你可以参考这个<a href="https://github.com/nicolo-ribaudo/legacy-decorators-migration-utility" target="_blank" rel="noopener">文档</a>。</p>
-<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><p>&emsp;&emsp;新提案并非是面面俱到的：decorators 是个非常大的特性，要完整的定义它非常的复杂。</p>
-<h3 id="Exported-Classes-的-decorators-应该放在哪里？"><a href="#Exported-Classes-的-decorators-应该放在哪里？" class="headerlink" title="Exported Classes 的 decorators 应该放在哪里？"></a>Exported Classes 的 decorators 应该放在哪里？</h3><blockquote>
-<p><a href="https://github.com/tc39/proposal-decorators/issues/69" target="_blank" rel="noopener">tc39/proposal-decorators#69</a></p>
-</blockquote>
-<p>&emsp;&emsp;decorators 提案在这个问题上反复摇摆：decorators 应该放在关键字 <code>export</code> 的前面还是后面？</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> @decorator <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line">@decorator</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里潜在的一个问题是：<code>export</code> 关键字是类的一部分还是一个“包装器”。第一个例子中，因为 decorators 必须放在声明的开头，所以它应该放在 decorators 后面；第二个例子中，因为 decorators 是声明的一部分，所以它应该放在 decorators 前面。</p>
-<h3 id="对于私有成员，decorators-应该采用怎样的安全策略？"><a href="#对于私有成员，decorators-应该采用怎样的安全策略？" class="headerlink" title="对于私有成员，decorators 应该采用怎样的安全策略？"></a>对于私有成员，decorators 应该采用怎样的安全策略？</h3><p>&emsp;&emsp;decorators 引发了一个重要的安全问题：如果私有成员可以被装饰，那么成员名会泄露。这里需要考虑不同的安全等级：</p>
-<ol>
-<li>decorators 不能泄露私有成员名，不然恶意代码可以从 decorators 中窃取此信息</li>
-<li>私有成员的 decorators 是可信的，类 decorators 是不可信的？</li>
-<li><a href="https://github.com/tc39/proposal-private-fields/issues/33" target="_blank" rel="noopener">硬隐私</a> 意味着私有成员只能在类内部访问：那么 decorators 应该访问私有成员名吗？还是只能装饰公有成员？</li>
-</ol>
-<p>&emsp;&emsp;这些问题在解决前需要进一步讨论，这也是 Babel 的意义所在。</p>
-<h2 id="Babel-充当的角色"><a href="#Babel-充当的角色" class="headerlink" title="Babel 充当的角色"></a>Babel 充当的角色</h2><p>&emsp;&emsp;随着 Babel 7 的发布，我们开始利用我们在 JS 生态中的地位，通过让开发人员对于不同版本的提案进行体验和给予反馈以帮助提案作者进行决策。</p>
-<p>&emsp;&emsp;出于这个原因，更新 <code>@babel/plugin-proposal-decorators</code> 之后，我们引入了新的选项：<code>decoratorsBeforeExport</code>。通过这个选项，你可以尝试切换 <code>export @decorator class C {}</code> 和 <code>@decorator export default class</code> 这两种不同的语法。</p>
-<p>&emsp;&emsp;我们还将引入另一个选项来自定义隐私策略。这些选项是必填项，直到 TC39 做出最终的决定，而这个决定将成为默认项。</p>
-<p>&emsp;&emsp;如果你是直接使用我们的解析器（<code>@babel/parser</code>，以前的 <code>babylon</code>），你也可以在版本 <code>7.0.0</code> 中使用 <code>decoratorsBeforeExport</code> 这个选项。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ast = babylon.parse(code, &#123;</span><br><span class="line">  plugins: [[<span class="string">"decorators"</span>, &#123; <span class="attr">decoratorsBeforeExport</span>: <span class="literal">true</span> &#125;]]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @babel/plugin-proposal-decorators -D</span><br></pre></td></tr></table></figure>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"plugins"</span>: [</span><br><span class="line">    <span class="string">"@babel/plugin-proposal-decorators"</span>,</span><br><span class="line">    &#123; <span class="attr">"decoratorsBeforeExport"</span>: <span class="literal">true</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;查看 <a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener">@babel/plugin-proposal-decorators</a> 了解更多的选项。</p>
-<h2 id="你的角色"><a href="#你的角色" class="headerlink" title="你的角色"></a>你的角色</h2><p>&emsp;&emsp;作为一个 JS 开发人员，你可以和我们一起勾勒这个语言的未来。你可以尝试 decorators 提供的各种各样的语义，并给予提案作者一定的反馈。我们需要知道它用于真实项目的情况！你也可以通过阅读 <a href="https://github.com/tc39/proposal-decorators" target="_blank" rel="noopener">提案仓库</a> 中的讨论和会议纪要了解为何这样设计。</p>
-<p>&emsp;&emsp;如果你现在就想体验 decorators，你可以在我们的 <a href="https://babeljs.io/repl/build/master" target="_blank" rel="noopener">线上解释器</a> 通过设置不同的 presets 选项体验它。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -959,7 +957,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1086,7 +1084,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">83k</span>
+    <span title="站点总字数">86k</span>
   
 
   
@@ -1095,7 +1093,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:30</span>
+    <span title="站点阅读时长">2:36</span>
   
 </div>
 
