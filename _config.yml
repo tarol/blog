@@ -86,10 +86,10 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: https://github.com/tarol/tarol.github.io
+    repo: https://github.com/tarol/blog
     branch: gh-pages
   # - type: git
-  #   repo: https://github.com/tarol/tarol.github.io
+  #   repo: https://github.com/tarol/blog
   #   branch: master
   #   extend_dirs: /
   #   ignore_hidden: false
