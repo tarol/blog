@@ -3,11 +3,11 @@
   <title>tarol 的碎碎念</title>
   
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="https://tarol.github.io/"/>
-  <updated>2019-05-29T14:42:26.073Z</updated>
-  <id>https://tarol.github.io/</id>
+  <link href="https://tarol.github.io/blog/"/>
+  <updated>2021-12-21T10:22:44.917Z</updated>
+  <id>https://tarol.github.io/blog/</id>
   
   <author>
     <name>C tarol</name>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ES的一等公民——函数（三）</title>
+    <link href="https://tarol.github.io/blog/2019/05/29/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://tarol.github.io/blog/2019/05/29/ES的一等公民——函数（三）/</id>
+    <published>2019-05-29T15:00:26.000Z</published>
+    <updated>2021-12-21T10:22:44.917Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>ES的一等公民——函数（二）</title>
-    <link href="https://tarol.github.io/2019/05/28/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://tarol.github.io/2019/05/28/ES的一等公民——函数（二）/</id>
+    <link href="https://tarol.github.io/blog/2019/05/28/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://tarol.github.io/blog/2019/05/28/ES的一等公民——函数（二）/</id>
     <published>2019-05-28T15:39:58.000Z</published>
-    <updated>2019-05-29T14:42:26.073Z</updated>
+    <updated>2021-12-21T10:22:44.918Z</updated>
     
     <summary type="html">
     
@@ -41,10 +63,10 @@
   
   <entry>
     <title>ES的一等公民——函数（一）</title>
-    <link href="https://tarol.github.io/2019/05/27/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://tarol.github.io/2019/05/27/ES的一等公民——函数（一）/</id>
+    <link href="https://tarol.github.io/blog/2019/05/27/ES%E7%9A%84%E4%B8%80%E7%AD%89%E5%85%AC%E6%B0%91%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://tarol.github.io/blog/2019/05/27/ES的一等公民——函数（一）/</id>
     <published>2019-05-27T15:27:37.000Z</published>
-    <updated>2019-05-29T14:41:49.958Z</updated>
+    <updated>2021-12-21T10:22:44.916Z</updated>
     
     <summary type="html">
     
@@ -58,25 +80,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
   </entry>
   
   <entry>
     <title>管道（|&gt;）提案怎么了？</title>
-    <link href="https://tarol.github.io/2018/11/01/%E7%AE%A1%E9%81%93%E6%8F%90%E6%A1%88%E6%80%8E%E4%B9%88%E4%BA%86%EF%BC%9F/"/>
-    <id>https://tarol.github.io/2018/11/01/管道提案怎么了？/</id>
+    <link href="https://tarol.github.io/blog/2018/11/01/%E7%AE%A1%E9%81%93%E6%8F%90%E6%A1%88%E6%80%8E%E4%B9%88%E4%BA%86%EF%BC%9F/"/>
+    <id>https://tarol.github.io/blog/2018/11/01/管道提案怎么了？/</id>
     <published>2018-11-01T12:56:02.000Z</published>
-    <updated>2019-03-23T07:09:33.848Z</updated>
+    <updated>2021-12-21T10:22:44.926Z</updated>
     
     <summary type="html">
     
@@ -90,25 +112,25 @@
     
     </summary>
     
-      <category term="翻译" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
-      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://tarol.github.io/blog/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>私有成员语法 FAQ</title>
-    <link href="https://tarol.github.io/2018/10/28/%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E8%AF%AD%E6%B3%95FAQ/"/>
-    <id>https://tarol.github.io/2018/10/28/私有成员语法FAQ/</id>
+    <link href="https://tarol.github.io/blog/2018/10/28/%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E8%AF%AD%E6%B3%95FAQ/"/>
+    <id>https://tarol.github.io/blog/2018/10/28/私有成员语法FAQ/</id>
     <published>2018-10-28T12:58:12.000Z</published>
-    <updated>2018-10-30T14:38:55.129Z</updated>
+    <updated>2021-12-21T10:22:44.925Z</updated>
     
     <summary type="html">
     
@@ -123,25 +145,25 @@
     
     </summary>
     
-      <category term="翻译" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
-      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://tarol.github.io/blog/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>TC39 标准追踪：babel 中的 decorators</title>
-    <link href="https://tarol.github.io/2018/09/22/TC39%20%E6%A0%87%E5%87%86%E8%BF%BD%E8%B8%AA%EF%BC%9Ababel%20%E4%B8%AD%E7%9A%84%20decorators/"/>
-    <id>https://tarol.github.io/2018/09/22/TC39 标准追踪：babel 中的 decorators/</id>
+    <link href="https://tarol.github.io/blog/2018/09/22/TC39%20%E6%A0%87%E5%87%86%E8%BF%BD%E8%B8%AA%EF%BC%9Ababel%20%E4%B8%AD%E7%9A%84%20decorators/"/>
+    <id>https://tarol.github.io/blog/2018/09/22/TC39 标准追踪：babel 中的 decorators/</id>
     <published>2018-09-22T12:10:42.000Z</published>
-    <updated>2018-10-29T13:30:11.844Z</updated>
+    <updated>2021-12-21T10:22:44.921Z</updated>
     
     <summary type="html">
     
@@ -156,25 +178,25 @@
     
     </summary>
     
-      <category term="翻译" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E7%BF%BB%E8%AF%91/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
-      <category term="翻译" scheme="https://tarol.github.io/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://tarol.github.io/blog/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>聊一聊promise的前世今生</title>
-    <link href="https://tarol.github.io/2018/05/22/%E8%81%8A%E4%B8%80%E8%81%8Apromise%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/"/>
-    <id>https://tarol.github.io/2018/05/22/聊一聊promise的前世今生/</id>
+    <link href="https://tarol.github.io/blog/2018/05/22/%E8%81%8A%E4%B8%80%E8%81%8Apromise%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/"/>
+    <id>https://tarol.github.io/blog/2018/05/22/聊一聊promise的前世今生/</id>
     <published>2018-05-22T13:56:55.000Z</published>
-    <updated>2018-10-28T10:02:12.363Z</updated>
+    <updated>2021-12-21T10:22:44.926Z</updated>
     
     <summary type="html">
     
@@ -189,25 +211,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
   </entry>
   
   <entry>
     <title>所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式</title>
-    <link href="https://tarol.github.io/2017/09/15/%E6%89%80%E8%B0%93%E7%BC%96%E7%A0%81--%E6%B3%9B%E8%B0%88ASCII%E3%80%81Unicode%E3%80%81UTF8%E3%80%81UTF16%E3%80%81UCS-2%E7%AD%89%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/"/>
-    <id>https://tarol.github.io/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/</id>
+    <link href="https://tarol.github.io/blog/2017/09/15/%E6%89%80%E8%B0%93%E7%BC%96%E7%A0%81--%E6%B3%9B%E8%B0%88ASCII%E3%80%81Unicode%E3%80%81UTF8%E3%80%81UTF16%E3%80%81UCS-2%E7%AD%89%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/"/>
+    <id>https://tarol.github.io/blog/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/</id>
     <published>2017-09-15T10:18:38.000Z</published>
-    <updated>2018-10-30T14:53:15.420Z</updated>
+    <updated>2021-12-21T10:22:44.924Z</updated>
     
     <summary type="html">
     
@@ -221,23 +243,23 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="计算机" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="计算机" scheme="https://tarol.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+      <category term="计算机" scheme="https://tarol.github.io/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
   </entry>
   
   <entry>
     <title>从web图片裁剪出发：了解H5中的canvas</title>
-    <link href="https://tarol.github.io/2016/04/21/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84canvas/"/>
-    <id>https://tarol.github.io/2016/04/21/从web图片裁剪出发：了解H5中的canvas/</id>
+    <link href="https://tarol.github.io/blog/2016/04/21/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84canvas/"/>
+    <id>https://tarol.github.io/blog/2016/04/21/从web图片裁剪出发：了解H5中的canvas/</id>
     <published>2016-04-21T09:42:00.000Z</published>
-    <updated>2018-10-28T10:02:12.327Z</updated>
+    <updated>2021-12-21T10:22:44.923Z</updated>
     
     <summary type="html">
     
@@ -252,25 +274,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="H5" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
+      <category term="H5" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="H5" scheme="https://tarol.github.io/tags/H5/"/>
+      <category term="H5" scheme="https://tarol.github.io/blog/tags/H5/"/>
     
   </entry>
   
   <entry>
     <title>从web图片裁剪出发：了解H5中的Blob</title>
-    <link href="https://tarol.github.io/2016/04/15/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84Blob/"/>
-    <id>https://tarol.github.io/2016/04/15/从web图片裁剪出发：了解H5中的Blob/</id>
+    <link href="https://tarol.github.io/blog/2016/04/15/%E4%BB%8Eweb%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA%E5%87%BA%E5%8F%91%EF%BC%9A%E4%BA%86%E8%A7%A3H5%E4%B8%AD%E7%9A%84Blob/"/>
+    <id>https://tarol.github.io/blog/2016/04/15/从web图片裁剪出发：了解H5中的Blob/</id>
     <published>2016-04-15T08:11:00.000Z</published>
-    <updated>2018-10-28T10:02:12.328Z</updated>
+    <updated>2021-12-21T10:22:44.922Z</updated>
     
     <summary type="html">
     
@@ -284,25 +306,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="H5" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
+      <category term="H5" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="H5" scheme="https://tarol.github.io/tags/H5/"/>
+      <category term="H5" scheme="https://tarol.github.io/blog/tags/H5/"/>
     
   </entry>
   
   <entry>
     <title>玩一把JS的链式调用</title>
-    <link href="https://tarol.github.io/2016/03/30/%E7%8E%A9%E4%B8%80%E6%8A%8AJS%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8/"/>
-    <id>https://tarol.github.io/2016/03/30/玩一把JS的链式调用/</id>
+    <link href="https://tarol.github.io/blog/2016/03/30/%E7%8E%A9%E4%B8%80%E6%8A%8AJS%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8/"/>
+    <id>https://tarol.github.io/blog/2016/03/30/玩一把JS的链式调用/</id>
     <published>2016-03-30T08:00:31.000Z</published>
-    <updated>2018-10-31T14:06:50.286Z</updated>
+    <updated>2021-12-21T10:22:44.924Z</updated>
     
     <summary type="html">
     
@@ -316,25 +338,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="JS" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/JS/"/>
+      <category term="JS" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/JS/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="JS" scheme="https://tarol.github.io/tags/JS/"/>
+      <category term="JS" scheme="https://tarol.github.io/blog/tags/JS/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript中你所不知道的Object（二）-- Function 篇</title>
-    <link href="https://tarol.github.io/2015/07/25/JavaScript%E4%B8%AD%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Object%EF%BC%88%E4%BA%8C%EF%BC%89-Function%20%E7%AF%87/"/>
-    <id>https://tarol.github.io/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/</id>
+    <link href="https://tarol.github.io/blog/2015/07/25/JavaScript%E4%B8%AD%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Object%EF%BC%88%E4%BA%8C%EF%BC%89-Function%20%E7%AF%87/"/>
+    <id>https://tarol.github.io/blog/2015/07/25/JavaScript中你所不知道的Object（二）-Function 篇/</id>
     <published>2015-07-25T09:12:33.000Z</published>
-    <updated>2018-11-01T14:40:07.167Z</updated>
+    <updated>2021-12-21T10:22:44.920Z</updated>
     
     <summary type="html">
     
@@ -348,25 +370,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript中你所不知道的Object（一）</title>
-    <link href="https://tarol.github.io/2015/07/23/JavaScript%E4%B8%AD%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Object%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://tarol.github.io/2015/07/23/JavaScript中你所不知道的Object（一）/</id>
+    <link href="https://tarol.github.io/blog/2015/07/23/JavaScript%E4%B8%AD%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84Object%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://tarol.github.io/blog/2015/07/23/JavaScript中你所不知道的Object（一）/</id>
     <published>2015-07-23T08:27:02.000Z</published>
-    <updated>2018-11-01T14:40:04.368Z</updated>
+    <updated>2021-12-21T10:22:44.919Z</updated>
     
     <summary type="html">
     
@@ -384,25 +406,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
   </entry>
   
   <entry>
     <title>从 Object 和 Function 说说JS的原型链</title>
-    <link href="https://tarol.github.io/2015/07/21/%E4%BB%8EObject%E5%92%8CFunction%E8%AF%B4%E8%AF%B4JS%E7%9A%84%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    <id>https://tarol.github.io/2015/07/21/从Object和Function说说JS的原型链/</id>
+    <link href="https://tarol.github.io/blog/2015/07/21/%E4%BB%8EObject%E5%92%8CFunction%E8%AF%B4%E8%AF%B4JS%E7%9A%84%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://tarol.github.io/blog/2015/07/21/从Object和Function说说JS的原型链/</id>
     <published>2015-07-21T08:45:03.000Z</published>
-    <updated>2018-11-01T13:30:32.087Z</updated>
+    <updated>2021-12-21T10:22:44.921Z</updated>
     
     <summary type="html">
     
@@ -422,10 +444,10 @@
   
   <entry>
     <title>关于 javascript 原型链的个人理解</title>
-    <link href="https://tarol.github.io/2015/02/09/%E5%85%B3%E4%BA%8Ejavascript%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/"/>
-    <id>https://tarol.github.io/2015/02/09/关于javascript原型链的个人理解/</id>
+    <link href="https://tarol.github.io/blog/2015/02/09/%E5%85%B3%E4%BA%8Ejavascript%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/"/>
+    <id>https://tarol.github.io/blog/2015/02/09/关于javascript原型链的个人理解/</id>
     <published>2015-02-09T08:31:13.000Z</published>
-    <updated>2018-10-31T14:43:01.794Z</updated>
+    <updated>2021-12-21T10:22:44.923Z</updated>
     
     <summary type="html">
     
@@ -440,25 +462,25 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/ES/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="ES" scheme="https://tarol.github.io/tags/ES/"/>
+      <category term="ES" scheme="https://tarol.github.io/blog/tags/ES/"/>
     
   </entry>
   
   <entry>
     <title>JSONP的实现流程</title>
-    <link href="https://tarol.github.io/2015/01/04/JSONP%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B/"/>
-    <id>https://tarol.github.io/2015/01/04/JSONP的实现流程/</id>
+    <link href="https://tarol.github.io/blog/2015/01/04/JSONP%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B/"/>
+    <id>https://tarol.github.io/blog/2015/01/04/JSONP的实现流程/</id>
     <published>2015-01-04T11:26:36.000Z</published>
-    <updated>2018-10-28T10:02:12.336Z</updated>
+    <updated>2021-12-21T10:22:44.918Z</updated>
     
     <summary type="html">
     
@@ -474,16 +496,16 @@
     
     </summary>
     
-      <category term="技术" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="前端" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="H5" scheme="https://tarol.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
+      <category term="H5" scheme="https://tarol.github.io/blog/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/H5/"/>
     
     
-      <category term="文章" scheme="https://tarol.github.io/tags/%E6%96%87%E7%AB%A0/"/>
+      <category term="文章" scheme="https://tarol.github.io/blog/tags/%E6%96%87%E7%AB%A0/"/>
     
-      <category term="H5" scheme="https://tarol.github.io/tags/H5/"/>
+      <category term="H5" scheme="https://tarol.github.io/blog/tags/H5/"/>
     
   </entry>
   

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN,zh-cn,zh-HK,zh-hk,zh-TW,zh-tw,en,default">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -56,21 +56,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+<link href="/blog/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.4.2">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.4.2">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.4.2" color="#222">
 
 
 
@@ -83,7 +83,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Pisces',
     version: '6.4.2',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -112,7 +112,7 @@
 <meta name="keywords" content="文章,计算机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式">
-<meta property="og:url" content="https://tarol.github.io/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/index.html">
+<meta property="og:url" content="https://tarol.github.io/blog/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/index.html">
 <meta property="og:site_name" content="tarol 的碎碎念">
 <meta property="og:description" content="最近在看 nodejs 的源码，看到 stream 的实现里面满地都是 encoding，不由想起以前看过的一篇文章——在前面的随笔里面有提到过——阮一峰老师的《字符编码笔记:ASCII，Unicode 和 UTF-8》。 好的文章有一个好处，你每次看都会有新的收获，它就像一款拼图，你每次看都能收获几块碎片，补齐之前的认识；而好文章与拼图不一样的是，好文章是一块无垠的世界，当你不愿局限于当前的眼界">
 <meta property="og:locale" content="zh-CN">
@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://tarol.github.io/assets/image/charset/6.png">
 <meta property="og:image" content="https://tarol.github.io/assets/image/charset/7.png">
 <meta property="og:image" content="https://tarol.github.io/assets/image/charset/8.png">
-<meta property="og:updated_time" content="2018-10-30T14:53:15.420Z">
+<meta property="og:updated_time" content="2021-12-21T10:22:44.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式">
 <meta name="twitter:description" content="最近在看 nodejs 的源码，看到 stream 的实现里面满地都是 encoding，不由想起以前看过的一篇文章——在前面的随笔里面有提到过——阮一峰老师的《字符编码笔记:ASCII，Unicode 和 UTF-8》。 好的文章有一个好处，你每次看都会有新的收获，它就像一款拼图，你每次看都能收获几块碎片，补齐之前的认识；而好文章与拼图不一样的是，好文章是一块无垠的世界，当你不愿局限于当前的眼界">
@@ -132,12 +132,12 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
+  <link rel="alternate" href="/blog/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
 
 
 
 
-  <link rel="canonical" href="https://tarol.github.io/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/">
+  <link rel="canonical" href="https://tarol.github.io/blog/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/">
 
 
 
@@ -187,7 +187,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -197,13 +197,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">tarol 的碎碎念</span>
         <span class="logo-line-after"><i></i></span>
@@ -232,7 +232,7 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
+    <a href="/blog/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
   </li>
         
@@ -240,8 +240,8 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
+    <a href="/blog/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span></a>
   </li>
 
       
@@ -316,20 +316,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/blog/blog/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="tarol 的碎碎念">
     </span>
 
@@ -381,14 +381,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/技术/计算机/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a></span>
 
                 
                 
@@ -403,8 +403,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/" itemprop="commentCount"></span>
+                <a href="/blog/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/blog/2017/09/15/所谓编码--泛谈ASCII、Unicode、UTF8、UTF16、UCS-2等编码格式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -599,9 +599,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/文章/" rel="tag"># 文章</a>
+            <a href="/blog/tags/文章/" rel="tag"># 文章</a>
           
-            <a href="/tags/计算机/" rel="tag"># 计算机</a>
+            <a href="/blog/tags/计算机/" rel="tag"># 计算机</a>
           
         </div>
       
@@ -614,7 +614,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" rel="next" title="从web图片裁剪出发：了解H5中的canvas">
+              <a href="/blog/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" rel="next" title="从web图片裁剪出发：了解H5中的canvas">
                 <i class="fa fa-chevron-left"></i> 从web图片裁剪出发：了解H5中的canvas
               </a>
             
@@ -624,7 +624,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/22/聊一聊promise的前世今生/" rel="prev" title="聊一聊promise的前世今生">
+              <a href="/blog/2018/05/22/聊一聊promise的前世今生/" rel="prev" title="聊一聊promise的前世今生">
                 聊一聊promise的前世今生 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -677,9 +677,9 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="C tarol">
+              <img class="site-author-image" itemprop="image" src="/blog/images/avatar.jpg" alt="C tarol">
             
               <p class="site-author-name" itemprop="name">C tarol</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -690,9 +690,9 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -805,7 +805,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -819,7 +819,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">87k</span>
   
 
   
@@ -828,7 +828,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:36</span>
+    <span title="站点阅读时长">2:39</span>
   
 </div>
 
@@ -908,49 +908,49 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.4.2"></script>
 
 
 
@@ -1007,7 +1007,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/" + search_path;
+    var path = "/blog/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
@@ -1340,7 +1340,7 @@
   
   
   
-  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
     bookmark.scrollToMark('auto', "#更多");

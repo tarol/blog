@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN,zh-cn,zh-HK,zh-hk,zh-TW,zh-tw,en,default">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -56,21 +56,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+<link href="/blog/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=6.4.2">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=6.4.2">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=6.4.2" color="#222">
 
 
 
@@ -83,7 +83,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/blog/',
     scheme: 'Pisces',
     version: '6.4.2',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -112,7 +112,7 @@
 <meta name="keywords" content="文章,H5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从web图片裁剪出发：了解H5中的Blob">
-<meta property="og:url" content="https://tarol.github.io/2016/04/15/从web图片裁剪出发：了解H5中的Blob/index.html">
+<meta property="og:url" content="https://tarol.github.io/blog/2016/04/15/从web图片裁剪出发：了解H5中的Blob/index.html">
 <meta property="og:site_name" content="tarol 的碎碎念">
 <meta property="og:description" content="刚开始做前端的时候，有个功能卡住我了，就是裁剪并上传头像。当时两个方案摆在我面前，一个是 flash，我不会。另一个是通过 iframe 上传图片，然后再上传坐标由后端裁剪，而我最终的选择是后者。有人会疑惑，为什么不用 H5 的 Canvas 和 FormData，第一要考虑 ie8 的兼容性，第二那时候眼界没到，这种新东西光是听听都怕。 后来随着 Mobile 项目越做越多，类似的功能开发得也越">
 <meta property="og:locale" content="zh-CN">
@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://tarol.github.io/assets/image/blob/3.png">
 <meta property="og:image" content="https://tarol.github.io/assets/image/blob/4.png">
 <meta property="og:image" content="https://tarol.github.io/assets/image/blob/5.png">
-<meta property="og:updated_time" content="2018-10-28T10:02:12.328Z">
+<meta property="og:updated_time" content="2021-12-21T10:22:44.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从web图片裁剪出发：了解H5中的Blob">
 <meta name="twitter:description" content="刚开始做前端的时候，有个功能卡住我了，就是裁剪并上传头像。当时两个方案摆在我面前，一个是 flash，我不会。另一个是通过 iframe 上传图片，然后再上传坐标由后端裁剪，而我最终的选择是后者。有人会疑惑，为什么不用 H5 的 Canvas 和 FormData，第一要考虑 ie8 的兼容性，第二那时候眼界没到，这种新东西光是听听都怕。 后来随着 Mobile 项目越做越多，类似的功能开发得也越">
@@ -129,12 +129,12 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
+  <link rel="alternate" href="/blog/atom.xml" title="tarol 的碎碎念" type="application/atom+xml">
 
 
 
 
-  <link rel="canonical" href="https://tarol.github.io/2016/04/15/从web图片裁剪出发：了解H5中的Blob/">
+  <link rel="canonical" href="https://tarol.github.io/blog/2016/04/15/从web图片裁剪出发：了解H5中的Blob/">
 
 
 
@@ -184,7 +184,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -194,13 +194,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">tarol 的碎碎念</span>
         <span class="logo-line-after"><i></i></span>
@@ -229,7 +229,7 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
+    <a href="/blog/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
   </li>
         
@@ -237,8 +237,8 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
+    <a href="/blog/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span></a>
   </li>
 
       
@@ -313,20 +313,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/2016/04/15/从web图片裁剪出发：了解H5中的Blob/">
+    <link itemprop="mainEntityOfPage" href="https://tarol.github.io/blog/blog/2016/04/15/从web图片裁剪出发：了解H5中的Blob/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="C tarol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="tarol 的碎碎念">
     </span>
 
@@ -378,21 +378,21 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/技术/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/前端/H5/" itemprop="url" rel="index"><span itemprop="name">H5</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/技术/前端/H5/" itemprop="url" rel="index"><span itemprop="name">H5</span></a></span>
 
                 
                 
@@ -407,8 +407,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/04/15/从web图片裁剪出发：了解H5中的Blob/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2016/04/15/从web图片裁剪出发：了解H5中的Blob/" itemprop="commentCount"></span>
+                <a href="/blog/2016/04/15/从web图片裁剪出发：了解H5中的Blob/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/blog/2016/04/15/从web图片裁剪出发：了解H5中的Blob/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -469,12 +469,12 @@
 <p>后来随着 Mobile 项目越做越多，类似的功能开发得也越来越多，Canvas+FormData 成为了标配方案。但做的多了却一直没有静下心来研究，浏览器怎么使用 H5 的方式裁剪并把文件发送出去，回过头看都是知其然不知其所以然。这篇随笔先做个初步的拆解，就是当通过 input 选择一张图片后，这张图片在浏览器里是怎样的一个存在。</p>
 <p>文件操作一直是早期浏览器的痛点，全封闭式，不给 JS 操作的空间，而随着 H5 一系列新接口的推出，这个壁垒被打破。对，是一系列接口，以下会涉及到如下概念：Blob、File、FileReader、ArrayBuffer、ArrayBufferView、DataURL 等，其他如 FormData、XMLHttpRequest、Canvas 等暂不深入。</p>
 <p>我们先创建一个简单的页面，只有一个 input[type=file]。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后我们在 JS 中获取这个元素</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">"input[type=file]"</span>);</span><br></pre></td></tr></table></figure>
 <p>可以看到这个元素有个属性 files，它的类型是 FileList。这个类不做过多介绍，就是一个类数组，由浏览器通过用户行为往里面添加或删除元素，JS 只有访问其元素的接口，无法对其进行操作。而 files 的元素就是 File 类型，File 是 blob 的子类，比 blob 主要多出一个 name 的属性。</p>
 <p>现在我们选取一个文件，<strong>这里问题来了，这个元素是文件在浏览器的完整备份，还是一个指向文件系统的引用？</strong>答案是后者，我们选定文件，然后修改文件名，再上传文件，浏览器报错了。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">'input[type=file]'</span>),</span></span><br><span class="line"><span class="javascript">        form = <span class="built_in">document</span>.test;</span></span><br><span class="line"><span class="javascript">    form.addEventListener(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      e.preventDefault();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> file = input.files[<span class="number">0</span>],</span></span><br><span class="line"><span class="javascript">            fd = <span class="keyword">new</span> FormData(),</span></span><br><span class="line"><span class="javascript">            xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">      fd.append(<span class="string">'file'</span>, file);</span></span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">'post'</span>, <span class="string">'/upload'</span>);</span></span><br><span class="line"><span class="undefined">      xhr.send(fd);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">'input[type=file]'</span>),</span></span><br><span class="line"><span class="javascript">        form = <span class="built_in">document</span>.test;</span></span><br><span class="line"><span class="javascript">    form.addEventListener(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line">      e.preventDefault();</span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> file = input.files[<span class="number">0</span>],</span></span><br><span class="line"><span class="javascript">            fd = <span class="keyword">new</span> FormData(),</span></span><br><span class="line"><span class="javascript">            xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">      fd.append(<span class="string">'file'</span>, file);</span></span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">'post'</span>, <span class="string">'/upload'</span>);</span></span><br><span class="line">      xhr.send(fd);</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="/assets/image/blob/1.png" alt="1"></p>
 <p>使用 chrome 打开 chrome://blob-internals/，可以看到一条这样的记录</p>
 <p><img src="/assets/image/blob/2.png" alt="2"></p>
@@ -492,7 +492,7 @@
 <p>最后，Text 是什么呢？在 ftp 上，文本传输和二进制传输的区别是什么，那 Text 类型和 BinaryString 类型的区别就是什么了，也就是 Text 类型是经过一定转换的 BinaryString，对于图片来说，这个类型是用不到的。</p>
 <p>好了，现在我们了解了一张图片在浏览器里以数据的形式可以表现为 ArrayBuffer、BinaryString、DataURL，<strong>那么第四个问题来了，它们各有实际用途呢？</strong>我们从应用场景出发，回到文章开头的问题，图片的裁剪和上传。图片的裁剪我们要倚仗牛逼的 canvas，而 canvas 的 context 有这么一个方法 toDataURL，就是把 canvas 的内容转换为图片数据，而数据的表现形式就是 DataURL！图片的上传我们用的是 FormData，它可以添加 Blob 类型的对象进去，那 Blob 类型除了从 input[type=file]中直接获取，还能靠什么生成呢？自然是 ArrayBuffer！好了，裁剪图片的功能要用到 DataURL，上传图片的功能要用到 ArrayBuffer，那怎么从 DataURL 转换为 ArrayBuffer 呢？我们知道 DataURL 很重要的组成部分就是经过 base64 编码的 BinaryString，那么很显然我们可以从 DataURL 中提取 BinaryString，而 BinaryString 就是 ArrayBuffer 对应的 Uint8Array 的字符形式的表现，所以可以由 BinaryString 生成 ArrayBuffer，那么 DataURL 到 ArrayBuffer 之间的桥就是 BinaryString！</p>
 <p>到现在为止，我们说了很多概念，然而这并没有什么卵用，验证概念的方法不是提出新的概念，而是建立一个 example。以下的 example 就是把图片数据从 input 中取出，然后以 DataURL 的格式进行预览，提交时把预览生成图片上传的整个流程。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> img = <span class="built_in">document</span>.querySelector(<span class="string">'img'</span>),</span></span><br><span class="line"><span class="undefined">        preview;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.test.file.addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="javascript">      fr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        preview = <span class="keyword">this</span>.result;</span></span><br><span class="line"><span class="undefined">        img.src = preview;</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="javascript">      fr.readAsDataURL(<span class="keyword">this</span>.files[<span class="number">0</span>]);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.test.addEventListener(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      e.preventDefault();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> binaryString = atob(preview.split(<span class="string">','</span>)[<span class="number">1</span>]),</span></span><br><span class="line"><span class="javascript">          mimeType = preview.split(<span class="string">','</span>)[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span></span><br><span class="line"><span class="undefined">          length = binaryString.length,</span></span><br><span class="line"><span class="javascript">          u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(length),</span></span><br><span class="line"><span class="undefined">          blob,</span></span><br><span class="line"><span class="javascript">          fd = <span class="keyword">new</span> FormData(),</span></span><br><span class="line"><span class="javascript">          xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">while</span>(length--) &#123;</span></span><br><span class="line"><span class="undefined">        u8arr[length] = binaryString.charCodeAt(length);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      blob = <span class="keyword">new</span> Blob([u8arr.buffer], &#123;<span class="attr">type</span>: mimeType&#125;);</span></span><br><span class="line"><span class="javascript">      fd.append(<span class="string">'file'</span>, blob);</span></span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">'post'</span>, <span class="string">'/upload'</span>);</span></span><br><span class="line"><span class="undefined">      xhr.send(fd);</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">'test'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> img = <span class="built_in">document</span>.querySelector(<span class="string">'img'</span>),</span></span><br><span class="line">        preview;</span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.test.file.addEventListener(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="javascript">      fr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        preview = <span class="keyword">this</span>.result;</span></span><br><span class="line">        img.src = preview;</span><br><span class="line">      &#125;;</span><br><span class="line"><span class="javascript">      fr.readAsDataURL(<span class="keyword">this</span>.files[<span class="number">0</span>]);</span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.test.addEventListener(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line">      e.preventDefault();</span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> binaryString = atob(preview.split(<span class="string">','</span>)[<span class="number">1</span>]),</span></span><br><span class="line"><span class="javascript">          mimeType = preview.split(<span class="string">','</span>)[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span></span><br><span class="line">          length = binaryString.length,</span><br><span class="line"><span class="javascript">          u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(length),</span></span><br><span class="line">          blob,</span><br><span class="line"><span class="javascript">          fd = <span class="keyword">new</span> FormData(),</span></span><br><span class="line"><span class="javascript">          xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">      <span class="keyword">while</span>(length--) &#123;</span></span><br><span class="line">        u8arr[length] = binaryString.charCodeAt(length);</span><br><span class="line">      &#125;</span><br><span class="line"><span class="javascript">      blob = <span class="keyword">new</span> Blob([u8arr.buffer], &#123;<span class="attr">type</span>: mimeType&#125;);</span></span><br><span class="line"><span class="javascript">      fd.append(<span class="string">'file'</span>, blob);</span></span><br><span class="line"><span class="javascript">      xhr.open(<span class="string">'post'</span>, <span class="string">'/upload'</span>);</span></span><br><span class="line">      xhr.send(fd);</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>现在图片已经被我们发射出去了，<strong>那么图片在协议包里是以怎样的数据形式存在的呢？</strong>当然是以二进制的形式，我们抓一下包，发现在 fiddler 里面这个二进制串会转换为字符串，即上面的 binaryString。</p>
 <p>既然通过发送的 blob 到最后在数据包里都是以 binaryString 的形式展示，<strong>那么是否可以直接使用 xhr.send(binaryString)发送图片呢？</strong>貌似是可以的，但我们试一下就会发现问题，服务器获取到的信息不能生成一张图片，说明数据被破坏了。那么数据是谁破坏的呢？这个罪魁祸首就是 send，<strong>当 send 的参数是字符串的时候，会对字符串进行 utf8 编码。</strong>我们看下相同的图片通过 blob 发送出去和通过 binaryString 直接发送出去的数据会有什么不同。这里我们用 wireshark 抓包，因为 wireshark 会自动对数据块进行分割，可以比较直观的看到图片所对应的数据。PS: 这张图片一张 1px 白色的 png。</p>
 <p><img src="/assets/image/blob/4.png" alt="4"><br><img src="/assets/image/blob/5.png" alt="5"></p>
@@ -518,9 +518,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/文章/" rel="tag"># 文章</a>
+            <a href="/blog/tags/文章/" rel="tag"># 文章</a>
           
-            <a href="/tags/H5/" rel="tag"># H5</a>
+            <a href="/blog/tags/H5/" rel="tag"># H5</a>
           
         </div>
       
@@ -533,7 +533,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/30/玩一把JS的链式调用/" rel="next" title="玩一把JS的链式调用">
+              <a href="/blog/2016/03/30/玩一把JS的链式调用/" rel="next" title="玩一把JS的链式调用">
                 <i class="fa fa-chevron-left"></i> 玩一把JS的链式调用
               </a>
             
@@ -543,7 +543,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" rel="prev" title="从web图片裁剪出发：了解H5中的canvas">
+              <a href="/blog/2016/04/21/从web图片裁剪出发：了解H5中的canvas/" rel="prev" title="从web图片裁剪出发：了解H5中的canvas">
                 从web图片裁剪出发：了解H5中的canvas <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -596,9 +596,9 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="C tarol">
+              <img class="site-author-image" itemprop="image" src="/blog/images/avatar.jpg" alt="C tarol">
             
               <p class="site-author-name" itemprop="name">C tarol</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -609,9 +609,9 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -724,7 +724,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -738,7 +738,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">87k</span>
   
 
   
@@ -747,7 +747,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:36</span>
+    <span title="站点阅读时长">2:39</span>
   
 </div>
 
@@ -827,49 +827,49 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=6.4.2"></script>
 
 
 
@@ -926,7 +926,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/" + search_path;
+    var path = "/blog/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
@@ -1259,7 +1259,7 @@
   
   
   
-  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script src="/blog/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script type="text/javascript">
   
     bookmark.scrollToMark('auto', "#更多");
